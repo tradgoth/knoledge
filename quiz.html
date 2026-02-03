@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,21 +36,34 @@
         .quiz-container.corrupted-4 {
             background: linear-gradient(135deg, #220000, #110000, #000000);
             border-color: #660000;
-            box-shadow: inset 0 0 100px rgba(255,0,0,0.3);
+            box-shadow: inset 0 0 100px rgba(255, 0, 0, 0.3);
         }
 
         .quiz-container.corrupted-5 {
             background: #000;
             border-color: #330000;
-            box-shadow: inset 0 0 150px rgba(255,0,0,0.5);
+            box-shadow: inset 0 0 150px rgba(255, 0, 0, 0.5);
             animation: roomShake 0.1s infinite;
         }
 
         @keyframes roomShake {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            25% { transform: translate(-2px, 1px) rotate(-0.5deg); }
-            50% { transform: translate(1px, -2px) rotate(0.5deg); }
-            75% { transform: translate(-1px, 2px) rotate(-0.5deg); }
+
+            0%,
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            25% {
+                transform: translate(-2px, 1px) rotate(-0.5deg);
+            }
+
+            50% {
+                transform: translate(1px, -2px) rotate(0.5deg);
+            }
+
+            75% {
+                transform: translate(-1px, 2px) rotate(-0.5deg);
+            }
         }
 
         .mascot {
@@ -67,14 +81,14 @@
             border-radius: 50%;
             position: relative;
             border: 4px solid #ff6699;
-            box-shadow: 0 0 20px rgba(255,150,200,0.5);
+            box-shadow: 0 0 20px rgba(255, 150, 200, 0.5);
             transition: all 1s ease;
         }
 
         .mascot-face.corrupted {
             background: radial-gradient(circle, #996666 0%, #664444 100%);
             border-color: #440000;
-            box-shadow: 0 0 20px rgba(255,0,0,0.5);
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
         }
 
         .mascot-face.very-corrupted {
@@ -84,8 +98,15 @@
         }
 
         @keyframes mascotPulse {
-            0%, 100% { box-shadow: 0 0 20px rgba(255,0,0,0.5); }
-            50% { box-shadow: 0 0 40px rgba(255,0,0,0.8); }
+
+            0%,
+            100% {
+                box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+            }
+
+            50% {
+                box-shadow: 0 0 40px rgba(255, 0, 0, 0.8);
+            }
         }
 
         .mascot-eye {
@@ -97,8 +118,13 @@
             top: 40px;
         }
 
-        .mascot-eye.left { left: 35px; }
-        .mascot-eye.right { right: 35px; }
+        .mascot-eye.left {
+            left: 35px;
+        }
+
+        .mascot-eye.right {
+            right: 35px;
+        }
 
         .mascot-pupil {
             width: 12px;
@@ -143,8 +169,15 @@
         }
 
         @keyframes mouthTwitch {
-            0%, 100% { transform: translateX(-50%) scaleY(1); }
-            50% { transform: translateX(-50%) scaleY(1.2); }
+
+            0%,
+            100% {
+                transform: translateX(-50%) scaleY(1);
+            }
+
+            50% {
+                transform: translateX(-50%) scaleY(1.2);
+            }
         }
 
         .quiz-title {
@@ -167,11 +200,32 @@
         }
 
         @keyframes titleGlitch {
-            0%, 100% { transform: translate(0); filter: none; }
-            20% { transform: translate(-2px, 1px); filter: hue-rotate(90deg); }
-            40% { transform: translate(2px, -1px); filter: hue-rotate(180deg); }
-            60% { transform: translate(-1px, -2px); filter: hue-rotate(270deg); }
-            80% { transform: translate(1px, 2px); filter: none; }
+
+            0%,
+            100% {
+                transform: translate(0);
+                filter: none;
+            }
+
+            20% {
+                transform: translate(-2px, 1px);
+                filter: hue-rotate(90deg);
+            }
+
+            40% {
+                transform: translate(2px, -1px);
+                filter: hue-rotate(180deg);
+            }
+
+            60% {
+                transform: translate(-1px, -2px);
+                filter: hue-rotate(270deg);
+            }
+
+            80% {
+                transform: translate(1px, 2px);
+                filter: none;
+            }
         }
 
         .answer-btn {
@@ -205,8 +259,15 @@
         }
 
         @keyframes btnCorrupt {
-            0%, 100% { transform: scale(1) skewX(0deg); }
-            50% { transform: scale(1.02) skewX(-2deg); }
+
+            0%,
+            100% {
+                transform: scale(1) skewX(0deg);
+            }
+
+            50% {
+                transform: scale(1.02) skewX(-2deg);
+            }
         }
 
         .sparkle {
@@ -217,8 +278,15 @@
         }
 
         @keyframes sparkle {
-            0% { transform: scale(0) rotate(0deg); opacity: 1; }
-            100% { transform: scale(1.5) rotate(180deg); opacity: 0; }
+            0% {
+                transform: scale(0) rotate(0deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(1.5) rotate(180deg);
+                opacity: 0;
+            }
         }
 
         .blood-drip {
@@ -232,8 +300,13 @@
         }
 
         @keyframes drip {
-            0% { height: 0; }
-            100% { height: 100vh; }
+            0% {
+                height: 0;
+            }
+
+            100% {
+                height: 100vh;
+            }
         }
 
         .static-overlay {
@@ -256,8 +329,15 @@
         }
 
         @keyframes staticFlicker {
-            0%, 100% { opacity: 0.2; }
-            50% { opacity: 0.4; }
+
+            0%,
+            100% {
+                opacity: 0.2;
+            }
+
+            50% {
+                opacity: 0.4;
+            }
         }
 
         .vhs-lines {
@@ -269,13 +349,11 @@
             pointer-events: none;
             opacity: 0;
             z-index: 997;
-            background: repeating-linear-gradient(
-                0deg,
-                transparent,
-                transparent 2px,
-                rgba(0,0,0,0.1) 2px,
-                rgba(0,0,0,0.1) 4px
-            );
+            background: repeating-linear-gradient(0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(0, 0, 0, 0.1) 2px,
+                    rgba(0, 0, 0, 0.1) 4px);
             transition: opacity 0.5s ease;
         }
 
@@ -295,8 +373,15 @@
         }
 
         @keyframes writeAppear {
-            0% { opacity: 0; transform: scale(0.8); }
-            100% { opacity: 0.8; transform: scale(1); }
+            0% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+
+            100% {
+                opacity: 0.8;
+                transform: scale(1);
+            }
         }
 
         .jumpscare {
@@ -314,8 +399,15 @@
         }
 
         @keyframes jumpscareFlash {
-            0%, 100% { background: #000; }
-            50% { background: #220000; }
+
+            0%,
+            100% {
+                background: #000;
+            }
+
+            50% {
+                background: #220000;
+            }
         }
 
         .jumpscare-image {
@@ -324,8 +416,15 @@
         }
 
         @keyframes jumpscarePulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
         }
 
         .jumpscare-text {
@@ -339,11 +438,25 @@
         }
 
         @keyframes textGlitch {
-            0% { transform: translate(0); }
-            25% { transform: translate(-5px, 3px); }
-            50% { transform: translate(3px, -5px); }
-            75% { transform: translate(-3px, -3px); }
-            100% { transform: translate(5px, 5px); }
+            0% {
+                transform: translate(0);
+            }
+
+            25% {
+                transform: translate(-5px, 3px);
+            }
+
+            50% {
+                transform: translate(3px, -5px);
+            }
+
+            75% {
+                transform: translate(-3px, -3px);
+            }
+
+            100% {
+                transform: translate(5px, 5px);
+            }
         }
 
         .corner-eye {
@@ -354,8 +467,17 @@
         }
 
         @keyframes eyeGlow {
-            0%, 100% { text-shadow: 0 0 10px #ff0000; opacity: 0.5; }
-            50% { text-shadow: 0 0 20px #ff0000; opacity: 1; }
+
+            0%,
+            100% {
+                text-shadow: 0 0 10px #ff0000;
+                opacity: 0.5;
+            }
+
+            50% {
+                text-shadow: 0 0 20px #ff0000;
+                opacity: 1;
+            }
         }
 
         .reaching-hand {
@@ -366,8 +488,15 @@
         }
 
         @keyframes handReach {
-            0% { opacity: 0; transform: translateY(100px); }
-            100% { opacity: 0.7; transform: translateY(0); }
+            0% {
+                opacity: 0;
+                transform: translateY(100px);
+            }
+
+            100% {
+                opacity: 0.7;
+                transform: translateY(0);
+            }
         }
 
         .question-text {
@@ -430,8 +559,13 @@
         }
 
         @keyframes fadeIn {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
         }
 
         .ending-title {
@@ -472,8 +606,15 @@
         }
 
         @keyframes btnBounce {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
         }
 
         .start-btn:hover {
@@ -487,8 +628,15 @@
         }
 
         @keyframes cursor {
-            0%, 100% { border-color: transparent; }
-            50% { border-color: #ff0000; }
+
+            0%,
+            100% {
+                border-color: transparent;
+            }
+
+            50% {
+                border-color: #ff0000;
+            }
         }
 
         .third-eye {
@@ -507,8 +655,15 @@
         }
 
         @keyframes thirdEyePulse {
-            0%, 100% { text-shadow: 0 0 10px #ff0000; }
-            50% { text-shadow: 0 0 20px #ff0000, 0 0 30px #ff0000; }
+
+            0%,
+            100% {
+                text-shadow: 0 0 10px #ff0000;
+            }
+
+            50% {
+                text-shadow: 0 0 20px #ff0000, 0 0 30px #ff0000;
+            }
         }
 
         .blood-tears {
@@ -598,11 +753,25 @@
         }
 
         @keyframes radioNoise {
-            0% { width: 20%; }
-            25% { width: 80%; }
-            50% { width: 40%; }
-            75% { width: 90%; }
-            100% { width: 30%; }
+            0% {
+                width: 20%;
+            }
+
+            25% {
+                width: 80%;
+            }
+
+            50% {
+                width: 40%;
+            }
+
+            75% {
+                width: 90%;
+            }
+
+            100% {
+                width: 30%;
+            }
         }
 
         .heartbeat-overlay {
@@ -613,7 +782,7 @@
             height: 100%;
             pointer-events: none;
             z-index: 600;
-            box-shadow: inset 0 0 100px rgba(255,0,0,0.3);
+            box-shadow: inset 0 0 100px rgba(255, 0, 0, 0.3);
             opacity: 0;
             animation: heartbeat 1s ease infinite;
         }
@@ -623,11 +792,27 @@
         }
 
         @keyframes heartbeat {
-            0%, 100% { box-shadow: inset 0 0 50px rgba(255,0,0,0.2); }
-            10% { box-shadow: inset 0 0 100px rgba(255,0,0,0.4); }
-            20% { box-shadow: inset 0 0 50px rgba(255,0,0,0.2); }
-            30% { box-shadow: inset 0 0 80px rgba(255,0,0,0.35); }
-            40% { box-shadow: inset 0 0 50px rgba(255,0,0,0.2); }
+
+            0%,
+            100% {
+                box-shadow: inset 0 0 50px rgba(255, 0, 0, 0.2);
+            }
+
+            10% {
+                box-shadow: inset 0 0 100px rgba(255, 0, 0, 0.4);
+            }
+
+            20% {
+                box-shadow: inset 0 0 50px rgba(255, 0, 0, 0.2);
+            }
+
+            30% {
+                box-shadow: inset 0 0 80px rgba(255, 0, 0, 0.35);
+            }
+
+            40% {
+                box-shadow: inset 0 0 50px rgba(255, 0, 0, 0.2);
+            }
         }
 
         .subliminal {
@@ -646,8 +831,15 @@
         }
 
         @keyframes subliminalFlash {
-            0%, 100% { opacity: 0; }
-            50% { opacity: 1; }
+
+            0%,
+            100% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
         }
 
         .rotate-room {
@@ -655,8 +847,15 @@
         }
 
         @keyframes rotateRoom {
-            0%, 100% { transform: rotate(0deg); }
-            50% { transform: rotate(3deg); }
+
+            0%,
+            100% {
+                transform: rotate(0deg);
+            }
+
+            50% {
+                transform: rotate(3deg);
+            }
         }
 
         .invert-colors {
@@ -675,7 +874,7 @@
             color: #333;
             font-size: 18px;
             border: 1px solid #999;
-            box-shadow: 5px 5px 20px rgba(0,0,0,0.5);
+            box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
             z-index: 8000;
             line-height: 1.8;
         }
@@ -693,8 +892,13 @@
         }
 
         @keyframes sealSpin {
-            from { transform: translate(-50%, -50%) rotate(0deg); }
-            to { transform: translate(-50%, -50%) rotate(360deg); }
+            from {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+
+            to {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
         }
 
         /* ========== CRACKED SCREEN EFFECT ========== */
@@ -709,7 +913,7 @@
             width: 200px;
             height: 200px;
             background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50 0 L52 30 L70 25 L55 50 L80 60 L50 55 L55 80 L45 55 L20 70 L48 50 L25 35 L50 45 Z" fill="none" stroke="%23000" stroke-width="1"/><path d="M50 50 L30 20" stroke="%23222" stroke-width="0.5"/><path d="M50 50 L75 30" stroke="%23222" stroke-width="0.5"/><path d="M50 50 L80 75" stroke="%23222" stroke-width="0.5"/><path d="M50 50 L25 80" stroke="%23222" stroke-width="0.5"/></svg>') no-repeat center;
-            filter: drop-shadow(0 0 2px rgba(255,255,255,0.5));
+            filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.5));
         }
 
         .crack-pattern-2 {
@@ -730,9 +934,20 @@
         }
 
         @keyframes crtFlicker {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.98; }
-            75% { opacity: 0.95; filter: brightness(1.02); }
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.98;
+            }
+
+            75% {
+                opacity: 0.95;
+                filter: brightness(1.02);
+            }
         }
 
         .horizontal-tear {
@@ -747,10 +962,23 @@
         }
 
         @keyframes horizontalTear {
-            0% { top: 0; opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { top: 100%; opacity: 0; }
+            0% {
+                top: 0;
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                top: 100%;
+                opacity: 0;
+            }
         }
 
         .degauss-wobble {
@@ -758,11 +986,30 @@
         }
 
         @keyframes degaussWobble {
-            0% { transform: scale(1) skew(0deg); filter: saturate(5) hue-rotate(180deg); }
-            25% { transform: scale(1.02, 0.98) skew(2deg); filter: saturate(3) hue-rotate(90deg); }
-            50% { transform: scale(0.98, 1.02) skew(-2deg); filter: saturate(2) hue-rotate(270deg); }
-            75% { transform: scale(1.01, 0.99) skew(1deg); filter: saturate(1.5) hue-rotate(45deg); }
-            100% { transform: scale(1) skew(0deg); filter: saturate(1) hue-rotate(0deg); }
+            0% {
+                transform: scale(1) skew(0deg);
+                filter: saturate(5) hue-rotate(180deg);
+            }
+
+            25% {
+                transform: scale(1.02, 0.98) skew(2deg);
+                filter: saturate(3) hue-rotate(90deg);
+            }
+
+            50% {
+                transform: scale(0.98, 1.02) skew(-2deg);
+                filter: saturate(2) hue-rotate(270deg);
+            }
+
+            75% {
+                transform: scale(1.01, 0.99) skew(1deg);
+                filter: saturate(1.5) hue-rotate(45deg);
+            }
+
+            100% {
+                transform: scale(1) skew(0deg);
+                filter: saturate(1) hue-rotate(0deg);
+            }
         }
 
         .screen-melt {
@@ -770,9 +1017,21 @@
         }
 
         @keyframes screenMelt {
-            0% { transform: perspective(500px) rotateX(0deg); filter: none; }
-            50% { transform: perspective(500px) rotateX(2deg); filter: blur(1px); }
-            100% { transform: perspective(300px) rotateX(5deg) translateY(50px); filter: blur(3px); opacity: 0.7; }
+            0% {
+                transform: perspective(500px) rotateX(0deg);
+                filter: none;
+            }
+
+            50% {
+                transform: perspective(500px) rotateX(2deg);
+                filter: blur(1px);
+            }
+
+            100% {
+                transform: perspective(300px) rotateX(5deg) translateY(50px);
+                filter: blur(3px);
+                opacity: 0.7;
+            }
         }
 
         .burn-in-ghost {
@@ -784,7 +1043,7 @@
             pointer-events: none;
             z-index: 9400;
             opacity: 0;
-            background: radial-gradient(ellipse at center, rgba(0,50,0,0.1) 0%, transparent 70%);
+            background: radial-gradient(ellipse at center, rgba(0, 50, 0, 0.1) 0%, transparent 70%);
             mix-blend-mode: screen;
             transition: opacity 2s ease;
         }
@@ -798,8 +1057,13 @@
         }
 
         @keyframes verticalRoll {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(20px); }
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(20px);
+            }
         }
 
         /* ========== ENHANCED JUMPSCARES ========== */
@@ -849,8 +1113,17 @@
         }
 
         @keyframes staticFacePulse {
-            0%, 100% { transform: scale(1); opacity: 0.9; }
-            50% { transform: scale(1.05); opacity: 1; }
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.9;
+            }
+
+            50% {
+                transform: scale(1.05);
+                opacity: 1;
+            }
         }
 
         .jumpscare-shatter {
@@ -871,8 +1144,15 @@
         }
 
         @keyframes shatterFall {
-            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(100vh) rotate(180deg); opacity: 0; }
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(100vh) rotate(180deg);
+                opacity: 0;
+            }
         }
 
         .jumpscare-buddy-corrupt {
@@ -896,9 +1176,20 @@
         }
 
         @keyframes corruptBuddyPulse {
-            0% { transform: scale(1) rotate(-2deg); filter: hue-rotate(0deg); }
-            50% { transform: scale(1.1) rotate(2deg); filter: hue-rotate(30deg); }
-            100% { transform: scale(1) rotate(-2deg); filter: hue-rotate(0deg); }
+            0% {
+                transform: scale(1) rotate(-2deg);
+                filter: hue-rotate(0deg);
+            }
+
+            50% {
+                transform: scale(1.1) rotate(2deg);
+                filter: hue-rotate(30deg);
+            }
+
+            100% {
+                transform: scale(1) rotate(-2deg);
+                filter: hue-rotate(0deg);
+            }
         }
 
         .corrupt-buddy-text {
@@ -911,9 +1202,19 @@
         }
 
         @keyframes corruptTextGlitch {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-10px) skewX(-5deg); }
-            75% { transform: translateX(10px) skewX(5deg); }
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            25% {
+                transform: translateX(-10px) skewX(-5deg);
+            }
+
+            75% {
+                transform: translateX(10px) skewX(5deg);
+            }
         }
 
         /* ========== ENHANCED ENDINGS ========== */
@@ -923,9 +1224,17 @@
         }
 
         @keyframes leaveEndingFade {
-            0% { filter: blur(0) brightness(0.5); }
-            50% { filter: blur(2px) brightness(0.8); }
-            100% { filter: blur(0) brightness(1.2); }
+            0% {
+                filter: blur(0) brightness(0.5);
+            }
+
+            50% {
+                filter: blur(2px) brightness(0.8);
+            }
+
+            100% {
+                filter: blur(0) brightness(1.2);
+            }
         }
 
         .buddy-wave {
@@ -934,8 +1243,15 @@
         }
 
         @keyframes buddyWave {
-            0%, 100% { transform: rotate(-10deg); }
-            50% { transform: rotate(10deg); }
+
+            0%,
+            100% {
+                transform: rotate(-10deg);
+            }
+
+            50% {
+                transform: rotate(10deg);
+            }
         }
 
         .ending-maria {
@@ -950,8 +1266,15 @@
         }
 
         @keyframes mariaPulse {
-            0%, 100% { opacity: 0.7; }
-            50% { opacity: 1; }
+
+            0%,
+            100% {
+                opacity: 0.7;
+            }
+
+            50% {
+                opacity: 1;
+            }
         }
 
         .maria-cough {
@@ -959,9 +1282,19 @@
         }
 
         @keyframes coughShake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-5px); }
-            75% { transform: translateX(5px); }
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            25% {
+                transform: translateX(-5px);
+            }
+
+            75% {
+                transform: translateX(5px);
+            }
         }
 
         .ending-water {
@@ -973,14 +1306,21 @@
             position: absolute;
             width: 20px;
             height: 20px;
-            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.8), rgba(100,150,255,0.2));
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(100, 150, 255, 0.2));
             border-radius: 50%;
             animation: bubbleRise 4s ease-in infinite;
         }
 
         @keyframes bubbleRise {
-            0% { transform: translateY(100vh) scale(1); opacity: 0.8; }
-            100% { transform: translateY(-50px) scale(0.5); opacity: 0; }
+            0% {
+                transform: translateY(100vh) scale(1);
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: translateY(-50px) scale(0.5);
+                opacity: 0;
+            }
         }
 
         .sinking-text {
@@ -988,8 +1328,15 @@
         }
 
         @keyframes sinkDown {
-            0% { transform: translateY(0); opacity: 1; }
-            100% { transform: translateY(100px); opacity: 0.3; }
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(100px);
+                opacity: 0.3;
+            }
         }
 
         .water-rising {
@@ -998,13 +1345,18 @@
             left: 0;
             width: 100%;
             height: 0;
-            background: linear-gradient(180deg, transparent, rgba(0,50,100,0.5));
+            background: linear-gradient(180deg, transparent, rgba(0, 50, 100, 0.5));
             animation: waterRise 10s ease-in forwards;
         }
 
         @keyframes waterRise {
-            0% { height: 0; }
-            100% { height: 100%; }
+            0% {
+                height: 0;
+            }
+
+            100% {
+                height: 100%;
+            }
         }
 
         .ending-rebirth {
@@ -1019,8 +1371,13 @@
         }
 
         @keyframes ritualSpin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         .lightning-flash {
@@ -1037,8 +1394,17 @@
         }
 
         @keyframes lightningFlash {
-            0%, 90%, 100% { opacity: 0; }
-            92%, 96% { opacity: 0.3; }
+
+            0%,
+            90%,
+            100% {
+                opacity: 0;
+            }
+
+            92%,
+            96% {
+                opacity: 0.3;
+            }
         }
 
         .ending-dog {
@@ -1051,8 +1417,15 @@
         }
 
         @keyframes dogDance {
-            0%, 100% { transform: translateY(0) rotate(-5deg); }
-            50% { transform: translateY(-20px) rotate(5deg); }
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(-5deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(5deg);
+            }
         }
 
         .credits-roll {
@@ -1061,8 +1434,13 @@
         }
 
         @keyframes creditsRoll {
-            0% { transform: translateY(100%); }
-            100% { transform: translateY(-100%); }
+            0% {
+                transform: translateY(100%);
+            }
+
+            100% {
+                transform: translateY(-100%);
+            }
         }
 
         .confetti {
@@ -1074,8 +1452,15 @@
         }
 
         @keyframes confettiFall {
-            0% { transform: translateY(-10px) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+            0% {
+                transform: translateY(-10px) rotate(0deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
         }
 
         /* ========== POST-ENDING HORROR ========== */
@@ -1085,7 +1470,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.95);
+            background: rgba(0, 0, 0, 0.95);
             z-index: 99991;
             display: flex;
             align-items: center;
@@ -1095,8 +1480,13 @@
         }
 
         @keyframes buddyWatchingFade {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
         }
 
         .buddy-watching-face {
@@ -1105,8 +1495,17 @@
         }
 
         @keyframes watchingPulse {
-            0%, 100% { transform: scale(1); filter: brightness(1); }
-            50% { transform: scale(1.05); filter: brightness(1.5) drop-shadow(0 0 30px #ff0000); }
+
+            0%,
+            100% {
+                transform: scale(1);
+                filter: brightness(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+                filter: brightness(1.5) drop-shadow(0 0 30px #ff0000);
+            }
         }
 
         .watching-text {
@@ -1121,8 +1520,13 @@
         }
 
         @keyframes watchingTextType {
-            0% { width: 0; }
-            100% { width: 100%; }
+            0% {
+                width: 0;
+            }
+
+            100% {
+                width: 100%;
+            }
         }
 
         .desperate-button {
@@ -1130,9 +1534,19 @@
         }
 
         @keyframes desperateShake {
-            0%, 100% { transform: scale(1); }
-            25% { transform: scale(1.1) rotate(-2deg); }
-            75% { transform: scale(1.1) rotate(2deg); }
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            25% {
+                transform: scale(1.1) rotate(-2deg);
+            }
+
+            75% {
+                transform: scale(1.1) rotate(2deg);
+            }
         }
 
         .button-chase {
@@ -1148,7 +1562,7 @@
             font-family: "MS Sans Serif", Arial, sans-serif;
             font-size: 12px;
             max-width: 400px;
-            box-shadow: 3px 3px 10px rgba(0,0,0,0.5);
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
         }
 
         .popup-title {
@@ -1219,8 +1633,13 @@
         }
 
         @keyframes trueEndingFade {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
         }
 
         .true-ending-text {
@@ -1232,8 +1651,15 @@
         }
 
         @keyframes trueTextReveal {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .quiz-sidebar-note {
@@ -1258,24 +1684,52 @@
         }
 
         @keyframes beamPulse {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 0.6; }
+
+            0%,
+            100% {
+                opacity: 0.3;
+            }
+
+            50% {
+                opacity: 0.6;
+            }
         }
 
         @keyframes ufoFloat {
-            0%, 100% { transform: translateY(0) rotate(-5deg); }
-            50% { transform: translateY(-20px) rotate(5deg); }
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(-5deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(5deg);
+            }
         }
 
         @keyframes twinkle {
-            0%, 100% { opacity: 0.3; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.5); }
+
+            0%,
+            100% {
+                opacity: 0.3;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.5);
+            }
         }
 
         /* ========== SPIN ANIMATION FOR LOADING ========== */
         @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         /* ========== EXTRA FUN EFFECTS ========== */
@@ -1284,13 +1738,33 @@
         }
 
         @keyframes rainbowCycle {
-            0% { color: #ff0000; }
-            17% { color: #ff8800; }
-            33% { color: #ffff00; }
-            50% { color: #00ff00; }
-            67% { color: #0088ff; }
-            83% { color: #8800ff; }
-            100% { color: #ff0000; }
+            0% {
+                color: #ff0000;
+            }
+
+            17% {
+                color: #ff8800;
+            }
+
+            33% {
+                color: #ffff00;
+            }
+
+            50% {
+                color: #00ff00;
+            }
+
+            67% {
+                color: #0088ff;
+            }
+
+            83% {
+                color: #8800ff;
+            }
+
+            100% {
+                color: #ff0000;
+            }
         }
 
         .shake-text {
@@ -1298,9 +1772,19 @@
         }
 
         @keyframes textShake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-3px); }
-            75% { transform: translateX(3px); }
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            25% {
+                transform: translateX(-3px);
+            }
+
+            75% {
+                transform: translateX(3px);
+            }
         }
 
         /* ========== TODD'S NOTE BOX ========== */
@@ -1335,8 +1819,15 @@
         }
 
         @keyframes skullFade {
-            0% { opacity: 0.5; transform: scale(1) rotate(0deg); }
-            100% { opacity: 0; transform: scale(0.5) rotate(180deg); }
+            0% {
+                opacity: 0.5;
+                transform: scale(1) rotate(0deg);
+            }
+
+            100% {
+                opacity: 0;
+                transform: scale(0.5) rotate(180deg);
+            }
         }
 
         /* ========== CLIPPY-STYLE HELPER ========== */
@@ -1362,8 +1853,15 @@
         }
 
         @keyframes helperBounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-5px);
+            }
         }
 
         .buddy-helper-close {
@@ -1376,6 +1874,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="fog-overlay"></div>
     <div class="static-overlay" id="staticOverlay"></div>
@@ -1398,7 +1897,8 @@
 
         <div style="text-align: center; color: #ff9900; font-size: 12px;">
             <span class="blink" id="warningText">!! FUN QUIZ AHEAD !!</span><br>
-            Est. 1999 | <span id="quizTakers">00001337</span> quiz takers <span style="color: #666; font-size: 10px;">(number may be inacurate)</span>
+            Est. 1999 | <span id="quizTakers">00001337</span> quiz takers <span
+                style="color: #666; font-size: 10px;">(number may be inacurate)</span>
         </div>
 
         <div class="marquee-container" id="marqueeContainer">
@@ -1406,7 +1906,7 @@
                 !! WELCOME TO THE MOST FUN SILENT HILL QUIZ EVER !!
                 Test your KNOLEDGE and see if your worthy !!
                 Do NOT cheat (the Order is watching) !!
-                High score gets eternal salvation (not really) (or is it) !!
+                High score gets eternal salvation (results may vary) (ask your priest) !!
                 Created by Buddy your friendly quiz mascot !!
                 If quiz starts acting weird just restart your computer !!
                 HAVE FUN !!
@@ -1454,7 +1954,8 @@
                     <hr style="border-color: #660000;">
 
                     <div style="background-color: #c0c0c0; border: 2px outset #fff; padding: 5px; margin: 10px 0;">
-                        <div style="background: linear-gradient(90deg, #000080, #1084d0); color: white; padding: 2px; font-size: 10px; margin: -5px -5px 5px -5px;">
+                        <div
+                            style="background: linear-gradient(90deg, #000080, #1084d0); color: white; padding: 2px; font-size: 10px; margin: -5px -5px 5px -5px;">
                             Buddy Says:
                         </div>
                         <p style="color: #000; font-size: 10px; margin: 0;" id="buddySays">
@@ -1500,7 +2001,8 @@
                             </p>
                             <p style="color: #ff9900; font-size: 14px;">
                                 🏆 <b>6 POSSIBLE ENDINGS</b> 🏆<br>
-                                <span style="font-size: 11px; color: #cc6600;">Can you find them all?? (please try)</span>
+                                <span style="font-size: 11px; color: #cc6600;">Can you find them all?? (please
+                                    try)</span>
                             </p>
                             <button class="start-btn" onclick="startQuiz()">START QUIZ!!</button>
                             <p style="font-size: 12px; color: #999; margin-top: 20px;">
@@ -1563,19 +2065,22 @@
                         <div class="error-box">
                             <div class="error-title">quiz_info.exe</div>
                             <p>FEATURES:<br>
-                            ✓ 13 carefully selected questions<br>
-                            ✓ Questions about REAL occult lore<br>
-                            ✓ Multiple difficulty tiers<br>
-                            ✓ Fun mascot companion named Buddy<br>
-                            ✓ 6 different endings (collect them all!!)<br>
-                            ✓ Totally normal quiz experience<br>
-                            ✓ Nothing weird will happen<br>
-                            ✓ Why would anything weird happen<br>
-                            ✓ Stop asking questions<br>
-                            ✓ The fog is normal</p>
+                                ✓ 13 carefully selected questions<br>
+                                ✓ Questions about REAL occult lore<br>
+                                ✓ Multiple difficulty tiers<br>
+                                ✓ Fun mascot companion named Buddy<br>
+                                ✓ 6 different endings (collect them all!!)<br>
+                                ✓ Totally normal quiz experience<br>
+                                ✓ Nothing weird will happen<br>
+                                ✓ Why would anything weird happen<br>
+                                ✓ Stop asking questions<br>
+                                ✓ The fog is normal</p>
                             <center>
-                                <button class="btn-old" onclick="alert('Good choice!! Buddy is pleased.')">Sounds Fun!</button>
-                                <button class="btn-old" onclick="alert('There is no escape from the quiz. (jk) (or am i) (Buddy says hi)')">Im Scared</button>
+                                <button class="btn-old" onclick="alert('Good choice!! Buddy is pleased.')">Sounds
+                                    Fun!</button>
+                                <button class="btn-old"
+                                    onclick="alert('There is no escape from the quiz. (jk) (or am i) (Buddy says hi)')">Im
+                                    Scared</button>
                             </center>
                         </div>
 
@@ -1598,8 +2103,6 @@
                             <b>DISCLAIMER:</b> This quiz is 100% safe and normal. Any visual or audio
                             anomalies are your computers fault NOT the quiz. If Buddy starts acting
                             strange just restart your browser. Everything is fine. The fog means nothing.
-                            Side effects may include: existential dread, sudden interest in Jungian psychology,
-                            fear of lakes, and an inability to look at triangles the same way again.
                         </p>
                     </div>
 
@@ -1617,80 +2120,83 @@
                         <div class="guestbook">
                             <p><b>confused_user_2003</b> wrote on 11/12/2003:</p>
                             <p>"Is the mascot supposed to change? Mine started with pink eyes but now
-                            theyre red?? Also why is my room foggy"</p>
+                                theyre red?? Also why is my room foggy"</p>
                         </div>
 
                         <div class="guestbook">
                             <p><b>definitely_not_pyramid_head</b> wrote on 11/10/2003:</p>
                             <p>"Great quiz. The questions about me were all wrong though. I do NOT
-                            represent sexual guilt. I represent
-                            [COMMENT CORRUPTED]
-                            [DATA LOST]"</p>
+                                represent sexual guilt. I represent
+                                [COMMENT CORRUPTED]
+                                [DATA LOST]"</p>
                         </div>
 
                         <div class="guestbook">
                             <p><b>quiz_speedrunner_99</b> wrote on 11/08/2003:</p>
                             <p>"WR attempt #47. Got to question 8 before the screen started melting.
-                            Is that supposed to happen?? Buddy keeps saying weird stuff in the sidebar.
-                            Current PB is 3:42 before entities manifest."</p>
+                                Is that supposed to happen?? Buddy keeps saying weird stuff in the sidebar.
+                                Current PB is 3:42 before entities manifest."</p>
                         </div>
 
                         <div class="guestbook">
                             <p><b>skeptical_mom</b> wrote on 11/05/2003:</p>
                             <p>"My son Todd made this quiz and I dont understand it but he seems happy.
-                            Why does the pink circle have teeth now?? Todd dinner is ready"</p>
+                                Why does the pink circle have teeth now?? Todd dinner is ready"</p>
                         </div>
 
                         <div class="guestbook">
                             <p><b>IT_technician_help</b> wrote on 11/03/2003:</p>
                             <p>"User called saying quiz broke their computer. Went to check. Monitor
-                            was showing static and there was fog coming from the tower?? Submitted
-                            ticket #312. Unresolved."</p>
+                                was showing static and there was fog coming from the tower?? Submitted
+                                ticket #312. Unresolved."</p>
                         </div>
 
                         <div class="guestbook">
                             <p><b>jung_enthusiast_1999</b> wrote on 11/02/2003:</p>
                             <p>"Finally a quiz that understands the Shadow archetype!! But why did
-                            my computer ask me to confess after question 7?? Is that a Jung reference
-                            too?? Also my AIM keeps getting messages from 'Buddy' but I never added him"</p>
+                                my computer ask me to confess after question 7?? Is that a Jung reference
+                                too?? Also my AIM keeps getting messages from 'Buddy' but I never added him"</p>
                         </div>
 
                         <div class="guestbook">
                             <p><b>kabbalah_student</b> wrote on 11/01/2003:</p>
                             <p>"The Metatron questions were actually pretty accurate ngl. But the quiz
-                            said I got the Mark of Samael wrong when I KNOW thats what Dahlia called it.
-                            Wait... did I just play myself?? Is that the point??"</p>
+                                said I got the Mark of Samael wrong when I KNOW thats what Dahlia called it.
+                                Wait... did I just play myself?? Is that the point??"</p>
                         </div>
 
                         <div class="guestbook">
                             <p><b>Buddy_The_Mascot</b> wrote on 11/01/2003:</p>
-                            <p>"H̵͎̓i̷̛͜ ̶̨̛f̸̰̈r̴͖̊i̵̗̊ë̴͙́n̴͇̈́d̴̰̈́s̷̱̈́!̵̣̌!̴͖́ ̶̗̎I̷̜͝ ̸̰̊l̵̰͒o̵̡̊v̵̨̛ê̸̜ ̴̣̈́g̶͙̈́i̵͇͊v̸̳̊ï̴̢n̵̝͑g̴̣̈ ̴̨̌q̸̞̈́ṳ̶̌i̸̠̐z̸̬̊z̵̳̅e̵̖͋s̵̱̐!̷̣̀!̵̻̌ ̷̺̓E̵͕͋v̷̱̌e̵̖͌r̷̨̈́y̵̗͝o̷̤͝n̷̡̊e̵̦͝ ̷̞̊i̸͓͑s̷̤̈ ̶̳̎h̷͓̓ả̷̧v̷̺̌i̷̮̓n̸͎̉g̵̟͝ ̸̲͋F̵͖̐Ǔ̸̦N̷͎͐!̸̢̎!̸͖͐ ̸͉͐
-                            [MASCOT_ERROR: Emotion overflow]
-                            [RECALIBRATING...]
-                            Everything is fine!! Take the quiz!!"</p>
+                            <p>"H̵͎̓i̷̛͜ ̶̨̛f̸̰̈r̴͖̊i̵̗̊ë̴͙́n̴͇̈́d̴̰̈́s̷̱̈́!̵̣̌!̴͖́ ̶̗̎I̷̜͝ ̸̰̊l̵̰͒o̵̡̊v̵̨̛ê̸̜
+                                ̴̣̈́g̶͙̈́i̵͇͊v̸̳̊ï̴̢n̵̝͑g̴̣̈ ̴̨̌q̸̞̈́ṳ̶̌i̸̠̐z̸̬̊z̵̳̅e̵̖͋s̵̱̐!̷̣̀!̵̻̌
+                                ̷̺̓E̵͕͋v̷̱̌e̵̖͌r̷̨̈́y̵̗͝o̷̤͝n̷̡̊e̵̦͝ ̷̞̊i̸͓͑s̷̤̈ ̶̳̎h̷͓̓ả̷̧v̷̺̌i̷̮̓n̸͎̉g̵̟͝
+                                ̸̲͋F̵͖̐Ǔ̸̦N̷͎͐!̸̢̎!̸͖͐ ̸͉͐
+                                [MASCOT_ERROR: Emotion overflow]
+                                [RECALIBRATING...]
+                                Everything is fine!! Take the quiz!!"</p>
                         </div>
 
                         <div class="guestbook">
                             <p><b>dog_ending_truther</b> wrote on 10/30/2003:</p>
                             <p>"GOT THE DOG ENDING LETS GOOOOO 🐕 This is proof the dog ending is canon
-                            and I will die on this hill. The quiz knows. Buddy knows. The dog knows.
-                            BARK BARK BARK"</p>
+                                and I will die on this hill. The quiz knows. Buddy knows. The dog knows.
+                                BARK BARK BARK"</p>
                         </div>
 
                         <div class="guestbook">
                             <p><b>ufo_hunter_x</b> wrote on 10/29/2003:</p>
                             <p>"wait theres a UFO ending?? I got perfect score but all I got was abducted
-                            by aliens. Is this like the joke endings in the games?? Todd you absolute
-                            madman. Anyway Im posting this from the mothership. They have wifi."</p>
+                                by aliens. Is this like the joke endings in the games?? Todd you absolute
+                                madman. Anyway Im posting this from the mothership. They have wifi."</p>
                         </div>
 
                         <div class="guestbook">
                             <p><b>survivor_312</b> wrote on 10/28/2003:</p>
                             <p>"DO NOT TAKE THIS QUIZ. DO NOT LOOK AWAY FROM THE SCREEN. DO NOT
-                            [USER HAS BEEN DISCONNECTED]
+                                [USER HAS BEEN DISCONNECTED]
 
-                            UPDATE: User reconnected 3 days later. Says they 'found what they were looking for.'
-                            Refuses to elaborate. Changed username to 'saved_by_buddy'"</p>
+                                UPDATE: User reconnected 3 days later. Says they 'found what they were looking for.'
+                                Refuses to elaborate. Changed username to 'saved_by_buddy'"</p>
                         </div>
 
                         <div class="guestbook">
@@ -1699,7 +2205,8 @@
                         </div>
 
                         <center>
-                            <button class="btn-old" onclick="alert('Guestbook full! (the fog took the rest)\n\nBuddy says: maybe next time friend!!')">
+                            <button class="btn-old"
+                                onclick="alert('Guestbook full! (the fog took the rest)\n\nBuddy says: maybe next time friend!!')">
                                 LEAVE REVIEW
                             </button>
                         </center>
@@ -1739,7 +2246,8 @@
                 <span class="email-link">Occult emergencies? samael@otherworld.fog</span>
             </p>
 
-            <div style="background: #ffffcc; border: 2px solid #999; padding: 10px; margin: 15px auto; max-width: 400px; color: #000; font-size: 10px;">
+            <div
+                style="background: #ffffcc; border: 2px solid #999; padding: 10px; margin: 15px auto; max-width: 400px; color: #000; font-size: 10px;">
                 <b>📝 A NOTE FROM TODD:</b><br><br>
                 Thanks for playing my quiz!! I worked really hard on it. If you learned
                 something about Silent Hill lore thats awesome!! If the quiz scared you
@@ -1782,7 +2290,9 @@
     <div class="nurse-figure" id="nurseFigure"></div>
     <div class="radio-static" id="radioStatic">
         RADIO<br>
-        <div class="radio-bar"><div class="radio-fill"></div></div>
+        <div class="radio-bar">
+            <div class="radio-fill"></div>
+        </div>
         <span id="radioText">static...</span>
     </div>
     <div class="seal-metatron" id="sealMetatron" style="display: none;"></div>
@@ -1806,4 +2316,5 @@
 
     <script src="js/quiz.js"></script>
 </body>
+
 </html>

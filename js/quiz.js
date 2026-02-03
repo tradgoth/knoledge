@@ -1771,7 +1771,7 @@ function getLeaveEnding() {
         text: "You found the truth. You proved your KNOLEDGE.",
         subtext: "The fog parts... Buddy waves goodbye...",
         finalText: "You wake up. It was just a quiz... wasnt it?",
-        toddNote: "WOW you actually got the good ending!! I didnt think anyone would tbh. You clearly know your Silent Hill lore. Maybe TOO well... (jk thats not a thing) (or is it)",
+        toddNote: "WOW you actually got the good ending!! I didnt think anyone would tbh. You clearly know your Silent Hill lore. Maybe TOO well... (are you Valtiel??) (you can tell me)",
         color: "#999999",
         sound: 'peaceful'
     };
@@ -1858,9 +1858,11 @@ function playEndingSequence(ending) {
     document.getElementById('burnInGhost').classList.remove('visible');
     document.body.classList.remove('degauss-wobble', 'crt-flicker');
 
-    // Hide quiz interface
+    // Hide quiz interface (but NOT quizContainer - endingScreen is inside it!)
+    document.getElementById('introScreen').style.display = 'none';
     document.getElementById('gameScreen').style.display = 'none';
-    document.getElementById('quizContainer').style.display = 'none';
+    document.getElementById('mascot').style.display = 'none';
+    document.getElementById('quizTitle').style.display = 'none';
 
     // Play appropriate sound
     playSound(ending.sound);
