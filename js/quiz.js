@@ -24,234 +24,33 @@ console.log('%c• Todd worked really hard on this', 'color: #ffcc00;');
 console.log('%c• Metatron is watching your score', 'color: #ff0000;');
 
 // ========================================
-// QUESTION BANK - TOTALLY FUN QUESTIONS
-// (now with 100% MORE forbidden lore!!)
+// QUESTION BANK - Now in js/questions.js
 // ========================================
-const questions = [
-    // =========== TIER 0 - Easy & Cute ===========
-    {
-        tier: 0,
-        question: "What's the name of our cute little town? :3",
-        corruptedQuestion: "What town calls to the guilty?",
-        answers: ["Silent Hill", "Raccoon City", "Innsmouth", "Midwich"],
-        correct: 0
-    },
-    {
-        tier: 0,
-        question: "Who is the main character of Silent Hill 2? (hes so cool!!)",
-        corruptedQuestion: "Who killed his wife and forgot?",
-        answers: ["James Sunderland", "Harry Mason", "Heather Mason", "Henry Townshend"],
-        correct: 0
-    },
-    {
-        tier: 0,
-        question: "What pretty lake is near Silent Hill?",
-        corruptedQuestion: "What lake holds the bodies?",
-        answers: ["Toluca Lake", "Lake Michigan", "Crystal Lake", "Lake Placid"],
-        correct: 0
-    },
-    {
-        tier: 0,
-        question: "What is Jamess wifes name? (she seems nice!!)",
-        corruptedQuestion: "Who did you smother with a pillow?",
-        answers: ["Mary", "Maria", "Laura", "Angela"],
-        correct: 0
-    },
-    {
-        tier: 0,
-        question: "What creature follows James around? (he looks friendly!!)",
-        corruptedQuestion: "What executioner waits in the dark?",
-        answers: ["Pyramid Head", "Nemesis", "Scissorman", "Robbie the Rabbit"],
-        correct: 0
-    },
-    {
-        tier: 0,
-        question: "What weather is Silent Hill famous for?",
-        corruptedQuestion: "What hides the monsters from sight?",
-        answers: ["Fog", "Rain", "Snow", "Sunshine"],
-        correct: 0
-    },
-    // =========== TIER 1 - Medium ===========
-    {
-        tier: 1,
-        question: "What hotel does James visit in SH2?",
-        corruptedQuestion: "Where did he smother her with a pillow?",
-        answers: ["Lakeview Hotel", "Overlook Hotel", "Grand Hotel", "Bates Motel"],
-        correct: 0
-    },
-    {
-        tier: 1,
-        question: "Whats the name of the scary hospital in SH2?",
-        corruptedQuestion: "Where do the nurses wait?",
-        answers: ["Brookhaven Hospital", "Arkham Asylum", "St. Johns", "Alchemilla Hospital"],
-        correct: 0
-    },
-    {
-        tier: 1,
-        question: "What did Dahlia call the Seal of Metatron? (she lied btw)",
-        corruptedQuestion: "What deception led Harry astray?",
-        answers: ["Mark of Samael", "Halo of the Sun", "Seal of Solomon", "Sign of God"],
-        correct: 0
-    },
-    {
-        tier: 1,
-        question: "What does the radio do when monsters are near?",
-        corruptedQuestion: "What warns you before they strike?",
-        answers: ["Emits static", "Plays music", "Glows red", "Speaks warnings"],
-        correct: 0
-    },
-    {
-        tier: 1,
-        question: "What grimoire does the Order reference?",
-        corruptedQuestion: "What book binds the 72 demons?",
-        answers: ["Lesser Key of Solomon", "Necronomicon", "Book of Shadows", "Bible"],
-        correct: 0
-    },
-    // =========== TIER 2 - Hard & Dark ===========
-    {
-        tier: 2,
-        question: "What did James really do to Mary?",
-        corruptedQuestion: "WHAT DID JAMES DO? CONFESS.",
-        answers: ["Killed her with a pillow", "Let her die naturally", "Took her to Silent Hill", "Nothing wrong"],
-        correct: 0
-    },
-    {
-        tier: 2,
-        question: "What bracelet does Maria wear?",
-        corruptedQuestion: "What marks the shadow bride?",
-        answers: ["Black Moon Lilith sigil", "Cross necklace", "Wedding ring", "Hospital bracelet"],
-        correct: 0
-    },
-    {
-        tier: 2,
-        question: "Why can Laura see no monsters in SH2?",
-        corruptedQuestion: "Why is the innocent spared?",
-        answers: ["She has no guilt or trauma", "Shes a ghost", "Monsters like her", "Shes blind"],
-        correct: 0
-    },
-    {
-        tier: 2,
-        question: "What is Maria REALLY?",
-        corruptedQuestion: "Who created the shadow bride?",
-        answers: ["James manifested Anima/tulpa", "Marys twin sister", "A nurse from Brookhaven", "A real person"],
-        correct: 0
-    },
-    {
-        tier: 2,
-        question: "What Old Testament practice does Alessas burning mirror?",
-        corruptedQuestion: "What ancient evil burned children?",
-        answers: ["Molech sacrifice", "Animal sacrifice", "Burnt offerings", "Passover lamb"],
-        correct: 0
-    },
-    {
-        tier: 2,
-        question: "What demon king appears in the SH2 Remake puzzles?",
-        corruptedQuestion: "What King of Hell reveals eternal secrets?",
-        answers: ["Paimon", "Asmodeus", "Baal", "Satan"],
-        correct: 0
-    },
-    {
-        tier: 2,
-        question: "Who is Lilith in Jewish mysticism?",
-        corruptedQuestion: "Who was Adams FIRST wife?",
-        answers: ["Lilith", "Eves sister", "An angel", "lilian"],
-        correct: 0
-    },
-    // =========== TIER 3 - Extreme ===========
-    {
-        tier: 3,
-        question: "What psychological concept does Pyramid Head represent?",
-        corruptedQuestion: "WHAT IS YOUR SHADOW? WHAT DO YOU HIDE?",
-        answers: ["The Shadow (Jung)", "The Id (Freud)", "The Superego", "The Hardway"],
-        correct: 0
-    },
-    {
-        tier: 3,
-        question: "What did Dahlia do to Alessa?",
-        corruptedQuestion: "HOW DO YOU BIRTH A GOD?",
-        answers: ["Burned her alive in a ritual", "Abandoned her", "Sent her to school", "Loved her unconditionally"],
-        correct: 0
-    },
-    {
-        tier: 3,
-        question: "Why does the town manifest monsters?",
-        corruptedQuestion: "WHY DO YOUR SINS HAVE FORM?",
-        answers: ["Reflects visitors unconscious guilt", "Random spawning", "Government experiments", "Alien invasion"],
-        correct: 0
-    },
-    {
-        tier: 3,
-        question: "What book describes Azazel as leader of the Watchers?",
-        corruptedQuestion: "Who taught humanity forbidden secrets?",
-        answers: ["Book of Enoch", "Book of Revelation", "Genesis", "Deuteronomy"],
-        correct: 0
-    },
-    {
-        tier: 3,
-        question: "What are the Watchers in fallen angel lore?",
-        corruptedQuestion: "Who abandoned heaven for human flesh?",
-        answers: ["200 angels who fell to Earth", "Guardian spirits", "Demon hunters", "Archangels"],
-        correct: 0
-    },
-    {
-        tier: 3,
-        question: "What happens during James Shadow Integration?",
-        corruptedQuestion: "When did you accept your guilt?",
-        answers: ["He admits needing punishment", "He defeats Pyramid Head", "He forgets everything", "He dies"],
-        correct: 0
-    },
-    {
-        tier: 3,
-        question: "In SH: Homecoming, what Cain/Abel parallel exists?",
-        corruptedQuestion: "Where is your brother? What did you do?",
-        answers: ["Alex and Joshua Shepherd", "James and his father", "Harry and his wife", "Walter and Henry"],
-        correct: 0
-    },
-    {
-        tier: 3,
-        question: "What does Jacobs Ladder represent in SH lore?",
-        corruptedQuestion: "What ladder connects worlds?",
-        answers: ["Town as liminal purgatory space", "Stairs to heaven", "A hospital", "Alessas escape route"],
-        correct: 0
-    },
-    {
-        tier: 3,
-        question: "What corrupted relationship mirrors Samael and Lilith?",
-        corruptedQuestion: "What dark marriage rules Silent Hill?",
-        answers: ["The towns demiurge and feminine", "Harry and his wife", "James and Maria", "Dahlia and her god"],
-        correct: 0
-    },
-    // =========== TIER 4 - Incomprehensible ===========
-    {
-        tier: 4,
-        question: "D̶O̶ ̶Y̶O̶U̶ ̶R̶E̶M̶E̶M̶B̶E̶R̶?",
-        corruptedQuestion: "D̸̨̛O̷̧̊ ̶̣̈Y̷̰̓Ö̵͙U̵̢̔ ̷̣͠R̶̥̈́E̴͙͒M̵̗̈́E̶̟̔M̶̰̌B̶͙̐E̷̱͘R̵̤̈ ̴̣̏W̸̻̃H̵̰̾Ä̷͙T̶̠̒ ̶̰̌Y̵̻͝O̵̤͆U̷̥̐ ̵͖͘D̵̰͝I̵̗͝D̵̪̈?",
-        answers: ["yes", "no", "i dont understand", "MAKE IT STOP"],
-        correct: 0
-    },
-    {
-        tier: 4,
-        question: "W̷̡̛H̸̢̛Y̵͙̓ ̶̣̈Ḍ̷̈́I̸̢̓D̶̈ ̶̣̈Y̷̰̓O̵͙̊U̵̢̔ ̷̣͠C̶̥̈́O̴͙͒M̵̗̈́E̶̟̔?",
-        corruptedQuestion: "T̸H̵E̷ ̶F̵O̷G̸ ̵C̷A̸L̵L̷E̵D̵ ̷Y̵O̷U̵ ̵H̸E̷R̴E̸",
-        answers: ["to find what I lost", "to remember", "to forget", "to die"],
-        correct: 0
-    },
-    {
-        tier: 4,
-        question: "B̸̨̛Ů̷̧Ḍ̶̈D̷̰̓Y̵͙ ̵̢̔Ḷ̷͠Ö̶̥́V̴͙͒Ë̵̗́S̶̟̔ ̶̰̌Ÿ̵̪O̵̻͝Ṳ̵͆.̷̥̐ ̵͖͘D̵̰͝O̵̗͝ ̵̪̈Y̵̻͝O̵̤͆U̷̥̐ ̵͖͘L̵̰͝O̵̗͝V̵̪̈E̵̻͝ ̵̤͆B̷̥̐U̵͖͘D̵̰͝D̵̗͝Ÿ̵̪?",
-        corruptedQuestion: "T̷̨̛H̸̢̛E̵͙̓Ṛ̶̈Ẹ̷̈́ ̸̢̓Ï̶Ṣ̶̈ ̷̰̓N̵͙̊O̵̢̔ ̷̣͠Ë̶̥́S̴͙͒C̵̗̈́A̶̟̔P̶̰̌Ë̵̪",
-        answers: ["yes buddy i love you", "no", "who is buddy", "please let me go"],
-        correct: 0
+// Questions loaded via separate script for modularity
+// See js/questions.js for the full question bank
+
+// Verify questions loaded (helpful for debugging)
+if (typeof questions === 'undefined') {
+    console.error('Questions not loaded! Make sure questions.js is included before quiz.js');
+}
+// Fisher-Yates shuffle - proper randomization algorithm
+function shuffleArray(array) {
+    const arr = [...array]; // Don't mutate original
+    for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
     }
-];
+    return arr;
+}
 
 // Shuffle and select 13 questions with balanced tiers
 function getQuizQuestions() {
-    const tier0 = questions.filter(q => q.tier === 0).sort(() => Math.random() - 0.5);
-    const tier1 = questions.filter(q => q.tier === 1).sort(() => Math.random() - 0.5);
-    const tier2 = questions.filter(q => q.tier === 2).sort(() => Math.random() - 0.5);
-    const tier3 = questions.filter(q => q.tier === 3).sort(() => Math.random() - 0.5);
-    const tier4 = questions.filter(q => q.tier === 4).sort(() => Math.random() - 0.5);
+    // Properly shuffle each tier using Fisher-Yates
+    const tier0 = shuffleArray(questions.filter(q => q.tier === 0));
+    const tier1 = shuffleArray(questions.filter(q => q.tier === 1));
+    const tier2 = shuffleArray(questions.filter(q => q.tier === 2));
+    const tier3 = shuffleArray(questions.filter(q => q.tier === 3));
+    const tier4 = shuffleArray(questions.filter(q => q.tier === 4));
 
     // Select balanced mix: 3 easy, 3 medium, 3 hard, 3 extreme, 1 incomprehensible
     const selected = [
@@ -262,8 +61,23 @@ function getQuizQuestions() {
         ...tier4.slice(0, 1)
     ];
 
-    // Sort by tier for progressive difficulty
-    return selected.sort((a, b) => a.tier - b.tier);
+    // Shuffle within each tier group to vary question order while maintaining progressive difficulty
+    // Group by tier, shuffle each group, then recombine
+    const grouped = {};
+    selected.forEach(q => {
+        if (!grouped[q.tier]) grouped[q.tier] = [];
+        grouped[q.tier].push(q);
+    });
+
+    // Shuffle within each tier and recombine in tier order
+    const result = [];
+    [0, 1, 2, 3, 4].forEach(tier => {
+        if (grouped[tier]) {
+            result.push(...shuffleArray(grouped[tier]));
+        }
+    });
+
+    return result;
 }
 
 // ========================================
@@ -1771,9 +1585,12 @@ function getLeaveEnding() {
         text: "You found the truth. You proved your KNOLEDGE.",
         subtext: "The fog parts... Buddy waves goodbye...",
         finalText: "You wake up. It was just a quiz... wasnt it?",
+        loreExplanation: "In Silent Hill 2, the Leave ending represents James accepting Marys death and choosing to move forward. He leaves Silent Hill with Laura, symbolizing hope and redemption. Your high score shows you understand the deeper lore - the town tested you and found you worthy of escape.",
         toddNote: "WOW you actually got the good ending!! I didnt think anyone would tbh. You clearly know your Silent Hill lore. Maybe TOO well... (are you Valtiel??) (you can tell me)",
         color: "#999999",
-        sound: 'peaceful'
+        sound: 'peaceful',
+        icon: '👋',
+        iconClass: 'buddy-wave'
     };
 }
 
@@ -1784,9 +1601,12 @@ function getMariaEnding() {
         text: "You couldnt let go. You found someone new.",
         subtext: "Buddy transforms into something familiar...",
         finalText: "She looks like Mary... but different... *cough*",
+        loreExplanation: "Maria is a manifestation created by the town from James memories of Mary - identical in appearance but with a different personality. The Maria ending shows James unable to accept Marys death, instead choosing the illusion. Your medium score suggests you know some lore but missed key truths... like James.",
         toddNote: "Ah the Maria ending. You know what this means right?? James couldnt accept Marys death so he created a replacement. Just like you created a replacement for ACTUALLY STUDYING THE LORE. but its ok Buddy still loves you",
         color: "#ff6699",
-        sound: 'cough'
+        sound: 'cough',
+        icon: '👩',
+        iconClass: 'maria-silhouette'
     };
 }
 
@@ -1797,9 +1617,12 @@ function getInWaterEnding() {
         text: "The weight was too much to bear.",
         subtext: "Buddy sinks into the lake...",
         finalText: "In your restless dreams, you see that quiz...",
+        loreExplanation: "The In Water ending is considered by many (including Team Silent) to be the 'true' ending of Silent Hill 2. Unable to live with his guilt over Marys death, James drives into Toluca Lake. The letter opening screen shows 'In my restless dreams, I see that town' - Mary was already gone. Your struggling score reflects the weight of incomplete knowledge.",
         toddNote: "This is the SAD ending (but also kind of the canon one according to SH2 creators??). Like James, you couldnt escape your guilt (of not knowing enough Silent Hill lore). Toluca Lake claims another soul...",
         color: "#6699ff",
-        sound: 'bubbles'
+        sound: 'bubbles',
+        icon: '🌊',
+        iconClass: 'water-icon'
     };
 }
 
@@ -1810,9 +1633,12 @@ function getRebirthEnding() {
         text: "The ritual demands everything.",
         subtext: "Your wrong answers have meaning...",
         finalText: "Buddy transcends. Press F5 to try again. And again. And again.",
+        loreExplanation: "The Rebirth ending is unlocked by collecting four ritual items. James uses knowledge from the Crimson Ceremony to attempt resurrecting Mary using the towns power. The Order of Silent Hill believed in rebirth through sacrifice and ritual - your many wrong answers have become offerings to something ancient. The cycle continues.",
         toddNote: "You got the CULT ending!! This means you answered so many questions wrong that Buddy decided to use your failures as ritual offerings. The 72 demons of the Lesser Key thank you for your sacrifice. You are now part of the Orders rebirth cycle. Congrats??",
         color: "#ff3300",
-        sound: 'chant'
+        sound: 'chant',
+        icon: '⛧',
+        iconClass: 'ritual-circle'
     };
 }
 
@@ -1823,10 +1649,13 @@ function getDogEnding() {
         text: "You looked away too many times.",
         subtext: "Buddy reveals his true form...",
         finalText: "Its a Shiba Inu at a computer. bark bark bark. Thank you for playing!",
+        loreExplanation: "The Dog ending is a secret joke ending in Silent Hill 2, revealed by using the Dog Key in a room at the Lakeview Hotel. Inside, you find a Shiba Inu operating a control panel, implying the dog orchestrated EVERYTHING. This ending can only be accessed on replay - which means youve been here before. Buddy remembers.",
         toddNote: "LMAOOO YOU GOT THE DOG ENDING!! This is the BEST ending (100% canon fight me). Just like in SH2 where you find out a Shiba Inu was controlling everything from a secret room, you have discovered that Buddy was actually a DOG THE WHOLE TIME. I cant believe you looked away from the screen so many times that you triggered this. Absolutely based. 10/10.",
         color: "#ffcc00",
         sound: 'bark',
-        special: true
+        special: true,
+        icon: '🐕',
+        iconClass: 'dog-dance'
     };
 }
 
@@ -1838,10 +1667,13 @@ function getUFOEnding() {
         text: "The aliens have noticed your knowledge.",
         subtext: "A beam of light descends...",
         finalText: "You are abducted. The truth was out there all along.",
+        loreExplanation: "UFO endings are a tradition across the Silent Hill series - bizarre joke endings where aliens inexplicably appear. In SH1, Harry is abducted. In SH2, James meets with aliens who shot Mary with a ray gun. In SH3, Heather defeats the final boss with a makeshift lightsaber. Your perfect score proves you are clearly not from this dimension.",
         toddNote: "WHAT THE HECK YOU GOT PERFECT SCORE?!?! This unlocks the SECRET UFO ENDING!! Just like the joke ending in SH games where aliens show up, you have proven yourself to be NOT OF THIS WORLD. Either youre a time traveler, you cheated, or youre literally Team Silent. Either way the aliens want to study you now. Congratulations I guess??",
         color: "#00ff00",
         sound: 'success',
-        special: true
+        special: true,
+        icon: '🛸',
+        iconClass: 'ufo-float'
     };
 }
 
@@ -1858,40 +1690,18 @@ function playEndingSequence(ending) {
     document.getElementById('burnInGhost').classList.remove('visible');
     document.body.classList.remove('degauss-wobble', 'crt-flicker');
 
-    // Hide quiz interface (but NOT quizContainer - endingScreen is inside it!)
-    document.getElementById('introScreen').style.display = 'none';
-    document.getElementById('gameScreen').style.display = 'none';
-    document.getElementById('mascot').style.display = 'none';
-    document.getElementById('quizTitle').style.display = 'none';
+    // Hide entire quiz interface - endingScreen is now a body-level overlay
+    document.getElementById('quizContainer').style.display = 'none';
 
     // Play appropriate sound
     playSound(ending.sound);
 
-    // Create ending container
+    // Show ending overlay (now positioned outside quiz container for proper fullscreen)
     const endingScreen = document.getElementById('endingScreen');
-    endingScreen.style.display = 'flex';
+    endingScreen.style.display = 'block';
 
-    // Build ending based on type
-    switch(ending.type) {
-        case 'leave':
-            buildLeaveEnding(ending);
-            break;
-        case 'maria':
-            buildMariaEnding(ending);
-            break;
-        case 'water':
-            buildWaterEnding(ending);
-            break;
-        case 'rebirth':
-            buildRebirthEnding(ending);
-            break;
-        case 'dog':
-            buildDogEnding(ending);
-            break;
-        case 'ufo':
-            buildUFOEnding(ending);
-            break;
-    }
+    // Build ending using unified builder
+    buildEnding(ending);
 
     // Start post-ending horror timer (except for dog ending)
     if (!ending.special) {
@@ -1901,6 +1711,169 @@ function playEndingSequence(ending) {
     }
 }
 
+// ========================================
+// UNIFIED ENDING BUILDER
+// ========================================
+function buildEnding(ending) {
+    const endingScreen = document.getElementById('endingScreen');
+
+    // Get special content for certain endings
+    const specialContent = getEndingSpecialContent(ending);
+
+    // Build the lore explanation section
+    const loreSection = ending.loreExplanation ? `
+        <div class="lore-explanation">
+            <div class="lore-title">📖 SILENT HILL LORE 📖</div>
+            <p>${ending.loreExplanation}</p>
+        </div>
+    ` : '';
+
+    // Build the main ending HTML
+    endingScreen.innerHTML = `
+        <div class="ending-screen ending-${ending.type}" ${ending.type === 'ufo' ? 'style="background: linear-gradient(180deg, #000033 0%, #000011 50%, #001100 100%);"' : ''}>
+            ${specialContent.beforeTitle || ''}
+            <div class="ending-title" style="color: ${ending.color};">${ending.title}</div>
+            <div class="ending-icon ${ending.iconClass || ''}" style="font-size: 80px; margin: 20px 0;">${ending.icon || ''}</div>
+            <div class="ending-text" style="color: ${ending.type === 'dog' ? '#333' : ending.color};">
+                ${ending.text}<br><br>
+                <i>${ending.subtext}</i><br><br>
+                <span class="${ending.type === 'maria' ? 'maria-cough' : ''} ${ending.type === 'water' ? 'sinking-text' : ''}">${ending.finalText}</span>
+            </div>
+            ${loreSection}
+            ${buildToddNote(ending)}
+            ${specialContent.middleContent || ''}
+            ${buildEndingStats()}
+            ${buildEndingButtons(ending)}
+            ${specialContent.afterButtons || ''}
+        </div>
+    `;
+
+    // Run special effects for this ending type
+    runEndingEffects(ending);
+}
+
+function getEndingSpecialContent(ending) {
+    const content = { beforeTitle: '', middleContent: '', afterButtons: '' };
+
+    switch(ending.type) {
+        case 'water':
+            content.beforeTitle = '<div class="water-rising"></div>';
+            content.afterButtons = '<div id="bubbleContainer"></div>';
+            break;
+        case 'rebirth':
+            content.beforeTitle = '<div class="lightning-flash"></div><div class="ritual-circle">⛧</div>';
+            break;
+        case 'dog':
+            content.middleContent = `
+                <div class="credits-roll" id="dogCredits">
+                    <p><b>🎬 CREDITS 🎬</b></p>
+                    <p>Quiz Master: Buddy (actually a dog)</p>
+                    <p>Horror Effects: The Otherworld</p>
+                    <p>Lore Consultant: The Lesser Key of Solomon</p>
+                    <p>Music: Silent Hill (in our hearts)</p>
+                    <p>Web Design: DarkAlessa1999 (Todd)</p>
+                    <p>Fog Technician: Toluca Lake Dept.</p>
+                    <p>Special Thanks: Konami, Team Silent</p>
+                    <p>The Dog: bark bark bark</p>
+                    <p>&nbsp;</p>
+                    <p><i>No mascots were harmed in the making of this quiz</i></p>
+                    <p><i>The dog was in control the whole time</i></p>
+                    <p><i>All 72 demons returned safely to their vessel</i></p>
+                    <p>&nbsp;</p>
+                    <p>🐕 Thank you for playing!! 🐕</p>
+                </div>
+            `;
+            content.afterButtons = '<div id="confettiContainer"></div>';
+            break;
+        case 'ufo':
+            content.beforeTitle = '<div class="ufo-beam" style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 200px; height: 100%; background: linear-gradient(180deg, rgba(0,255,0,0.3), transparent); animation: beamPulse 2s ease infinite;"></div>';
+            content.afterButtons = '<div id="ufoStarsContainer"></div>';
+            break;
+    }
+
+    return content;
+}
+
+function runEndingEffects(ending) {
+    switch(ending.type) {
+        case 'maria':
+            // Trigger cough animation
+            setTimeout(() => {
+                const cough = document.querySelector('.maria-cough');
+                if (cough) {
+                    cough.classList.add('cough-active');
+                    playSound('cough');
+                }
+            }, 3000);
+            break;
+
+        case 'water':
+            // Add bubbles
+            const bubbleContainer = document.getElementById('bubbleContainer');
+            if (bubbleContainer) {
+                for (let i = 0; i < 20; i++) {
+                    setTimeout(() => {
+                        const bubble = document.createElement('div');
+                        bubble.className = 'bubble';
+                        bubble.style.left = Math.random() * 100 + '%';
+                        bubble.style.animationDelay = Math.random() * 2 + 's';
+                        bubbleContainer.appendChild(bubble);
+                    }, i * 500);
+                }
+            }
+            break;
+
+        case 'dog':
+            // Add confetti
+            const confettiColors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
+            const confettiContainer = document.getElementById('confettiContainer');
+            if (confettiContainer) {
+                for (let i = 0; i < 50; i++) {
+                    setTimeout(() => {
+                        const confetti = document.createElement('div');
+                        confetti.className = 'confetti';
+                        confetti.style.left = Math.random() * 100 + '%';
+                        confetti.style.background = confettiColors[Math.floor(Math.random() * confettiColors.length)];
+                        confetti.style.animationDelay = Math.random() * 2 + 's';
+                        confettiContainer.appendChild(confetti);
+                    }, i * 100);
+                }
+            }
+            // Happy sounds
+            for (let i = 0; i < 10; i++) {
+                setTimeout(() => playSound('correct'), i * 300);
+            }
+            break;
+
+        case 'ufo':
+            // Add twinkling stars
+            const starsContainer = document.getElementById('ufoStarsContainer');
+            if (starsContainer) {
+                for (let i = 0; i < 50; i++) {
+                    const star = document.createElement('div');
+                    star.style.cssText = `
+                        position: fixed;
+                        width: 3px;
+                        height: 3px;
+                        background: #fff;
+                        border-radius: 50%;
+                        top: ${Math.random() * 100}%;
+                        left: ${Math.random() * 100}%;
+                        animation: twinkle ${1 + Math.random() * 2}s ease infinite;
+                        opacity: ${0.3 + Math.random() * 0.7};
+                        z-index: -1;
+                    `;
+                    starsContainer.appendChild(star);
+                }
+            }
+            // Alien sounds
+            playSound('dialup');
+            setTimeout(() => playSound('success'), 1000);
+            break;
+    }
+}
+
+// Legacy builder functions (kept for reference but no longer used)
 function buildLeaveEnding(ending) {
     const endingScreen = document.getElementById('endingScreen');
     endingScreen.innerHTML = `
@@ -2117,18 +2090,91 @@ function buildToddNote(ending) {
 }
 
 function buildEndingStats() {
+    const percentage = Math.round((gameState.score/13)*100);
+    const getScoreRank = () => {
+        if (percentage === 100) return '⭐ PERFECT - True Silent Hill Scholar';
+        if (percentage >= 85) return '🏆 EXCELLENT - You understand the fog';
+        if (percentage >= 60) return '📚 GOOD - The Order approves';
+        if (percentage >= 35) return '⚠️ STRUGGLING - Toluca Lake calls...';
+        return '💀 FAILING - Buddy is disappointed';
+    };
+
+    const getParanoiaDesc = () => {
+        if (gameState.paranoia === 0) return 'None (you never looked away)';
+        if (gameState.paranoia <= 2) return 'Low (Buddy noticed a few times)';
+        if (gameState.paranoia <= 4) return 'Medium (Buddy is suspicious)';
+        return 'HIGH (Buddy knows what you did)';
+    };
+
+    const getHorrorDesc = () => {
+        const h = gameState.horrorLevel;
+        if (h < 3) return 'Minimal corruption';
+        if (h < 6) return 'Otherworld seeping through';
+        if (h < 9) return 'Reality fracturing';
+        return 'FULL OTHERWORLD MANIFESTATION';
+    };
+
     return `
-        <p style="margin-top: 40px; color: #666; font-size: 14px;">
-            Final Score: ${gameState.score}/13 (${Math.round((gameState.score/13)*100)}%)<br>
-            Paranoia Level: ${gameState.paranoia}<br>
-            Horror Level: ${Math.round(gameState.horrorLevel)}<br>
-            Screen Cracks: ${gameState.cracksOnScreen}<br>
-            <span style="font-size: 10px;">Ending: ${gameState.endingShown.toUpperCase()}</span>
-        </p>
+        <div class="ending-stats-panel">
+            <div class="stats-title">📊 QUIZ RESULTS 📊</div>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-label">Final Score</span>
+                    <span class="stat-value">${gameState.score}/13 (${percentage}%)</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Rank</span>
+                    <span class="stat-value">${getScoreRank()}</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Paranoia Level</span>
+                    <span class="stat-value">${gameState.paranoia} - ${getParanoiaDesc()}</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Horror Level</span>
+                    <span class="stat-value">${Math.round(gameState.horrorLevel)} - ${getHorrorDesc()}</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Screen Cracks</span>
+                    <span class="stat-value">${gameState.cracksOnScreen} ${gameState.cracksOnScreen > 0 ? '(reality is unstable)' : '(screen intact)'}</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Wrong Answers</span>
+                    <span class="stat-value">${gameState.wrongAnswers || 0}</span>
+                </div>
+            </div>
+            <div class="ending-badge">
+                ENDING ACHIEVED: <b>${gameState.endingShown.toUpperCase()}</b>
+            </div>
+        </div>
     `;
 }
 
 function buildEndingButtons(ending) {
+    // Special buttons for certain endings
+    if (ending.type === 'dog') {
+        return `
+            <button class="btn-old" onclick="location.reload()" style="margin-top: 20px; font-size: 20px; background: #ffcc00;" id="playAgainBtn">
+                🐕 pet the dog 🐕
+            </button>
+            <p style="margin-top: 20px; font-size: 12px; color: #666;">
+                <a href="index.html" style="color: #996600;">Return to main site</a>
+            </p>
+        `;
+    }
+
+    if (ending.type === 'ufo') {
+        return `
+            <button class="btn-old" onclick="location.reload()" style="margin-top: 20px; font-size: 20px; background: #003300; color: #00ff00; border-color: #00ff00;" id="playAgainBtn">
+                🛸 BEAM ME UP AGAIN 🛸
+            </button>
+            <p style="margin-top: 20px; font-size: 12px; color: #006600;">
+                <a href="index.html" style="color: #00cc00;">Return to Earth (main site)</a>
+            </p>
+        `;
+    }
+
+    // Default buttons for normal endings
     return `
         <button class="btn-old" onclick="location.reload()" style="margin-top: 20px;" id="playAgainBtn">
             TRY AGAIN??
