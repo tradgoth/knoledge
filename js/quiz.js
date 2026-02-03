@@ -88,13 +88,6 @@ const questions = [
     },
     {
         tier: 1,
-        question: "What artifact does Dahlia want Harry to collect?",
-        corruptedQuestion: "What cage trapped the burning girl?",
-        answers: ["Flauros", "Aglaophotis", "Metatron Seal", "Halo of the Sun"],
-        correct: 0
-    },
-    {
-        tier: 1,
         question: "What did Dahlia call the Seal of Metatron? (she lied btw)",
         corruptedQuestion: "What deception led Harry astray?",
         answers: ["Mark of Samael", "Halo of the Sun", "Seal of Solomon", "Sign of God"],
@@ -102,23 +95,9 @@ const questions = [
     },
     {
         tier: 1,
-        question: "Who is Heathers real identity in SH3?",
-        corruptedQuestion: "Who was reborn from flames?",
-        answers: ["Alessa/Cheryl reincarnated", "Marys daughter", "Dahlias sister", "A random girl"],
-        correct: 0
-    },
-    {
-        tier: 1,
         question: "What does the radio do when monsters are near?",
         corruptedQuestion: "What warns you before they strike?",
         answers: ["Emits static", "Plays music", "Glows red", "Speaks warnings"],
-        correct: 0
-    },
-    {
-        tier: 1,
-        question: "What Native American belief relates to Silent Hill?",
-        corruptedQuestion: "What ancient power flows through the land?",
-        answers: ["Manitou - spiritual energy", "Wendigo curse", "Spirit animals", "Rain dance"],
         correct: 0
     },
     {
@@ -145,20 +124,6 @@ const questions = [
     },
     {
         tier: 2,
-        question: "In Kabbalah, who is Metatron?",
-        corruptedQuestion: "Who scribes all human deeds?",
-        answers: ["Highest angel/celestial scribe", "A demon lord", "The first human", "Gods shadow"],
-        correct: 0
-    },
-    {
-        tier: 2,
-        question: "What does the Flauros pyramid represent?",
-        corruptedQuestion: "What trapped Alessa's protection?",
-        answers: ["Truth, binding, sacred geometry", "Death, rebirth, chaos", "Love, hate, fear", "Nothing special"],
-        correct: 0
-    },
-    {
-        tier: 2,
         question: "Why can Laura see no monsters in SH2?",
         corruptedQuestion: "Why is the innocent spared?",
         answers: ["She has no guilt or trauma", "Shes a ghost", "Monsters like her", "Shes blind"],
@@ -175,7 +140,7 @@ const questions = [
         tier: 2,
         question: "What Old Testament practice does Alessas burning mirror?",
         corruptedQuestion: "What ancient evil burned children?",
-        answers: ["Molech child sacrifice", "Animal sacrifice", "Burnt offerings", "Passover lamb"],
+        answers: ["Molech sacrifice", "Animal sacrifice", "Burnt offerings", "Passover lamb"],
         correct: 0
     },
     {
@@ -189,14 +154,7 @@ const questions = [
         tier: 2,
         question: "Who is Lilith in Jewish mysticism?",
         corruptedQuestion: "Who was Adams FIRST wife?",
-        answers: ["Adams first wife/demon", "Eves sister", "An angel", "A goddess"],
-        correct: 0
-    },
-    {
-        tier: 2,
-        question: "What place was Tophet in the Old Testament?",
-        corruptedQuestion: "Where did children burn for Molech?",
-        answers: ["A burning ground for sacrifice", "A holy temple", "A garden", "A marketplace"],
+        answers: ["Lilith", "Eves sister", "An angel", "lilian"],
         correct: 0
     },
     // =========== TIER 3 - Extreme ===========
@@ -204,7 +162,7 @@ const questions = [
         tier: 3,
         question: "What psychological concept does Pyramid Head represent?",
         corruptedQuestion: "WHAT IS YOUR SHADOW? WHAT DO YOU HIDE?",
-        answers: ["The Shadow (Jung)", "The Id (Freud)", "The Superego", "The Anima"],
+        answers: ["The Shadow (Jung)", "The Id (Freud)", "The Superego", "The Hardway"],
         correct: 0
     },
     {
