@@ -30,7 +30,7 @@ const questions = [
         tier: 0,
         question: "Who is the main character of Silent Hill 2? (hes so cool!!)",
         corruptedQuestion: "Who killed his wife and forgot?",
-        answers: ["James Sunderland", "Harry Mason", "Heather Mason", "Henry Townshend"],
+        answers: ["James Sunderland", "Harry Mason", "Heather Mason", "Jade Hardway"],
         correct: 0
     },
     {
