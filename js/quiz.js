@@ -545,6 +545,83 @@ function playSound(type, options = {}) {
                     sOsc.stop(now + i * 0.1 + 0.25);
                 });
                 break;
+
+            case 'footsteps':
+                // Approaching footsteps (getting closer!!)
+                for (let i = 0; i < 6; i++) {
+                    const stepNoise = ctx.createBufferSource();
+                    const stepGain = ctx.createGain();
+                    const stepBuffer = ctx.createBuffer(1, ctx.sampleRate * 0.1, ctx.sampleRate);
+                    const stepData = stepBuffer.getChannelData(0);
+                    for (let j = 0; j < stepBuffer.length; j++) {
+                        stepData[j] = (Math.random() * 2 - 1) * Math.exp(-j / (ctx.sampleRate * 0.02));
+                    }
+                    stepNoise.buffer = stepBuffer;
+                    // Steps get louder (closer)
+                    stepGain.gain.setValueAtTime(0.05 + (i * 0.03), now + i * 0.4);
+                    stepGain.gain.exponentialDecayTo(0.01, now + i * 0.4 + 0.1);
+                    stepNoise.connect(stepGain).connect(ctx.destination);
+                    stepNoise.start(now + i * 0.4);
+                }
+                break;
+
+            case 'breathing':
+                // Heavy breathing (something is close)
+                for (let i = 0; i < 4; i++) {
+                    const breathOsc = ctx.createOscillator();
+                    const breathGain = ctx.createGain();
+                    const breathFilter = ctx.createBiquadFilter();
+                    breathOsc.type = 'sawtooth';
+                    breathOsc.frequency.setValueAtTime(80, now + i * 1.2);
+                    breathOsc.frequency.linearRampToValueAtTime(100, now + i * 1.2 + 0.5);
+                    breathOsc.frequency.linearRampToValueAtTime(70, now + i * 1.2 + 1);
+                    breathFilter.type = 'lowpass';
+                    breathFilter.frequency.setValueAtTime(200, now + i * 1.2);
+                    breathGain.gain.setValueAtTime(0, now + i * 1.2);
+                    breathGain.gain.linearRampToValueAtTime(0.08, now + i * 1.2 + 0.3);
+                    breathGain.gain.linearRampToValueAtTime(0.01, now + i * 1.2 + 1);
+                    breathOsc.connect(breathFilter).connect(breathGain).connect(ctx.destination);
+                    breathOsc.start(now + i * 1.2);
+                    breathOsc.stop(now + i * 1.2 + 1.1);
+                }
+                break;
+
+            case 'door_creak':
+                // Creaky door opening
+                const creakOsc = ctx.createOscillator();
+                const creakGain = ctx.createGain();
+                const creakFilter = ctx.createBiquadFilter();
+                creakOsc.type = 'sawtooth';
+                creakOsc.frequency.setValueAtTime(150, now);
+                creakOsc.frequency.linearRampToValueAtTime(400, now + 0.3);
+                creakOsc.frequency.linearRampToValueAtTime(200, now + 0.6);
+                creakOsc.frequency.linearRampToValueAtTime(500, now + 1);
+                creakFilter.type = 'bandpass';
+                creakFilter.frequency.setValueAtTime(500, now);
+                creakFilter.Q.setValueAtTime(10, now);
+                creakGain.gain.setValueAtTime(0.08, now);
+                creakGain.gain.exponentialDecayTo(0.01, now + 1.2);
+                creakOsc.connect(creakFilter).connect(creakGain).connect(ctx.destination);
+                creakOsc.start(now);
+                creakOsc.stop(now + 1.2);
+                break;
+
+            case 'child_laugh':
+                // Creepy child laughter (reversed/distorted)
+                for (let i = 0; i < 5; i++) {
+                    const laughOsc = ctx.createOscillator();
+                    const laughGain = ctx.createGain();
+                    laughOsc.type = 'triangle';
+                    // High pitched, descending (reversed laugh feel)
+                    laughOsc.frequency.setValueAtTime(800 - i * 100, now + i * 0.15);
+                    laughOsc.frequency.exponentialRampToValueAtTime(400, now + i * 0.15 + 0.1);
+                    laughGain.gain.setValueAtTime(0.06, now + i * 0.15);
+                    laughGain.gain.exponentialDecayTo(0.01, now + i * 0.15 + 0.12);
+                    laughOsc.connect(laughGain).connect(ctx.destination);
+                    laughOsc.start(now + i * 0.15);
+                    laughOsc.stop(now + i * 0.15 + 0.15);
+                }
+                break;
         }
     } catch(e) {
         console.log('Audio error (this is fine):', e);
@@ -730,6 +807,118 @@ function triggerScreenMelt() {
     const container = document.getElementById('mainContainer');
     container.classList.add('screen-melt');
     setTimeout(() => container.classList.remove('screen-melt'), 5000);
+}
+
+// ========================================
+// NEW HORROR EFFECTS (Todd added these at 3AM)
+// ========================================
+
+// Screen shake - subtle for wrong answers, intense for jumpscares
+function triggerScreenShake(intensity = 'subtle') {
+    const container = document.getElementById('mainContainer');
+    const className = intensity === 'intense' ? 'screen-shake-intense' : 'screen-shake-subtle';
+    container.classList.add(className);
+    setTimeout(() => container.classList.remove(className), intensity === 'intense' ? 500 : 300);
+}
+
+// Pulsing vignette (peripheral shadows that breathe)
+function toggleVignette(visible) {
+    const vignette = document.getElementById('vignettePulse');
+    if (vignette) {
+        if (visible) {
+            vignette.classList.add('visible');
+        } else {
+            vignette.classList.remove('visible');
+        }
+    }
+}
+
+// Fake second cursor that follows but... wrong
+let fakeCursorActive = false;
+let fakeCursorEl = null;
+function startFakeCursor() {
+    if (fakeCursorActive) return;
+    fakeCursorActive = true;
+
+    fakeCursorEl = document.createElement('div');
+    fakeCursorEl.className = 'fake-cursor';
+    fakeCursorEl.textContent = '🖱️';
+    fakeCursorEl.style.left = '50%';
+    fakeCursorEl.style.top = '50%';
+    document.body.appendChild(fakeCursorEl);
+
+    let targetX = window.innerWidth / 2;
+    let targetY = window.innerHeight / 2;
+    let currentX = targetX;
+    let currentY = targetY;
+
+    const moveHandler = (e) => {
+        // Fake cursor follows but with delay and offset
+        targetX = e.clientX + (Math.random() - 0.5) * 100;
+        targetY = e.clientY + (Math.random() - 0.5) * 100;
+    };
+
+    document.addEventListener('mousemove', moveHandler);
+
+    const updateFakeCursor = () => {
+        if (!fakeCursorActive) return;
+        // Lerp towards target with some lag
+        currentX += (targetX - currentX) * 0.05;
+        currentY += (targetY - currentY) * 0.05;
+        if (fakeCursorEl) {
+            fakeCursorEl.style.left = currentX + 'px';
+            fakeCursorEl.style.top = currentY + 'px';
+            // Occasionally change appearance
+            if (Math.random() < 0.01) {
+                fakeCursorEl.textContent = ['👁️', '☠️', '🖱️', '👆', '🩸'][Math.floor(Math.random() * 5)];
+            }
+        }
+        requestAnimationFrame(updateFakeCursor);
+    };
+    updateFakeCursor();
+
+    // Store handler for cleanup
+    fakeCursorEl._moveHandler = moveHandler;
+}
+
+function stopFakeCursor() {
+    fakeCursorActive = false;
+    if (fakeCursorEl) {
+        if (fakeCursorEl._moveHandler) {
+            document.removeEventListener('mousemove', fakeCursorEl._moveHandler);
+        }
+        fakeCursorEl.remove();
+        fakeCursorEl = null;
+    }
+}
+
+// Bloody cursor trail
+let bloodTrailActive = false;
+function startBloodTrail() {
+    if (bloodTrailActive) return;
+    bloodTrailActive = true;
+
+    const dropBlood = (e) => {
+        if (!bloodTrailActive || Math.random() > 0.3) return;
+        const drop = document.createElement('div');
+        drop.className = 'blood-drop';
+        drop.textContent = ['💧', '🩸', '•', '●'][Math.floor(Math.random() * 4)];
+        drop.style.left = e.clientX + 'px';
+        drop.style.top = e.clientY + 'px';
+        document.body.appendChild(drop);
+        setTimeout(() => drop.remove(), 2000);
+    };
+
+    document.addEventListener('mousemove', dropBlood);
+    // Store for cleanup
+    window._bloodTrailHandler = dropBlood;
+}
+
+function stopBloodTrail() {
+    bloodTrailActive = false;
+    if (window._bloodTrailHandler) {
+        document.removeEventListener('mousemove', window._bloodTrailHandler);
+    }
 }
 
 // ========================================
@@ -976,6 +1165,84 @@ function showJumpscare(type) {
                 <div class="jumpscare-text">AAAAAAAAAAAA</div>
             `;
             return overlay;
+        },
+        // 12: Robbie the Rabbit (Silent Hill mascot!!)
+        () => {
+            const overlay = document.createElement('div');
+            overlay.className = 'jumpscare';
+            overlay.style.background = '#ffccff';
+            overlay.innerHTML = `
+                <div class="jumpscare-image" style="font-size: 150px;">🐰</div>
+                <div class="jumpscare-text" style="color: #ff0066;">ROBBIE SEES YOU TOO</div>
+            `;
+            playSound('whisper');
+            return overlay;
+        },
+        // 13: Lisa Garland (the bleeding nurse from SH1)
+        () => {
+            const overlay = document.createElement('div');
+            overlay.className = 'jumpscare';
+            overlay.style.background = 'linear-gradient(to bottom, #330000, #000)';
+            overlay.innerHTML = `
+                <div class="jumpscare-image" style="font-size: 120px;">👩‍⚕️</div>
+                <div class="jumpscare-text" style="color: #cc0000;">HELP ME HARRY<br><span style="font-size: 20px;">im bleeding</span></div>
+            `;
+            return overlay;
+        },
+        // 14: Alessa Burning
+        () => {
+            const overlay = document.createElement('div');
+            overlay.className = 'jumpscare';
+            overlay.style.background = 'linear-gradient(to bottom, #ff3300, #220000)';
+            overlay.innerHTML = `
+                <div class="jumpscare-image" style="font-size: 100px;">🔥👧🔥</div>
+                <div class="jumpscare-text" style="color: #ffcc00;">MOMMY WHY</div>
+            `;
+            return overlay;
+        },
+        // 15: The Mirror (you look back... but wrong)
+        () => {
+            const overlay = document.createElement('div');
+            overlay.className = 'jumpscare';
+            overlay.style.background = '#111';
+            overlay.innerHTML = `
+                <div class="jumpscare-image" style="font-size: 80px; transform: scaleX(-1); filter: hue-rotate(180deg);">🪞👤</div>
+                <div class="jumpscare-text">LOOK CLOSER</div>
+            `;
+            return overlay;
+        },
+        // 16: TV Static forming a face
+        () => {
+            const overlay = document.createElement('div');
+            overlay.className = 'jumpscare-static-face';
+            overlay.innerHTML = `
+                <div style="font-size: 200px; animation: flicker 0.1s infinite;">📺</div>
+                <div class="jumpscare-text">CAN YOU SEE ME NOW</div>
+            `;
+            playSound('static');
+            return overlay;
+        },
+        // 17: Walter Sullivan (SH4)
+        () => {
+            const overlay = document.createElement('div');
+            overlay.className = 'jumpscare';
+            overlay.style.background = '#000';
+            overlay.innerHTML = `
+                <div class="jumpscare-image" style="font-size: 100px;">🔪</div>
+                <div class="jumpscare-text">RECEIVER OF WISDOM<br><span style="font-size: 16px;">11/21</span></div>
+            `;
+            return overlay;
+        },
+        // 18: Valtiel (the angel who turns the valves)
+        () => {
+            const overlay = document.createElement('div');
+            overlay.className = 'jumpscare';
+            overlay.style.background = '#1a0a00';
+            overlay.innerHTML = `
+                <div class="jumpscare-image" style="font-size: 80px; animation: spin 0.5s linear infinite;">⚙️</div>
+                <div class="jumpscare-text">THE WHEELS KEEP TURNING</div>
+            `;
+            return overlay;
         }
     ];
 
@@ -984,6 +1251,9 @@ function showJumpscare(type) {
 
     if (overlay) {
         document.body.appendChild(overlay);
+
+        // INTENSE screen shake on jumpscare!!
+        triggerScreenShake('intense');
 
         setTimeout(() => {
             overlay.remove();
@@ -1077,6 +1347,9 @@ function updateHorrorEffects() {
         if (!gameState.crtEffectsActive && Math.random() < 0.2) {
             triggerCRTEffect();
         }
+
+        // Start pulsing vignette (peripheral shadows closing in!!)
+        toggleVignette(true);
     }
     if (level >= 12) {
         pyramidHead.classList.add('visible');
@@ -1084,6 +1357,9 @@ function updateHorrorEffects() {
 
         // Screen melt possible
         if (Math.random() < 0.1) triggerScreenMelt();
+
+        // Start the creepy fake cursor
+        startFakeCursor();
     }
     if (level >= 14) {
         nurse.classList.add('visible');
@@ -1093,6 +1369,9 @@ function updateHorrorEffects() {
             gameState.buttonChaseActive = true;
             enableButtonChase();
         }
+
+        // Blood cursor trail
+        startBloodTrail();
     }
 
     // Update sidebar info
@@ -1251,11 +1530,20 @@ function startRandomEvents() {
         } else if (rand < 0.84 && level >= 6) {
             playSound('drone');
         } else if (rand < 0.87 && level >= 13) {
-            showJumpscare(Math.floor(Math.random() * 12));
-        } else if (rand < 0.92 && level >= 2) {
+            showJumpscare(Math.floor(Math.random() * 19));
+        } else if (rand < 0.90 && level >= 7) {
+            // New spooky sounds!!
+            playSound('footsteps');
+        } else if (rand < 0.92 && level >= 9) {
+            playSound('breathing');
+        } else if (rand < 0.94 && level >= 6) {
+            playSound('door_creak');
+        } else if (rand < 0.96 && level >= 11) {
+            playSound('child_laugh');
+        } else if (rand < 0.97 && level >= 2) {
             // Random Buddy helper
             showBuddyHelper();
-        } else if (rand < 0.96 && level >= 5) {
+        } else if (rand < 0.99 && level >= 5) {
             // Random title bar change
             changePageTitle();
         }
@@ -1321,7 +1609,7 @@ document.addEventListener('visibilitychange', () => {
                 alert(messages[Math.floor(Math.random() * messages.length)]);
 
                 if (gameState.paranoia >= 3 && Math.random() < 0.5) {
-                    showJumpscare(Math.floor(Math.random() * 12));
+                    showJumpscare(Math.floor(Math.random() * 19));
                 }
 
                 updateHorrorEffects();
@@ -1414,6 +1702,9 @@ function startQuiz() {
 
         // Clear any existing cracks
         document.getElementById('cracksContainer').innerHTML = '';
+
+        // Hide ending screen if visible from previous run
+        document.getElementById('endingScreen').style.display = 'none';
 
         document.getElementById('introScreen').style.display = 'none';
         document.getElementById('gameScreen').style.display = 'block';
@@ -1522,11 +1813,22 @@ function showQuestion() {
 function showAnswers(q) {
     const answersContainer = document.getElementById('answersContainer');
 
-    q.answers.forEach((answer, index) => {
+    // Shuffle answer order so correct answer isn't always first!!
+    // (Todd learned this the hard way when his mom got 100% by always clicking first button)
+    const indices = [0, 1, 2, 3];
+    for (let i = indices.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [indices[i], indices[j]] = [indices[j], indices[i]];
+    }
+
+    // Find where the correct answer ended up after shuffling
+    const newCorrectIndex = indices.indexOf(q.correct);
+
+    indices.forEach((origIndex, displayIndex) => {
         const btn = document.createElement('button');
         btn.className = 'answer-btn';
-        btn.textContent = answer;
-        btn.onclick = () => selectAnswer(index, q.correct);
+        btn.textContent = q.answers[origIndex];
+        btn.onclick = () => selectAnswer(displayIndex, newCorrectIndex);
 
         if (gameState.horrorLevel >= 4) btn.classList.add('corrupted');
         if (gameState.horrorLevel >= 8) btn.classList.add('very-corrupted');
@@ -1547,6 +1849,14 @@ function selectAnswer(selected, correct) {
         gameState.horrorLevel += 1.5;
         playSound('wrong');
 
+        // Screen shake on wrong answer!! (intensity increases with horror level)
+        triggerScreenShake(gameState.horrorLevel >= 6 ? 'intense' : 'subtle');
+
+        // Flash colors at high horror
+        if (gameState.horrorLevel >= 5 && Math.random() < 0.4) {
+            flashColors();
+        }
+
         // Add crack on wrong answer at high horror
         if (gameState.horrorLevel >= 8) {
             addScreenCrack();
@@ -1554,7 +1864,7 @@ function selectAnswer(selected, correct) {
 
         // Chance of jumpscare on wrong answer at high horror
         if (gameState.horrorLevel >= 6 && Math.random() < 0.3) {
-            setTimeout(() => showJumpscare(Math.floor(Math.random() * 12)), 500);
+            setTimeout(() => showJumpscare(Math.floor(Math.random() * 19)), 500);
         }
     }
 
@@ -1762,13 +2072,19 @@ function playEndingSequence(ending) {
     document.getElementById('burnInGhost').classList.remove('visible');
     document.body.classList.remove('degauss-wobble', 'crt-flicker');
 
-    // Hide entire quiz interface - endingScreen is now a body-level overlay
-    document.getElementById('quizContainer').style.display = 'none';
+    // Clean up new effects (vignette, fake cursor, blood trail)
+    toggleVignette(false);
+    stopFakeCursor();
+    stopBloodTrail();
+
+    // Hide game/intro screens but keep quiz container visible (ending is now INSIDE it!!)
+    document.getElementById('gameScreen').style.display = 'none';
+    document.getElementById('introScreen').style.display = 'none';
 
     // Play appropriate sound
     playSound(ending.sound);
 
-    // Show ending overlay (now positioned outside quiz container for proper fullscreen)
+    // Show ending screen (now integrated inside quiz container - much cooler!!)
     const endingScreen = document.getElementById('endingScreen');
     endingScreen.style.display = 'block';
 

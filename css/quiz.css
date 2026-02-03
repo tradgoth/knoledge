@@ -535,28 +535,29 @@
             text-shadow: 0 0 10px #ff0000;
         }
 
-        /* Ending overlay container - must be outside quiz container for proper fullscreen */
+        /* Ending overlay container - NOW INSIDE quiz container for integrated experience!! */
         .ending-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: 10000;
+            position: relative;
+            width: 100%;
+            min-height: 400px;
+            z-index: 100;
             overflow-y: auto;
+            border-radius: 10px;
         }
 
         .ending-screen {
             position: relative;
-            min-height: 100vh;
+            min-height: 400px;
             width: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 40px 20px;
+            padding: 30px 20px;
             box-sizing: border-box;
             animation: fadeIn 2s ease;
+            border-radius: 10px;
+            border: 3px ridge #660000;
         }
 
         @keyframes fadeIn {
@@ -1876,6 +1877,114 @@
             75% {
                 transform: translateX(3px);
             }
+        }
+
+        /* ========== SCREEN SHAKE EFFECT (for wrong answers & jumpscares!!) ========== */
+        .screen-shake-subtle {
+            animation: screenShakeSubtle 0.3s ease;
+        }
+
+        .screen-shake-intense {
+            animation: screenShakeIntense 0.5s ease;
+        }
+
+        @keyframes screenShakeSubtle {
+            0%, 100% { transform: translate(0, 0); }
+            10% { transform: translate(-2px, -1px); }
+            20% { transform: translate(2px, 1px); }
+            30% { transform: translate(-1px, 2px); }
+            40% { transform: translate(1px, -2px); }
+            50% { transform: translate(-2px, 1px); }
+            60% { transform: translate(2px, -1px); }
+            70% { transform: translate(-1px, -2px); }
+            80% { transform: translate(1px, 2px); }
+            90% { transform: translate(-2px, -1px); }
+        }
+
+        @keyframes screenShakeIntense {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            10% { transform: translate(-8px, -5px) rotate(-1deg); }
+            20% { transform: translate(8px, 5px) rotate(1deg); }
+            30% { transform: translate(-5px, 8px) rotate(-0.5deg); }
+            40% { transform: translate(5px, -8px) rotate(0.5deg); }
+            50% { transform: translate(-8px, 5px) rotate(-1deg); }
+            60% { transform: translate(8px, -5px) rotate(1deg); }
+            70% { transform: translate(-5px, -8px) rotate(-0.5deg); }
+            80% { transform: translate(5px, 8px) rotate(0.5deg); }
+            90% { transform: translate(-8px, -5px) rotate(-1deg); }
+        }
+
+        /* ========== COLOR INVERSION FLASH (spooky!!) ========== */
+        .invert-flash {
+            animation: invertFlash 0.2s ease;
+        }
+
+        @keyframes invertFlash {
+            0%, 100% { filter: invert(0); }
+            50% { filter: invert(1); }
+        }
+
+        /* ========== PULSING VIGNETTE (peripheral shadows) ========== */
+        .vignette-pulse {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 9998;
+            background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.8) 100%);
+            animation: vignettePulse 3s ease-in-out infinite;
+            opacity: 0;
+        }
+
+        .vignette-pulse.visible {
+            opacity: 1;
+        }
+
+        @keyframes vignettePulse {
+            0%, 100% {
+                background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.7) 100%);
+            }
+            50% {
+                background: radial-gradient(ellipse at center, transparent 30%, rgba(20,0,0,0.9) 100%);
+            }
+        }
+
+        /* ========== FAKE CURSOR (second cursor that moves on its own!!) ========== */
+        .fake-cursor {
+            position: fixed;
+            pointer-events: none;
+            z-index: 99999;
+            font-size: 24px;
+            transition: all 0.3s ease;
+            opacity: 0.7;
+        }
+
+        /* ========== TEXT SCRAMBLE EFFECT ========== */
+        .text-scramble {
+            animation: textScramble 0.1s steps(1) infinite;
+        }
+
+        @keyframes textScramble {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; letter-spacing: 2px; }
+            100% { opacity: 1; letter-spacing: 0; }
+        }
+
+        /* ========== BLOODY CURSOR TRAIL ========== */
+        .blood-drop {
+            position: fixed;
+            pointer-events: none;
+            font-size: 10px;
+            color: #880000;
+            z-index: 9999;
+            animation: bloodDrip 2s forwards;
+        }
+
+        @keyframes bloodDrip {
+            0% { opacity: 1; transform: translateY(0) scale(1); }
+            100% { opacity: 0; transform: translateY(50px) scale(0.5); }
         }
 
         /* ========== TODD'S NOTE BOX ========== */

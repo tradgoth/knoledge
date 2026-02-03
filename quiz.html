@@ -15,6 +15,7 @@
     <div class="static-overlay" id="staticOverlay"></div>
     <div class="vhs-lines" id="vhsLines"></div>
     <div class="heartbeat-overlay" id="heartbeatOverlay"></div>
+    <div class="vignette-pulse" id="vignettePulse"></div>
     <div id="effectsContainer"></div>
 
     <div class="container" id="mainContainer">
@@ -171,6 +172,9 @@
                                 <!-- Answers will be inserted here -->
                             </div>
                         </div>
+
+                        <!-- Ending Screen (now INSIDE quiz container for integrated experience!!) -->
+                        <div id="endingScreen" class="ending-overlay" style="display: none;"></div>
 
                     </div>
 
@@ -436,9 +440,6 @@
     <!-- CRT effects -->
     <div class="horizontal-tear" id="horizontalTear" style="display: none;"></div>
     <div class="burn-in-ghost" id="burnInGhost"></div>
-
-    <!-- ENDING SCREEN - Full viewport overlay for quiz endings -->
-    <div id="endingScreen" class="ending-overlay" style="display: none;"></div>
 
     <!-- Post-ending horror container -->
     <div id="postEndingContainer"></div>
