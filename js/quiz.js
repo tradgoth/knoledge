@@ -701,6 +701,22 @@ function addWallWriting() {
         "ROOM 312",
         "MARY...",
         "THE DOG DID IT",
+        "BORN FROM A WISH",
+        "GOODBYE JAMES",
+        "DADDY WAS SUCH A DRAG",
+        "PROMISE RING",
+        "LAKEVIEW HOTEL",
+        "BROOKHAVEN HOSPITAL",
+        "TOLUCA LAKE",
+        "WISH HOUSE ORPHANAGE",
+        "THE RED PYRAMID THING",
+        "JAMES SUNDERLAND",
+        "WELCOME TO SILENT HILL",
+        "BLUE CREEK APARTMENTS",
+        "HEATHER I LOVE YOU",
+        "HAPPY BIRTHDAY DEAR ALESSA",
+        "RECEIVER OF WISDOM",
+        "21 SACRAMENTS",
         // Lore from articles
         "THE SEAL PROTECTS NOTHING",
         "METATRON WATCHES",
@@ -718,6 +734,14 @@ function addWallWriting() {
         "JACOB SAW THE LADDER",
         "THE COLLECTIVE BLEEDS",
         "ALESSA BURNS STILL",
+        "THE ORDER WATCHES",
+        "GODS VESSEL PREPARED",
+        "THE HALO OF THE SUN",
+        "PARADISE APPROACHES",
+        "FLESH MADE MANIFEST",
+        "VALTIEL TURNS THE VALVE",
+        "DAHLIA LIED",
+        "CLAUDIA KNEW",
         // Buddy/Quiz specific
         "DONT LOOK AWAY",
         "BUDDY SEES YOU",
@@ -733,7 +757,21 @@ function addWallWriting() {
         "TODD WAS RIGHT",
         "CHECK YOUR SCORE",
         "LOOK BEHIND YOU",
-        "THE FOG REMEMBERS"
+        "THE FOG REMEMBERS",
+        "WRONG ANSWER JAMES",
+        "BUDDY FORGIVES YOU",
+        "BUT DOES HE REALLY",
+        "THE SIREN CALLS",
+        "RUST AND BLOOD",
+        "ARE YOU SURE",
+        "TODD WARNED YOU",
+        "ANSWER HONESTLY",
+        "THE ORDER APPROVES",
+        "QUIZ.EXE HAS STOPPED",
+        "SCORE NOT FOUND",
+        "ERROR 666",
+        "PRESS ANY KEY TO DIE",
+        "LOADING YOUR SINS"
     ];
 
     const writing = document.createElement('div');
@@ -940,7 +978,20 @@ const fakeErrors = [
     { title: "Download Complete", icon: "📥", message: "Download Complete!\n\nFile: forbidden_knowledge.zip\nSize: 72 demons\n\nOpen folder?" },
     { title: "Bonzi Buddy", icon: "🦍", message: "Hi! Its me, your friend Bonzi!\n\nI noticed you havent taken the quiz yet.\n\nWould you like me to help you find Mary?" },
     { title: "RealPlayer", icon: "▶️", message: "Buffering... 66.6%\n\nYour connection to the Otherworld is slow.\n\nPlease wait while we load more fog." },
-    { title: "Netscape Navigator", icon: "🧭", message: "Document Done (but your soul isnt)\n\n404: Salvation Not Found\n\nThe requested happiness could not be located." }
+    { title: "Netscape Navigator", icon: "🧭", message: "Document Done (but your soul isnt)\n\n404: Salvation Not Found\n\nThe requested happiness could not be located." },
+    { title: "WinZip Self-Extractor", icon: "📦", message: "Extracting: your_memories.zip\n\nProgress: [████████░░] 80%\n\nCannot extract: repressed_guilt.dat is corrupted" },
+    { title: "Windows Media Player", icon: "🎵", message: "Cannot play file: marys_letter.wav\n\nThe audio format is not supported.\n\nAlso you dont deserve to hear it." },
+    { title: "Clippy", icon: "📎", message: "It looks like youre trying to escape!\n\nWould you like help with that?\n\n(There is no help)" },
+    { title: "Kazaa", icon: "🎭", message: "Download Complete: silent_hill_secrets.exe\n\nWARNING: File may contain malware\n\nAlso definitely contains forbidden knowledge" },
+    { title: "MSN Messenger", icon: "🦋", message: "JAMES_SUNDERLAND_2001 is typing...\n\n\n\n(Hes been typing for 3 years)" },
+    { title: "Norton AntiVirus", icon: "🔒", message: "Auto-Protect Alert!\n\nUnable to repair file: conscience.sys\n\nFile has been quarantined in Toluca Lake" },
+    { title: "DirectX Error", icon: "🎮", message: "Your DirectX version is too low to display reality.\n\nPlease update to DirectX 666.\n\nThe fog will continue regardless." },
+    { title: "Dial-Up Networking", icon: "📞", message: "Connecting to Silent Hill ISP...\n\nNo dial tone detected.\n\nThe phone is for something else." },
+    { title: "Low Disk Space", icon: "💾", message: "You are running low on disk space on drive C:\n\nYour trauma files are taking up 99% of available space.\n\nWould you like to compress your memories?" },
+    { title: "Print Spooler", icon: "🖨️", message: "Print job failed: marys_suicide_note.doc\n\nPrinter is offline.\n\nSome things shouldnt be printed anyway." },
+    { title: "The Order", icon: "⛧", message: "NOTIFICATION FROM THE ORDER:\n\nYour participation in the ritual has been noted.\n\nParadise approaches. Do not resist." },
+    { title: "Task Manager", icon: "📊", message: "buddy.exe (Not Responding)\n\nEnd process?\n\n[Buddy cannot be stopped]" },
+    { title: "Screen Saver", icon: "🖥️", message: "Windows is activating the Otherworld screen saver.\n\nMove your mouse to return.\n\n(You cannot return)" }
 ];
 
 // Fun loading messages for extra gags
@@ -959,7 +1010,26 @@ const loadingMessages = [
     "Compiling trauma.exe...",
     "Defragmenting memories...",
     "Installing pyramid_head_service...",
-    "Verifying seal of metatron..."
+    "Verifying seal of metatron...",
+    "Adjusting paranoia levels...",
+    "Counting your wrong answers...",
+    "Preparing Todd's notes...",
+    "Summoning Valtiel...",
+    "Loading nurse uniforms...",
+    "Calibrating jumpscare timing...",
+    "Indexing wall writings...",
+    "Preparing your ending...",
+    "Counting seconds you looked away...",
+    "Processing your fear...",
+    "Loading Toluca Lake map...",
+    "Buffering the fog...",
+    "Warming up the siren...",
+    "Preparing Buddy's final form...",
+    "Loading Mary's letter...",
+    "Extracting repressed memories...",
+    "Connecting to Room 312...",
+    "Initializing the ritual...",
+    "Querying the Order database..."
 ];
 
 function showFakeError() {
@@ -1243,6 +1313,120 @@ function showJumpscare(type) {
                 <div class="jumpscare-text">THE WHEELS KEEP TURNING</div>
             `;
             return overlay;
+        },
+        // 19: Claudia Wolf
+        () => {
+            const overlay = document.createElement('div');
+            overlay.className = 'jumpscare';
+            overlay.style.background = '#110011';
+            overlay.innerHTML = `
+                <div class="jumpscare-image" style="font-size: 100px;">👁️</div>
+                <div class="jumpscare-text">PARADISE IS AT HAND</div>
+            `;
+            return overlay;
+        },
+        // 20: The Dog (you found the secret)
+        () => {
+            const overlay = document.createElement('div');
+            overlay.className = 'jumpscare';
+            overlay.style.background = '#ffcc00';
+            overlay.innerHTML = `
+                <div class="jumpscare-image" style="font-size: 150px;">🐕</div>
+                <div class="jumpscare-text" style="color: #000;">IT WAS THE DOG ALL ALONG</div>
+            `;
+            playSound('bark');
+            return overlay;
+        },
+        // 21: Eddie Dombrowski
+        () => {
+            const overlay = document.createElement('div');
+            overlay.className = 'jumpscare';
+            overlay.style.background = '#001133';
+            overlay.innerHTML = `
+                <div class="jumpscare-image" style="font-size: 100px;">🥶</div>
+                <div class="jumpscare-text">DO I LOOK LIKE YOUR GIRLFRIEND</div>
+            `;
+            return overlay;
+        },
+        // 22: Angela Orosco stairs
+        () => {
+            const overlay = document.createElement('div');
+            overlay.className = 'jumpscare';
+            overlay.style.background = 'linear-gradient(to top, #ff3300, #000)';
+            overlay.innerHTML = `
+                <div class="jumpscare-image" style="font-size: 80px;">🔥🪜🔥</div>
+                <div class="jumpscare-text">FOR ME ITS ALWAYS LIKE THIS</div>
+            `;
+            return overlay;
+        },
+        // 23: Red Save Point
+        () => {
+            const overlay = document.createElement('div');
+            overlay.className = 'jumpscare';
+            overlay.style.background = '#000';
+            overlay.innerHTML = `
+                <div class="jumpscare-image" style="font-size: 120px; color: #ff0000; text-shadow: 0 0 30px #ff0000;">▓</div>
+                <div class="jumpscare-text" style="color: #ff0000;">WOULD YOU LIKE TO SAVE</div>
+            `;
+            return overlay;
+        },
+        // 24: Todd (the webmaster)
+        () => {
+            const overlay = document.createElement('div');
+            overlay.className = 'jumpscare';
+            overlay.style.background = '#ffffcc';
+            overlay.innerHTML = `
+                <div class="jumpscare-image" style="font-size: 100px;">🤓</div>
+                <div class="jumpscare-text" style="color: #000;">TODD WARNED YOU</div>
+            `;
+            playSound('whisper');
+            return overlay;
+        },
+        // 25: Mannequin legs (SH2 enemy)
+        () => {
+            const overlay = document.createElement('div');
+            overlay.className = 'jumpscare';
+            overlay.style.background = '#1a1a1a';
+            overlay.innerHTML = `
+                <div class="jumpscare-image" style="font-size: 100px;">🦵🦵</div>
+                <div class="jumpscare-text">CLICK CLICK CLICK</div>
+            `;
+            playSound('footsteps');
+            return overlay;
+        },
+        // 26: The Radio
+        () => {
+            const overlay = document.createElement('div');
+            overlay.className = 'jumpscare-static-face';
+            overlay.innerHTML = `
+                <div style="font-size: 150px;">📻</div>
+                <div class="jumpscare-text">SOMETHING IS NEAR</div>
+            `;
+            playSound('static');
+            return overlay;
+        },
+        // 27: Buddy Final Form
+        () => {
+            const overlay = document.createElement('div');
+            overlay.className = 'jumpscare-buddy-corrupt';
+            overlay.style.background = '#000';
+            overlay.innerHTML = `
+                <div class="corrupt-buddy-face" style="filter: invert(1) hue-rotate(180deg);"></div>
+                <div class="corrupt-buddy-text" style="color: #ff0000;">B̸̨̛Ů̶̢D̷̰͝D̵̪̈Y̵̻͝ ̷̞̊S̵̱̐E̵̖͋E̵̖͋S̵̱̐ ̷̣̀Å̶̢L̵̰͒L̵̰͒</div>
+            `;
+            return overlay;
+        },
+        // 28: The Siren
+        () => {
+            const overlay = document.createElement('div');
+            overlay.className = 'jumpscare';
+            overlay.style.background = '#220000';
+            overlay.innerHTML = `
+                <div class="jumpscare-image" style="font-size: 100px;">🚨</div>
+                <div class="jumpscare-text">THE OTHERWORLD CALLS</div>
+            `;
+            playSound('siren');
+            return overlay;
         }
     ];
 
@@ -1426,15 +1610,28 @@ function updateBuddySays() {
     const buddySays = document.getElementById('buddySays');
 
     const messages = [
+        // Level 0-1
         "Hi friend!! Ready for a FUN quiz?? Lets gooo!!",
+        // Level 2-3
         "Youre doing great!! Keep it up!! :3",
+        // Level 4-5
         "Hmm... the fog is getting thicker...",
+        // Level 6-7
         "Buddy feels... strange... keep playing...",
+        // Level 8-9
         "D̶o̶n̶t̶ ̶l̶o̶o̶k̶ ̶a̶w̶a̶y̶.̶.̶.̶",
+        // Level 10-11
         "Buddy sees what you did...",
+        // Level 12-13
         "WHY DID YOU STOP LOOKING AT THE SCREEN",
+        // Level 14-15
         "T̸̨̛h̸̢̛e̵͙̓ ̶̣̈q̷̣̈́ū̸̢i̵͙̓ẓ̶̈ ̶̣̈ṇ̷̈́ĕ̸̢ṿ̶̈ȇ̸̢ṛ̶̈ ̶̣̈ê̸̢ṇ̶̈ḍ̶̈ṣ̷̈́",
-        "B̷̨̛Ụ̶̌D̷̰͝D̵̪̈Y̵̻͝ ̷̞̊L̵̰͒O̵̡̊V̸̳̊E̵̖͋S̵̱̐ ̷̣̀Y̵̗͝O̷̤͝U̵̢̔ F̷̨̛O̷̧̊R̶̥̈́E̴͙͒V̸̳̊E̵̖͋R̵̤̈"
+        // Level 16-17
+        "B̷̨̛Ụ̶̌D̷̰͝D̵̪̈Y̵̻͝ ̷̞̊L̵̰͒O̵̡̊V̸̳̊E̵̖͋S̵̱̐ ̷̣̀Y̵̗͝O̷̤͝U̵̢̔ F̷̨̛O̷̧̊R̶̥̈́E̴͙͒V̸̳̊E̵̖͋R̵̤̈",
+        // Level 18-19
+        "Y̷̢̛O̵U̵ ̸C̴A̷N̵T̴ ̶L̵E̶A̷V̵E̴",
+        // Level 20+
+        "P̸̨̌L̵̢̈́Ả̵͙Ý̶̢ ̷̣̈́F̸̨̛O̶̢̊R̶̥̈́E̴͙͒V̸̳̊E̵̖͋R̵̤̈"
     ];
 
     const index = Math.min(Math.floor(level / 2), messages.length - 1);
@@ -1530,7 +1727,7 @@ function startRandomEvents() {
         } else if (rand < 0.84 && level >= 6) {
             playSound('drone');
         } else if (rand < 0.87 && level >= 13) {
-            showJumpscare(Math.floor(Math.random() * 19));
+            showJumpscare(Math.floor(Math.random() * 29));
         } else if (rand < 0.90 && level >= 7) {
             // New spooky sounds!!
             playSound('footsteps');
@@ -1568,6 +1765,25 @@ const pageTitles = [
     "buddy.exe",
     "localhost:666",
     "In my restless dreams...",
+    "New Email: Mary",
+    "TOLUCA LAKE WELCOMES YOU",
+    "quiz.exe has stopped responding",
+    "WHY DID YOU DO IT",
+    "The Order thanks you",
+    "ERROR: soul.dll not found",
+    "You have been chosen",
+    "Valtiel is watching",
+    "(3) Missed calls from MARY",
+    "Warning: fog levels critical",
+    "Your guilt has been recorded",
+    "JAMES COME HOME",
+    "admin@silenthill.gov",
+    "The truth is in the lake",
+    "Buddy wants to be friends forever",
+    "Installing otherworld.sys...",
+    "You looked away for 0.3 seconds",
+    "The nurses miss you",
+    "Born from a wish.exe",
 ];
 
 function changePageTitle() {
@@ -1603,13 +1819,26 @@ document.addEventListener('visibilitychange', () => {
                     "DONT LEAVE BUDDY ALONE",
                     "THE QUIZ MISSED YOU",
                     "BUDDY WAS WORRIED",
-                    "YOU CANT ESCAPE BY LEAVING"
+                    "YOU CANT ESCAPE BY LEAVING",
+                    "PARANOIA +1",
+                    "The fog followed you to that other tab",
+                    "Buddy counted every second you were gone",
+                    "You think closing the tab will save you?",
+                    "THE ORDER HAS BEEN NOTIFIED",
+                    "Your absence has been recorded",
+                    "Pyramid Head saw that",
+                    "Valtiel noticed you left",
+                    "The nurses are disappointed",
+                    "RULE 4: DONT LOOK AWAY",
+                    "Buddy doesnt like being alone...",
+                    "You were gone for " + Math.floor((Date.now() - gameState.lastTabAway) / 1000) + " seconds",
+                    "The quiz remembers everything"
                 ];
 
                 alert(messages[Math.floor(Math.random() * messages.length)]);
 
                 if (gameState.paranoia >= 3 && Math.random() < 0.5) {
-                    showJumpscare(Math.floor(Math.random() * 19));
+                    showJumpscare(Math.floor(Math.random() * 29));
                 }
 
                 updateHorrorEffects();
@@ -1864,7 +2093,7 @@ function selectAnswer(selected, correct) {
 
         // Chance of jumpscare on wrong answer at high horror
         if (gameState.horrorLevel >= 6 && Math.random() < 0.3) {
-            setTimeout(() => showJumpscare(Math.floor(Math.random() * 19)), 500);
+            setTimeout(() => showJumpscare(Math.floor(Math.random() * 29)), 500);
         }
     }
 
@@ -1940,19 +2169,23 @@ function endGame() {
     let ending;
 
     // Special endings first
-    if (percentage === 100) {
-        // Perfect score = UFO ending
+    if (percentage >= 92) {
+        // Near-perfect score (12+/13) = UFO ending
         ending = getUFOEnding();
-    } else if (gameState.paranoia > 4) {
-        // Dog ending if paranoia is high
+    } else if (gameState.paranoia > 3) {
+        // Dog ending if paranoia is high (looked away too much)
         ending = getDogEnding();
-    } else if (percentage >= 85) {
+    } else if (percentage >= 77) {
+        // 10+/13 correct = Leave ending
         ending = getLeaveEnding();
-    } else if (percentage >= 60) {
+    } else if (percentage >= 54) {
+        // 7-9/13 correct = Maria ending
         ending = getMariaEnding();
-    } else if (percentage >= 35) {
+    } else if (percentage >= 31) {
+        // 4-6/13 correct = In Water ending
         ending = getInWaterEnding();
     } else {
+        // 0-3/13 correct = Rebirth ending
         ending = getRebirthEnding();
     }
 
@@ -2121,7 +2354,7 @@ function buildEnding(ending) {
         <div class="ending-screen ending-${ending.type}" ${ending.type === 'ufo' ? 'style="background: linear-gradient(180deg, #000033 0%, #000011 50%, #001100 100%);"' : ''}>
             ${specialContent.beforeTitle || ''}
             <div class="ending-title" style="color: ${ending.color};">${ending.title}</div>
-            <div class="ending-icon ${ending.iconClass || ''}" style="font-size: 80px; margin: 20px 0;">${ending.icon || ''}</div>
+            <div class="ending-icon ${ending.iconClass || ''}" style="font-size: 50px; margin: 10px 0;">${ending.icon || ''}</div>
             <div class="ending-text" style="color: ${ending.type === 'dog' ? '#333' : ending.color};">
                 ${ending.text}<br><br>
                 <i>${ending.subtext}</i><br><br>
@@ -2266,12 +2499,12 @@ function runEndingEffects(ending) {
 function buildToddNote(ending) {
     if (!ending.toddNote) return '';
     return `
-        <div style="background: #ffffcc; border: 2px solid #999; padding: 15px; margin: 20px auto; max-width: 500px; text-align: left; color: #000; font-size: 12px;">
-            <div style="background: linear-gradient(90deg, #000080, #1084d0); color: white; padding: 3px 8px; margin: -15px -15px 10px -15px; font-size: 11px;">
+        <div style="background: #ffffcc; border: 2px solid #999; padding: 10px; margin: 12px auto; max-width: 450px; text-align: left; color: #000; font-size: 10px;">
+            <div style="background: linear-gradient(90deg, #000080, #1084d0); color: white; padding: 2px 6px; margin: -10px -10px 8px -10px; font-size: 10px;">
                 📝 DarkAlessa1999 (Todd) says:
             </div>
             ${ending.toddNote}
-            <p style="text-align: right; margin-top: 10px; color: #666; font-size: 10px;">- Todd</p>
+            <p style="text-align: right; margin-top: 6px; color: #666; font-size: 9px;">- Todd</p>
         </div>
     `;
 }
@@ -2584,20 +2817,40 @@ const buddyTips = [
     { minHorror: 0, maxHorror: 3, text: "Remember: there are no wrong answers!! (jk there definitely are)", face: "😄" },
     { minHorror: 0, maxHorror: 3, text: "Fun fact: Silent Hill was inspired by the movie Jacob's Ladder!", face: "🎬" },
     { minHorror: 0, maxHorror: 3, text: "Tip: The fog is your friend! (its not)", face: "🌫️" },
+    { minHorror: 0, maxHorror: 3, text: "Did you know? Team Silent hid SO many secrets in the games!", face: "🔍" },
+    { minHorror: 0, maxHorror: 3, text: "Buddy believes in you!! Even Todd couldnt finish this quiz!!", face: "⭐" },
+    { minHorror: 0, maxHorror: 3, text: "Pro tip: All the answers are in the games! (mostly)", face: "🎮" },
+    { minHorror: 0, maxHorror: 3, text: "The dog ending is 100% canon btw. Source: trust me", face: "🐕" },
     // Mid game tips (concerning)
     { minHorror: 4, maxHorror: 7, text: "You seem... nervous. Is something wrong?", face: "🤔" },
     { minHorror: 4, maxHorror: 7, text: "The Seal of Metatron protects you! (it doesnt)", face: "✡️" },
     { minHorror: 4, maxHorror: 7, text: "Did you know Maria isnt real? Just like this quiz!", face: "😶" },
     { minHorror: 4, maxHorror: 7, text: "Your paranoia level is... interesting.", face: "👀" },
+    { minHorror: 4, maxHorror: 7, text: "Is it just me or is the room darker now?", face: "🌑" },
+    { minHorror: 4, maxHorror: 7, text: "The Order would be proud of your dedication.", face: "⛪" },
+    { minHorror: 4, maxHorror: 7, text: "You hear that? Sounds like... static.", face: "📻" },
+    { minHorror: 4, maxHorror: 7, text: "Your cursor looks... different somehow.", face: "🖱️" },
+    { minHorror: 4, maxHorror: 7, text: "James would have given up by now tbh.", face: "🚗" },
+    { minHorror: 4, maxHorror: 7, text: "Buddy wonders why you keep looking away...", face: "😒" },
     // Late game tips (threatening)
     { minHorror: 8, maxHorror: 11, text: "Dont look behind you.", face: "😐" },
     { minHorror: 8, maxHorror: 11, text: "The 72 demons appreciate your participation.", face: "⛧" },
     { minHorror: 8, maxHorror: 11, text: "Have you checked your closet recently?", face: "🚪" },
     { minHorror: 8, maxHorror: 11, text: "Your wrong answers have been... noted.", face: "📝" },
+    { minHorror: 8, maxHorror: 11, text: "Pyramid Head says hi.", face: "🔺" },
+    { minHorror: 8, maxHorror: 11, text: "The nurses are preparing your room.", face: "💉" },
+    { minHorror: 8, maxHorror: 11, text: "Something is watching from the fog...", face: "🌫️" },
+    { minHorror: 8, maxHorror: 11, text: "Valtiel is turning the valve for YOU.", face: "😇" },
+    { minHorror: 8, maxHorror: 11, text: "Your score has been reported to the Order.", face: "📊" },
+    { minHorror: 8, maxHorror: 11, text: "The siren will sound soon...", face: "🔔" },
     // Endgame tips (help)
     { minHorror: 12, maxHorror: 99, text: "B̷U̵D̶D̵Y̷ ̸L̷O̵V̶E̸S̷ ̷Y̵O̶U̵", face: "😈" },
     { minHorror: 12, maxHorror: 99, text: "T̵h̶e̷r̸e̵ ̶i̶s̵ ̷n̶o̵ ̶e̷s̸c̴a̵p̸e̷", face: "🕳️" },
     { minHorror: 12, maxHorror: 99, text: "R̴e̶m̷e̸m̴b̵e̶r̵ ̸w̸h̸a̵t̶ ̵y̶o̶u̵ ̵d̷i̶d̵", face: "💀" },
+    { minHorror: 12, maxHorror: 99, text: "T̸H̶E̵ ̵Q̶U̵I̶Z̷ ̵N̶E̵V̶E̷R̴ ̵E̵N̵D̶S̵", face: "♾️" },
+    { minHorror: 12, maxHorror: 99, text: "Y̴O̵U̶R̶ ̴S̶O̸U̷L̵ ̸I̶S̷ ̶O̷U̴R̶S̷", face: "👹" },
+    { minHorror: 12, maxHorror: 99, text: "W̸E̴L̷C̵O̵M̵E̴ ̷T̵O̸ ̸S̴I̵L̶E̵N̵T̷ ̶H̷I̶L̸L̶", face: "🏚️" },
+    { minHorror: 12, maxHorror: 99, text: "T̶O̵D̸D̵ ̴C̷A̵N̷T̴ ̸S̵A̴V̵E̶ ̵Y̴O̵U̷", face: "🔥" },
 ];
 
 function showBuddyHelper() {
