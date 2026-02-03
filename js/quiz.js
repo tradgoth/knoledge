@@ -3,6 +3,7 @@
 // Created by DarkAlessa1999 (Todd) & Buddy
 // Last update: November 14, 2003
 // Nothing weird in this code at all
+// v2.0 - NOW WITH MORE "FEATURES"
 // ========================================
 
 // Console messages for snoopy developers
@@ -11,6 +12,7 @@ console.log('%cYou found the quiz code! Buddy sees everything.', 'color: #ff99ff
 console.log('%cDont worry, the horror effects are totally normal quiz features', 'color: #cc66cc;');
 console.log('%cIf you see this after 2010, the quiz has leaked into your timeline', 'color: #ff6600;');
 console.log('%c...buddy is always watching...', 'color: #660000; font-size: 8px;');
+console.log('%cprotip: wait on the ending screen. trust me.', 'color: #333; font-size: 6px;');
 
 // ========================================
 // QUESTION BANK - TOTALLY FUN QUESTIONS
@@ -138,7 +140,14 @@ let gameState = {
     audioContext: null,
     eyePositions: [],
     writings: [],
-    bloodDrips: 0
+    bloodDrips: 0,
+    cracksOnScreen: 0,
+    postEndingPhase: 0,
+    trueEndingTimer: null,
+    endingShown: null,
+    popupsShown: 0,
+    crtEffectsActive: false,
+    buttonChaseActive: false
 };
 
 // ========================================
@@ -328,6 +337,140 @@ function playSound(type, options = {}) {
                 drone.stop(now + 2);
                 drone2.stop(now + 2);
                 break;
+
+            case 'glass':
+                // Glass breaking
+                const glassNoise = ctx.createBufferSource();
+                const glassGain = ctx.createGain();
+                const glassFilter = ctx.createBiquadFilter();
+                const glassBuffer = ctx.createBuffer(1, ctx.sampleRate * 0.3, ctx.sampleRate);
+                const glassData = glassBuffer.getChannelData(0);
+                for (let i = 0; i < glassBuffer.length; i++) {
+                    glassData[i] = (Math.random() * 2 - 1) * Math.exp(-i / (ctx.sampleRate * 0.05));
+                }
+                glassNoise.buffer = glassBuffer;
+                glassFilter.type = 'highpass';
+                glassFilter.frequency.setValueAtTime(2000, now);
+                glassGain.gain.setValueAtTime(0.4, now);
+                glassGain.gain.exponentialDecayTo(0.01, now + 0.3);
+                glassNoise.connect(glassFilter).connect(glassGain).connect(ctx.destination);
+                glassNoise.start(now);
+                break;
+
+            case 'cough':
+                // Coughing sound
+                for (let i = 0; i < 3; i++) {
+                    const coughNoise = ctx.createBufferSource();
+                    const coughGain = ctx.createGain();
+                    const coughFilter = ctx.createBiquadFilter();
+                    const coughBuffer = ctx.createBuffer(1, ctx.sampleRate * 0.15, ctx.sampleRate);
+                    const coughData = coughBuffer.getChannelData(0);
+                    for (let j = 0; j < coughBuffer.length; j++) {
+                        coughData[j] = (Math.random() * 2 - 1) * Math.sin(j / 100) * Math.exp(-j / (ctx.sampleRate * 0.05));
+                    }
+                    coughNoise.buffer = coughBuffer;
+                    coughFilter.type = 'bandpass';
+                    coughFilter.frequency.setValueAtTime(800, now + i * 0.4);
+                    coughGain.gain.setValueAtTime(0.2, now + i * 0.4);
+                    coughGain.gain.exponentialDecayTo(0.01, now + i * 0.4 + 0.15);
+                    coughNoise.connect(coughFilter).connect(coughGain).connect(ctx.destination);
+                    coughNoise.start(now + i * 0.4);
+                }
+                break;
+
+            case 'bubbles':
+                // Underwater bubbles
+                for (let i = 0; i < 10; i++) {
+                    const bubbleOsc = ctx.createOscillator();
+                    const bubbleGain = ctx.createGain();
+                    bubbleOsc.type = 'sine';
+                    bubbleOsc.frequency.setValueAtTime(300 + Math.random() * 500, now + i * 0.2);
+                    bubbleOsc.frequency.exponentialRampToValueAtTime(600 + Math.random() * 400, now + i * 0.2 + 0.1);
+                    bubbleGain.gain.setValueAtTime(0.05, now + i * 0.2);
+                    bubbleGain.gain.exponentialDecayTo(0.001, now + i * 0.2 + 0.15);
+                    bubbleOsc.connect(bubbleGain).connect(ctx.destination);
+                    bubbleOsc.start(now + i * 0.2);
+                    bubbleOsc.stop(now + i * 0.2 + 0.2);
+                }
+                break;
+
+            case 'chant':
+                // Ritual chanting
+                const chantFreqs = [110, 130, 165, 110, 98];
+                chantFreqs.forEach((freq, i) => {
+                    const chantOsc = ctx.createOscillator();
+                    const chantGain = ctx.createGain();
+                    chantOsc.type = 'sawtooth';
+                    chantOsc.frequency.setValueAtTime(freq, now + i * 0.5);
+                    chantGain.gain.setValueAtTime(0.08, now + i * 0.5);
+                    chantGain.gain.exponentialDecayTo(0.01, now + i * 0.5 + 0.4);
+                    chantOsc.connect(chantGain).connect(ctx.destination);
+                    chantOsc.start(now + i * 0.5);
+                    chantOsc.stop(now + i * 0.5 + 0.5);
+                });
+                break;
+
+            case 'bark':
+                // Dog bark
+                for (let i = 0; i < 3; i++) {
+                    const barkOsc = ctx.createOscillator();
+                    const barkGain = ctx.createGain();
+                    barkOsc.type = 'sawtooth';
+                    barkOsc.frequency.setValueAtTime(300, now + i * 0.3);
+                    barkOsc.frequency.exponentialRampToValueAtTime(150, now + i * 0.3 + 0.1);
+                    barkGain.gain.setValueAtTime(0.2, now + i * 0.3);
+                    barkGain.gain.exponentialDecayTo(0.01, now + i * 0.3 + 0.15);
+                    barkOsc.connect(barkGain).connect(ctx.destination);
+                    barkOsc.start(now + i * 0.3);
+                    barkOsc.stop(now + i * 0.3 + 0.2);
+                }
+                break;
+
+            case 'peaceful':
+                // Peaceful ambient
+                const peacefulChord = [261.63, 329.63, 392];
+                peacefulChord.forEach(freq => {
+                    const pOsc = ctx.createOscillator();
+                    const pGain = ctx.createGain();
+                    pOsc.type = 'sine';
+                    pOsc.frequency.setValueAtTime(freq, now);
+                    pGain.gain.setValueAtTime(0.05, now);
+                    pGain.gain.exponentialDecayTo(0.001, now + 3);
+                    pOsc.connect(pGain).connect(ctx.destination);
+                    pOsc.start(now);
+                    pOsc.stop(now + 3);
+                });
+                break;
+
+            case 'windows_error':
+                // Windows error ding
+                const winOsc = ctx.createOscillator();
+                const winGain = ctx.createGain();
+                winOsc.type = 'square';
+                winOsc.frequency.setValueAtTime(440, now);
+                winGain.gain.setValueAtTime(0.15, now);
+                winGain.gain.setValueAtTime(0, now + 0.1);
+                winGain.gain.setValueAtTime(0.15, now + 0.15);
+                winGain.gain.exponentialDecayTo(0.01, now + 0.3);
+                winOsc.connect(winGain).connect(ctx.destination);
+                winOsc.start(now);
+                winOsc.stop(now + 0.3);
+                break;
+
+            case 'degauss':
+                // CRT degauss warble
+                const degOsc = ctx.createOscillator();
+                const degGain = ctx.createGain();
+                degOsc.type = 'sine';
+                degOsc.frequency.setValueAtTime(60, now);
+                degOsc.frequency.linearRampToValueAtTime(120, now + 0.2);
+                degOsc.frequency.linearRampToValueAtTime(60, now + 0.5);
+                degGain.gain.setValueAtTime(0.2, now);
+                degGain.gain.exponentialDecayTo(0.01, now + 0.5);
+                degOsc.connect(degGain).connect(ctx.destination);
+                degOsc.start(now);
+                degOsc.stop(now + 0.5);
+                break;
         }
     } catch(e) {
         console.log('Audio error (this is fine):', e);
@@ -409,7 +552,11 @@ function addWallWriting() {
         "ITS YOUR FAULT",
         "KEEP PLAYING",
         "DONT STOP",
-        "BUDDY LOVES YOU"
+        "BUDDY LOVES YOU",
+        "ROOM 312",
+        "IN MY RESTLESS DREAMS",
+        "MARY...",
+        "THE DOG DID IT"
     ];
 
     const writing = document.createElement('div');
@@ -424,27 +571,28 @@ function addWallWriting() {
     setTimeout(() => writing.remove(), 5000 + Math.random() * 3000);
 }
 
+function addScreenCrack() {
+    if (gameState.cracksOnScreen >= 10) return;
+
+    const patterns = ['crack-pattern-1', 'crack-pattern-2', 'crack-pattern-3'];
+    const crack = document.createElement('div');
+    crack.className = 'screen-crack ' + patterns[Math.floor(Math.random() * patterns.length)];
+    crack.style.left = Math.random() * 80 + 10 + '%';
+    crack.style.top = Math.random() * 80 + 10 + '%';
+    crack.style.transform = `rotate(${Math.random() * 360}deg)`;
+
+    document.getElementById('cracksContainer').appendChild(crack);
+    gameState.cracksOnScreen++;
+
+    playSound('glass');
+}
+
 function triggerSubliminal() {
-    const symbols = ['', '', '', '', ''];
+    const symbols = ['', '', '', '', '', ''];
     const subliminal = document.getElementById('subliminal');
     subliminal.textContent = symbols[Math.floor(Math.random() * symbols.length)];
     subliminal.classList.add('flash');
     setTimeout(() => subliminal.classList.remove('flash'), 50);
-}
-
-function showFakeError() {
-    const errors = [
-        "ERROR: Mary.exe terminated unexpectedly",
-        "WARNING: Pyramid_Head.process approaching",
-        "FATAL: Cannot escape process 'SilentHill'",
-        "ERROR: guilt_suppression failed",
-        "WARNING: Buddy.exe is not responding (this is normal)",
-        "ERROR: sin_count overflow",
-        "CRITICAL: Otherworld transition imminent",
-        "WARNING: User consciousness fading"
-    ];
-
-    alert(errors[Math.floor(Math.random() * errors.length)]);
 }
 
 function flashColors() {
@@ -452,34 +600,271 @@ function flashColors() {
     setTimeout(() => document.body.classList.remove('invert-colors'), 100);
 }
 
+function triggerCRTEffect() {
+    const effects = ['degauss', 'flicker', 'tear', 'burnin'];
+    const effect = effects[Math.floor(Math.random() * effects.length)];
+
+    switch(effect) {
+        case 'degauss':
+            document.body.classList.add('degauss-wobble');
+            playSound('degauss');
+            setTimeout(() => document.body.classList.remove('degauss-wobble'), 500);
+            break;
+        case 'flicker':
+            document.body.classList.add('crt-flicker');
+            setTimeout(() => document.body.classList.remove('crt-flicker'), 2000);
+            break;
+        case 'tear':
+            const tear = document.getElementById('horizontalTear');
+            tear.style.display = 'block';
+            setTimeout(() => tear.style.display = 'none', 3000);
+            break;
+        case 'burnin':
+            document.getElementById('burnInGhost').classList.add('visible');
+            setTimeout(() => document.getElementById('burnInGhost').classList.remove('visible'), 5000);
+            break;
+    }
+}
+
+function triggerScreenMelt() {
+    const container = document.getElementById('mainContainer');
+    container.classList.add('screen-melt');
+    setTimeout(() => container.classList.remove('screen-melt'), 5000);
+}
+
+// ========================================
+// FAKE ERROR POPUPS
+// ========================================
+const fakeErrors = [
+    { title: "buddy.exe", icon: "", message: "Buddy.exe has performed an illegal operation and will be shut down.\n\nIf the problem persists, contact your system administrator (Buddy)." },
+    { title: "Mary.dll - Error", icon: "", message: "Cannot find Mary.dll\n\nThe specified module could not be found.\n\nShe was here. Now shes gone." },
+    { title: "Silent Hill", icon: "", message: "A fatal exception 0E has occurred at 0028:C0011312 in VXD PYRAMID_HEAD.\n\nThe current application will be terminated." },
+    { title: "Warning", icon: "", message: "ERROR: sin_count overflow\n\nYour sins exceed the maximum integer value.\n\nPlease repent and try again." },
+    { title: "System Error", icon: "", message: "Not enough memory to display horror.\n\nClose some applications and try again.\n\n(You cannot close this application)" },
+    { title: "VIRUS ALERT", icon: "", message: "VIRUS DETECTED: pyramid_head.worm\n\nYour soul has been infected.\n\nQuarantine is not possible." },
+    { title: "quiz.exe", icon: "", message: "Quiz has stopped responding.\n\nBuddy is thinking...\n\nPlease wait. Do not look away." },
+    { title: "Otherworld.sys", icon: "", message: "The Otherworld transition is imminent.\n\nPlease save all work.\n\n(There is nothing to save)" }
+];
+
+function showFakeError() {
+    if (gameState.popupsShown >= 3) return;
+
+    const error = fakeErrors[Math.floor(Math.random() * fakeErrors.length)];
+    const popup = document.createElement('div');
+    popup.className = 'fake-popup';
+    popup.style.left = (100 + Math.random() * 300) + 'px';
+    popup.style.top = (50 + Math.random() * 200) + 'px';
+
+    popup.innerHTML = `
+        <div class="popup-title">
+            <span>${error.icon} ${error.title}</span>
+            <div class="popup-close" onclick="this.parentElement.parentElement.remove(); gameState.popupsShown--;">×</div>
+        </div>
+        <div class="popup-content">
+            <span class="popup-icon">${error.icon}</span>
+            ${error.message.replace(/\n/g, '<br>')}
+        </div>
+        <div class="popup-buttons">
+            <button class="popup-btn" onclick="this.parentElement.parentElement.remove(); gameState.popupsShown--;">OK</button>
+            <button class="popup-btn" onclick="showFakeError(); this.parentElement.parentElement.remove();">Help</button>
+        </div>
+    `;
+
+    document.getElementById('popupsContainer').appendChild(popup);
+    gameState.popupsShown++;
+    playSound('windows_error');
+}
+
+function showFakeBSOD() {
+    const bsod = document.createElement('div');
+    bsod.className = 'jumpscare-bsod';
+    bsod.innerHTML = `
+        <div class="bsod-title">Windows</div>
+        <br><br>
+        A fatal exception 0E has occurred at 0028:C0011666 in VXD BUDDY(01) +
+        00001337. The current application will be terminated.<br><br>
+
+        *  Press any key to return to Silent Hill.<br>
+        *  Press CTRL+ALT+DEL to restart your consciousness.<br><br>
+
+        You will lose any unsaved information in all applications that are
+        currently running, including your sanity.<br><br>
+
+        <span style="color: #ffff00;">Press any key to continue _</span><br><br><br>
+
+        <span style="font-size: 10px;">BUDDY_MEMORY_CORRUPTION_DETECTED</span><br>
+        <span style="font-size: 10px;">STOP: 0x0000312 (ROOM_NOT_FOUND, MARY_MISSING, GUILT_OVERFLOW)</span>
+    `;
+
+    document.body.appendChild(bsod);
+    playSound('windows_error');
+
+    const handleKey = () => {
+        bsod.remove();
+        document.removeEventListener('keydown', handleKey);
+        document.removeEventListener('click', handleKey);
+    };
+
+    setTimeout(() => {
+        document.addEventListener('keydown', handleKey);
+        document.addEventListener('click', handleKey);
+    }, 1000);
+
+    setTimeout(() => bsod.remove(), 8000);
+}
+
+// ========================================
+// ENHANCED JUMPSCARES
+// ========================================
 function showJumpscare(type) {
     if (gameState.jumpscareShown) return;
     gameState.jumpscareShown = true;
 
     playSound('jumpscare');
 
-    const jumpscares = [
-        { image: '', text: 'I SEE YOU' },
-        { image: '', text: 'PUNISHMENT' },
-        { image: '', text: 'TIME FOR YOUR MEDICINE' },
-        { image: '', text: 'WHY DID YOU KILL ME' },
-        { image: '', text: 'THERE WAS A HOLE HERE' }
+    const jumpscareTypes = [
+        // 0: Eye
+        () => {
+            const overlay = document.createElement('div');
+            overlay.className = 'jumpscare';
+            overlay.innerHTML = `
+                <div class="jumpscare-image"></div>
+                <div class="jumpscare-text">I SEE YOU</div>
+            `;
+            return overlay;
+        },
+        // 1: Pyramid Head
+        () => {
+            const overlay = document.createElement('div');
+            overlay.className = 'jumpscare';
+            overlay.innerHTML = `
+                <div class="jumpscare-image"></div>
+                <div class="jumpscare-text">PUNISHMENT</div>
+            `;
+            return overlay;
+        },
+        // 2: Nurse
+        () => {
+            const overlay = document.createElement('div');
+            overlay.className = 'jumpscare';
+            overlay.innerHTML = `
+                <div class="jumpscare-image"></div>
+                <div class="jumpscare-text">TIME FOR YOUR MEDICINE</div>
+            `;
+            return overlay;
+        },
+        // 3: Mary
+        () => {
+            const overlay = document.createElement('div');
+            overlay.className = 'jumpscare';
+            overlay.style.background = '#000';
+            overlay.innerHTML = `
+                <div class="jumpscare-image" style="filter: grayscale(1);">👻</div>
+                <div class="jumpscare-text">WHY DID YOU KILL ME JAMES</div>
+            `;
+            return overlay;
+        },
+        // 4: Hole
+        () => {
+            const overlay = document.createElement('div');
+            overlay.className = 'jumpscare';
+            overlay.style.background = '#000';
+            overlay.innerHTML = `
+                <div class="jumpscare-image" style="font-size: 100px;"></div>
+                <div class="jumpscare-text">THERE WAS A HOLE HERE. ITS GONE NOW.</div>
+            `;
+            return overlay;
+        },
+        // 5: Corrupted Buddy
+        () => {
+            const overlay = document.createElement('div');
+            overlay.className = 'jumpscare-buddy-corrupt';
+            overlay.innerHTML = `
+                <div class="corrupt-buddy-face"></div>
+                <div class="corrupt-buddy-text">BUDDY LOVES YOU</div>
+            `;
+            return overlay;
+        },
+        // 6: Static Face
+        () => {
+            const overlay = document.createElement('div');
+            overlay.className = 'jumpscare-static-face';
+            overlay.innerHTML = `
+                <div class="static-face-emoji"></div>
+            `;
+            return overlay;
+        },
+        // 7: BSOD
+        () => {
+            showFakeBSOD();
+            return null;
+        },
+        // 8: Monitor Shatter
+        () => {
+            const overlay = document.createElement('div');
+            overlay.className = 'jumpscare-shatter';
+
+            // Create shatter pieces
+            for (let i = 0; i < 20; i++) {
+                const piece = document.createElement('div');
+                piece.className = 'shatter-piece';
+                piece.style.left = Math.random() * 100 + '%';
+                piece.style.top = Math.random() * 100 + '%';
+                piece.style.width = (20 + Math.random() * 80) + 'px';
+                piece.style.height = (20 + Math.random() * 80) + 'px';
+                piece.style.animationDelay = Math.random() * 0.5 + 's';
+                overlay.appendChild(piece);
+            }
+
+            playSound('glass');
+            return overlay;
+        },
+        // 9: Skull
+        () => {
+            const overlay = document.createElement('div');
+            overlay.className = 'jumpscare';
+            overlay.innerHTML = `
+                <div class="jumpscare-image"></div>
+                <div class="jumpscare-text">MEMENTO MORI</div>
+            `;
+            return overlay;
+        },
+        // 10: Devil
+        () => {
+            const overlay = document.createElement('div');
+            overlay.className = 'jumpscare';
+            overlay.style.background = '#220000';
+            overlay.innerHTML = `
+                <div class="jumpscare-image"></div>
+                <div class="jumpscare-text">THE RITUAL IS COMPLETE</div>
+            `;
+            return overlay;
+        },
+        // 11: Screaming Face
+        () => {
+            const overlay = document.createElement('div');
+            overlay.className = 'jumpscare';
+            overlay.innerHTML = `
+                <div class="jumpscare-image"></div>
+                <div class="jumpscare-text">AAAAAAAAAAAA</div>
+            `;
+            return overlay;
+        }
     ];
 
-    const scare = jumpscares[type % jumpscares.length];
+    const createOverlay = jumpscareTypes[type % jumpscareTypes.length];
+    const overlay = createOverlay();
 
-    const overlay = document.createElement('div');
-    overlay.className = 'jumpscare';
-    overlay.innerHTML = `
-        <div class="jumpscare-image">${scare.image}</div>
-        <div class="jumpscare-text">${scare.text}</div>
-    `;
-    document.body.appendChild(overlay);
+    if (overlay) {
+        document.body.appendChild(overlay);
 
-    setTimeout(() => {
-        overlay.remove();
+        setTimeout(() => {
+            overlay.remove();
+            gameState.jumpscareShown = false;
+        }, 800 + Math.random() * 400);
+    } else {
         gameState.jumpscareShown = false;
-    }, 800);
+    }
 }
 
 // ========================================
@@ -553,17 +938,34 @@ function updateHorrorEffects() {
         title.classList.add('very-corrupted');
         vhsLines.classList.add('visible');
         heartbeat.classList.add('visible');
+
+        // Start adding cracks
+        if (Math.random() < 0.3) addScreenCrack();
     }
     if (level >= 10) {
         container.classList.add('corrupted-5');
         radio.classList.add('visible');
+
+        // CRT effects become possible
+        if (!gameState.crtEffectsActive && Math.random() < 0.2) {
+            triggerCRTEffect();
+        }
     }
     if (level >= 12) {
         pyramidHead.classList.add('visible');
         mainContainer.classList.add('rotate-room');
+
+        // Screen melt possible
+        if (Math.random() < 0.1) triggerScreenMelt();
     }
     if (level >= 14) {
         nurse.classList.add('visible');
+
+        // Enable button chase
+        if (!gameState.buttonChaseActive) {
+            gameState.buttonChaseActive = true;
+            enableButtonChase();
+        }
     }
 
     // Update sidebar info
@@ -585,6 +987,29 @@ function updateHorrorEffects() {
     updateButtonStyles();
 }
 
+function enableButtonChase() {
+    document.addEventListener('mousemove', (e) => {
+        if (!gameState.buttonChaseActive || !gameState.isPlaying) return;
+
+        const buttons = document.querySelectorAll('.answer-btn');
+        buttons.forEach(btn => {
+            const rect = btn.getBoundingClientRect();
+            const btnCenterX = rect.left + rect.width / 2;
+            const btnCenterY = rect.top + rect.height / 2;
+            const dist = Math.hypot(e.clientX - btnCenterX, e.clientY - btnCenterY);
+
+            if (dist < 100) {
+                const angle = Math.atan2(btnCenterY - e.clientY, btnCenterX - e.clientX);
+                const pushX = Math.cos(angle) * (100 - dist) * 0.3;
+                const pushY = Math.sin(angle) * (100 - dist) * 0.3;
+                btn.style.transform = `translate(${pushX}px, ${pushY}px)`;
+            } else {
+                btn.style.transform = '';
+            }
+        });
+    });
+}
+
 function updateBuddySays() {
     const level = gameState.horrorLevel;
     const buddySays = document.getElementById('buddySays');
@@ -597,8 +1022,8 @@ function updateBuddySays() {
         "D̶o̶n̶t̶ ̶l̶o̶o̶k̶ ̶a̶w̶a̶y̶.̶.̶.̶",
         "Buddy sees what you did...",
         "WHY DID YOU STOP LOOKING AT THE SCREEN",
-        "T̸̨̛h̸̢̛e̵͙̓ ̶̣̈q̷̣̈́ū̸̢i̵͙̓ẓ̶̈ ̶̣̈ṇ̷̈́ĕ̸̢ṿ̶̈ȇ̸̢ṛ̶̈ ̶̣̈ê̸̢ṇ̶̈ḍ̶̈ṣ̷̈́",
-        "B̷̨̛Ụ̶̌D̷̰͝D̵̪̈Y̵̻͝ ̷̞̊L̵̰͒O̵̡̊V̸̳̊E̵̖͋S̵̱̐ ̷̣̀Y̵̗͝O̷̤͝U̵̢̔"
+        "T̸̨̛h̸̢̛e̵͙̓ ̶̣̈q̷̣̈́ū̸̢i̵͙̓ẓ̶̈ ̶̣̈ṇ̷̈́ĕ̸̢ṿ̶̈ȇ̸̢ṛ̶̈ ̶̣̈ê̸̢ṇ̶̈ḍ̶̈ṣ̷̈́",
+        "B̷̨̛Ụ̶̌D̷̰͝D̵̪̈Y̵̻͝ ̷̞̊L̵̰͒O̵̡̊V̸̳̊E̵̖͋S̵̱̐ ̷̣̀Y̵̗͝O̷̤͝U̵̢̔ F̷̨̛O̷̧̊R̶̥̈́E̴͙͒V̸̳̊E̵̖͋R̵̤̈"
     ];
 
     const index = Math.min(Math.floor(level / 2), messages.length - 1);
@@ -664,28 +1089,34 @@ function startRandomEvents() {
         const rand = Math.random();
         const level = gameState.horrorLevel;
 
-        if (rand < 0.15 && level >= 4) {
+        if (rand < 0.12 && level >= 4) {
             playSound('static');
-        } else if (rand < 0.25 && level >= 5) {
+        } else if (rand < 0.22 && level >= 5) {
             addWallWriting();
-        } else if (rand < 0.35 && level >= 6) {
+        } else if (rand < 0.32 && level >= 6) {
             addCornerEye();
-        } else if (rand < 0.45 && level >= 7) {
+        } else if (rand < 0.40 && level >= 7) {
             addBloodDrip();
-        } else if (rand < 0.5 && level >= 8) {
+        } else if (rand < 0.47 && level >= 8) {
             triggerSubliminal();
-        } else if (rand < 0.55 && level >= 9) {
+        } else if (rand < 0.53 && level >= 9) {
             playSound('whisper');
-        } else if (rand < 0.6 && level >= 10) {
+        } else if (rand < 0.58 && level >= 10) {
             flashColors();
-        } else if (rand < 0.62 && level >= 12) {
+        } else if (rand < 0.62 && level >= 10) {
+            triggerCRTEffect();
+        } else if (rand < 0.66 && level >= 11) {
+            addScreenCrack();
+        } else if (rand < 0.69 && level >= 12) {
             showFakeError();
-        } else if (rand < 0.65 && level >= 4) {
+        } else if (rand < 0.74 && level >= 4) {
             playSound('heartbeat');
-        } else if (rand < 0.7 && level >= 8) {
+        } else if (rand < 0.79 && level >= 8) {
             playSound('metal');
-        } else if (rand < 0.75 && level >= 6) {
+        } else if (rand < 0.84 && level >= 6) {
             playSound('drone');
+        } else if (rand < 0.87 && level >= 13) {
+            showJumpscare(Math.floor(Math.random() * 12));
         }
     }, 3000 - (gameState.horrorLevel * 150));
 }
@@ -708,13 +1139,15 @@ document.addEventListener('visibilitychange', () => {
                     "BUDDY NOTICED YOU LEFT",
                     "WHERE DID YOU GO?",
                     "DONT LEAVE BUDDY ALONE",
-                    "THE QUIZ MISSED YOU"
+                    "THE QUIZ MISSED YOU",
+                    "BUDDY WAS WORRIED",
+                    "YOU CANT ESCAPE BY LEAVING"
                 ];
 
                 alert(messages[Math.floor(Math.random() * messages.length)]);
 
                 if (gameState.paranoia >= 3 && Math.random() < 0.5) {
-                    showJumpscare(Math.floor(Math.random() * 5));
+                    showJumpscare(Math.floor(Math.random() * 12));
                 }
 
                 updateHorrorEffects();
@@ -765,8 +1198,15 @@ function startQuiz() {
         questions: getQuizQuestions(),
         isPlaying: true,
         hasEnded: false,
-        wrongAnswers: 0
+        wrongAnswers: 0,
+        cracksOnScreen: 0,
+        postEndingPhase: 0,
+        popupsShown: 0,
+        buttonChaseActive: false
     };
+
+    // Clear any existing cracks
+    document.getElementById('cracksContainer').innerHTML = '';
 
     document.getElementById('introScreen').style.display = 'none';
     document.getElementById('gameScreen').style.display = 'block';
@@ -841,9 +1281,14 @@ function selectAnswer(selected, correct) {
         gameState.horrorLevel += 1.5;
         playSound('wrong');
 
+        // Add crack on wrong answer at high horror
+        if (gameState.horrorLevel >= 8) {
+            addScreenCrack();
+        }
+
         // Chance of jumpscare on wrong answer at high horror
         if (gameState.horrorLevel >= 6 && Math.random() < 0.3) {
-            setTimeout(() => showJumpscare(Math.floor(Math.random() * 5)), 500);
+            setTimeout(() => showJumpscare(Math.floor(Math.random() * 12)), 500);
         }
     }
 
@@ -897,10 +1342,14 @@ function otherworldTransition() {
 
     // Accelerate horror
     gameState.horrorLevel += 2;
+
+    // Add cracks
+    addScreenCrack();
+    addScreenCrack();
 }
 
 // ========================================
-// ENDINGS
+// ENHANCED ENDINGS
 // ========================================
 function endGame() {
     gameState.hasEnded = true;
@@ -924,57 +1373,73 @@ function endGame() {
         ending = getRebirthEnding();
     }
 
-    showEnding(ending);
+    gameState.endingShown = ending.type;
+    playEndingSequence(ending);
 }
 
 function getLeaveEnding() {
     return {
+        type: 'leave',
         title: "LEAVE",
-        text: "You found the truth. You proved your KNOLEDGE. You can go now. The fog parts... Buddy waves goodbye... You wake up... It was just a quiz... wasnt it?",
+        text: "You found the truth. You proved your KNOLEDGE.",
+        subtext: "The fog parts... Buddy waves goodbye...",
+        finalText: "You wake up. It was just a quiz... wasnt it?",
         color: "#999999",
-        background: "linear-gradient(180deg, #333 0%, #111 100%)"
+        sound: 'peaceful'
     };
 }
 
 function getMariaEnding() {
     return {
+        type: 'maria',
         title: "MARIA",
-        text: "You couldnt let go. You found someone new. Buddy transforms into something familiar... She looks like Mary... but different... She coughs. The quiz repeats. Forever.",
+        text: "You couldnt let go. You found someone new.",
+        subtext: "Buddy transforms into something familiar...",
+        finalText: "She looks like Mary... but different... *cough*",
         color: "#ff6699",
-        background: "linear-gradient(180deg, #660033 0%, #330011 100%)"
+        sound: 'cough'
     };
 }
 
 function getInWaterEnding() {
     return {
+        type: 'water',
         title: "IN WATER",
-        text: "The weight was too much to bear. Buddy sinks into the lake... Your score sinks with him... The questions fade... The fog consumes... In your restless dreams, you see that quiz...",
+        text: "The weight was too much to bear.",
+        subtext: "Buddy sinks into the lake...",
+        finalText: "In your restless dreams, you see that quiz...",
         color: "#6699ff",
-        background: "linear-gradient(180deg, #003366 0%, #001133 100%)"
+        sound: 'bubbles'
     };
 }
 
 function getRebirthEnding() {
     return {
+        type: 'rebirth',
         title: "REBIRTH",
-        text: "The ritual demands everything. Your wrong answers have meaning. Buddy transcends. The quiz becomes something else. Press F5 to try the ritual again. And again. And again.",
+        text: "The ritual demands everything.",
+        subtext: "Your wrong answers have meaning...",
+        finalText: "Buddy transcends. Press F5 to try again. And again. And again.",
         color: "#ff3300",
-        background: "linear-gradient(180deg, #660000 0%, #220000 100%)"
+        sound: 'chant'
     };
 }
 
 function getDogEnding() {
     return {
+        type: 'dog',
         title: "DOG",
-        text: "You looked away too many times. Buddy reveals his true form... Its a Shiba Inu at a computer. The dog has been controlling everything. The quiz. The fog. Silent Hill itself. bark bark bark. Thank you for playing!",
+        text: "You looked away too many times.",
+        subtext: "Buddy reveals his true form...",
+        finalText: "Its a Shiba Inu at a computer. bark bark bark. Thank you for playing!",
         color: "#ffcc00",
-        background: "linear-gradient(180deg, #666600 0%, #333300 100%)",
+        sound: 'bark',
         special: true
     };
 }
 
-function showEnding(ending) {
-    // Clear effects
+function playEndingSequence(ending) {
+    // Clear horror effects
     document.getElementById('effectsContainer').innerHTML = '';
     document.getElementById('staticOverlay').classList.remove('visible');
     document.getElementById('vhsLines').classList.remove('visible');
@@ -982,38 +1447,386 @@ function showEnding(ending) {
     document.getElementById('pyramidHead').classList.remove('visible');
     document.getElementById('nurseFigure').classList.remove('visible');
     document.getElementById('radioStatic').classList.remove('visible');
+    document.getElementById('horizontalTear').style.display = 'none';
+    document.getElementById('burnInGhost').classList.remove('visible');
+    document.body.classList.remove('degauss-wobble', 'crt-flicker');
 
-    const endingScreen = document.getElementById('endingScreen');
-    endingScreen.style.display = 'flex';
-    endingScreen.innerHTML = `
-        <div class="ending-screen" style="background: ${ending.background};">
-            <div class="ending-title" style="color: ${ending.color};">${ending.title}</div>
-            <div class="ending-text" style="color: ${ending.color};">${ending.text}</div>
-            <p style="margin-top: 40px; color: #666;">
-                Final Score: ${gameState.score}/13 (${Math.round((gameState.score/13)*100)}%)<br>
-                Paranoia Level: ${gameState.paranoia}<br>
-                Horror Level: ${Math.round(gameState.horrorLevel)}
-            </p>
-            <button class="btn-old" onclick="location.reload()" style="margin-top: 20px;">
-                ${ending.special ? 'pet the dog' : 'TRY AGAIN??'}
-            </button>
-            <p style="margin-top: 20px; font-size: 12px; color: #444;">
-                <a href="index.html" style="color: #666;">Return to main site</a>
-            </p>
-        </div>
-    `;
-
+    // Hide quiz interface
     document.getElementById('gameScreen').style.display = 'none';
     document.getElementById('quizContainer').style.display = 'none';
 
-    // Special dog ending music (sort of)
-    if (ending.special) {
-        for (let i = 0; i < 10; i++) {
-            setTimeout(() => playSound('correct'), i * 200);
-        }
-    } else {
-        playSound('drone');
+    // Play appropriate sound
+    playSound(ending.sound);
+
+    // Create ending container
+    const endingScreen = document.getElementById('endingScreen');
+    endingScreen.style.display = 'flex';
+
+    // Build ending based on type
+    switch(ending.type) {
+        case 'leave':
+            buildLeaveEnding(ending);
+            break;
+        case 'maria':
+            buildMariaEnding(ending);
+            break;
+        case 'water':
+            buildWaterEnding(ending);
+            break;
+        case 'rebirth':
+            buildRebirthEnding(ending);
+            break;
+        case 'dog':
+            buildDogEnding(ending);
+            break;
     }
+
+    // Start post-ending horror timer (except for dog ending)
+    if (!ending.special) {
+        gameState.trueEndingTimer = setTimeout(() => {
+            startPostEndingHorror();
+        }, 10000);
+    }
+}
+
+function buildLeaveEnding(ending) {
+    const endingScreen = document.getElementById('endingScreen');
+    endingScreen.innerHTML = `
+        <div class="ending-screen ending-leave">
+            <div class="ending-title" style="color: ${ending.color};">${ending.title}</div>
+            <div style="font-size: 80px; margin: 20px 0;" class="buddy-wave"></div>
+            <div class="ending-text" style="color: ${ending.color};">
+                ${ending.text}<br><br>
+                <i>${ending.subtext}</i><br><br>
+                ${ending.finalText}
+            </div>
+            ${buildEndingStats()}
+            ${buildEndingButtons(ending)}
+        </div>
+    `;
+}
+
+function buildMariaEnding(ending) {
+    const endingScreen = document.getElementById('endingScreen');
+    endingScreen.innerHTML = `
+        <div class="ending-screen ending-maria">
+            <div class="ending-title" style="color: ${ending.color};">${ending.title}</div>
+            <div class="maria-silhouette"></div>
+            <div class="ending-text" style="color: ${ending.color};">
+                ${ending.text}<br><br>
+                <i>${ending.subtext}</i><br><br>
+                <span class="maria-cough">${ending.finalText}</span>
+            </div>
+            ${buildEndingStats()}
+            ${buildEndingButtons(ending)}
+        </div>
+    `;
+
+    // Trigger cough animation
+    setTimeout(() => {
+        const cough = document.querySelector('.maria-cough');
+        if (cough) {
+            cough.classList.add('maria-cough');
+            playSound('cough');
+        }
+    }, 3000);
+}
+
+function buildWaterEnding(ending) {
+    const endingScreen = document.getElementById('endingScreen');
+    endingScreen.innerHTML = `
+        <div class="ending-screen ending-water">
+            <div class="water-rising"></div>
+            <div class="ending-title sinking-text" style="color: ${ending.color};">${ending.title}</div>
+            <div class="ending-text sinking-text" style="color: ${ending.color};">
+                ${ending.text}<br><br>
+                <i>${ending.subtext}</i><br><br>
+                ${ending.finalText}
+            </div>
+            ${buildEndingStats()}
+            ${buildEndingButtons(ending)}
+            <div id="bubbleContainer"></div>
+        </div>
+    `;
+
+    // Add bubbles
+    const bubbleContainer = document.getElementById('bubbleContainer');
+    for (let i = 0; i < 20; i++) {
+        setTimeout(() => {
+            const bubble = document.createElement('div');
+            bubble.className = 'bubble';
+            bubble.style.left = Math.random() * 100 + '%';
+            bubble.style.animationDelay = Math.random() * 2 + 's';
+            bubbleContainer.appendChild(bubble);
+        }, i * 500);
+    }
+}
+
+function buildRebirthEnding(ending) {
+    const endingScreen = document.getElementById('endingScreen');
+    endingScreen.innerHTML = `
+        <div class="ending-screen ending-rebirth">
+            <div class="lightning-flash"></div>
+            <div class="ritual-circle"></div>
+            <div class="ending-title" style="color: ${ending.color}; position: relative; z-index: 10;">${ending.title}</div>
+            <div class="ending-text" style="color: ${ending.color}; position: relative; z-index: 10;">
+                ${ending.text}<br><br>
+                <i>${ending.subtext}</i><br><br>
+                ${ending.finalText}
+            </div>
+            ${buildEndingStats()}
+            ${buildEndingButtons(ending)}
+        </div>
+    `;
+}
+
+function buildDogEnding(ending) {
+    const endingScreen = document.getElementById('endingScreen');
+    endingScreen.innerHTML = `
+        <div class="ending-screen ending-dog">
+            <div class="ending-title" style="color: ${ending.color};">${ending.title}</div>
+            <div class="dog-dance"></div>
+            <div class="ending-text" style="color: #333;">
+                ${ending.text}<br><br>
+                <i>${ending.subtext}</i><br><br>
+                ${ending.finalText}
+            </div>
+            <div class="credits-roll" id="dogCredits">
+                <p><b>CREDITS</b></p>
+                <p>Quiz Master: Buddy (actually a dog)</p>
+                <p>Horror Effects: The Otherworld</p>
+                <p>Music: Silent Hill (in our hearts)</p>
+                <p>Web Design: DarkAlessa1999 (Todd)</p>
+                <p>Special Thanks: Konami</p>
+                <p>The Dog: bark bark bark</p>
+                <p>&nbsp;</p>
+                <p><i>No mascots were harmed in the making of this quiz</i></p>
+                <p><i>The dog was in control the whole time</i></p>
+                <p>&nbsp;</p>
+                <p>Thank you for playing!!</p>
+            </div>
+            ${buildEndingStats()}
+            <button class="btn-old" onclick="location.reload()" style="margin-top: 20px; font-size: 20px;">
+                pet the dog
+            </button>
+            <p style="margin-top: 20px; font-size: 12px; color: #666;">
+                <a href="index.html" style="color: #996600;">Return to main site</a>
+            </p>
+            <div id="confettiContainer"></div>
+        </div>
+    `;
+
+    // Add confetti
+    const confettiColors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
+    for (let i = 0; i < 50; i++) {
+        setTimeout(() => {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            confetti.style.left = Math.random() * 100 + '%';
+            confetti.style.background = confettiColors[Math.floor(Math.random() * confettiColors.length)];
+            confetti.style.animationDelay = Math.random() * 2 + 's';
+            document.getElementById('confettiContainer').appendChild(confetti);
+        }, i * 100);
+    }
+
+    // Happy sounds
+    for (let i = 0; i < 10; i++) {
+        setTimeout(() => playSound('correct'), i * 300);
+    }
+}
+
+function buildEndingStats() {
+    return `
+        <p style="margin-top: 40px; color: #666; font-size: 14px;">
+            Final Score: ${gameState.score}/13 (${Math.round((gameState.score/13)*100)}%)<br>
+            Paranoia Level: ${gameState.paranoia}<br>
+            Horror Level: ${Math.round(gameState.horrorLevel)}<br>
+            Screen Cracks: ${gameState.cracksOnScreen}
+        </p>
+    `;
+}
+
+function buildEndingButtons(ending) {
+    return `
+        <button class="btn-old" onclick="location.reload()" style="margin-top: 20px;" id="playAgainBtn">
+            TRY AGAIN??
+        </button>
+        <p style="margin-top: 20px; font-size: 12px; color: #444;">
+            <a href="index.html" style="color: #666;">Return to main site</a>
+            <br><br>
+            <span style="color: #333; font-size: 10px;">(...wait here for a moment...)</span>
+        </p>
+    `;
+}
+
+// ========================================
+// POST-ENDING HORROR
+// ========================================
+function startPostEndingHorror() {
+    gameState.postEndingPhase = 1;
+
+    // Phase 1: Buddy watching
+    setTimeout(() => {
+        showBuddyWatching();
+    }, 500);
+}
+
+function showBuddyWatching() {
+    const overlay = document.createElement('div');
+    overlay.className = 'buddy-watching-overlay';
+    overlay.id = 'buddyWatchingOverlay';
+    overlay.innerHTML = `
+        <div class="buddy-watching-face"></div>
+        <div class="watching-text">Did you think it was over?</div>
+    `;
+
+    document.body.appendChild(overlay);
+    playSound('whisper');
+
+    setTimeout(() => {
+        overlay.remove();
+        gameState.postEndingPhase = 2;
+        continuePostEndingHorror();
+    }, 4000);
+}
+
+function continuePostEndingHorror() {
+    // Phase 2: Glitch and static
+    const endingScreen = document.getElementById('endingScreen');
+    if (!endingScreen) return;
+
+    // Random glitches
+    let glitchCount = 0;
+    const glitchInterval = setInterval(() => {
+        if (glitchCount >= 5) {
+            clearInterval(glitchInterval);
+            gameState.postEndingPhase = 3;
+            desperatePhase();
+            return;
+        }
+
+        flashColors();
+        playSound('glitch');
+        glitchCount++;
+    }, 2000);
+}
+
+function desperatePhase() {
+    // Make the "TRY AGAIN" button desperate
+    const btn = document.getElementById('playAgainBtn');
+    if (!btn) return;
+
+    const desperateTexts = [
+        "TRY AGAIN??",
+        "Please try again?",
+        "PLAY AGAIN",
+        "Buddy wants you to play again",
+        "DONT LEAVE",
+        "P̷L̵A̷Y̸ ̵A̶G̶A̷I̸N̷",
+        "THE QUIZ MISSES YOU"
+    ];
+
+    let textIndex = 0;
+    const textInterval = setInterval(() => {
+        if (textIndex >= desperateTexts.length - 1) {
+            btn.textContent = desperateTexts[desperateTexts.length - 1];
+            btn.classList.add('desperate-button');
+            clearInterval(textInterval);
+
+            // Start button chase
+            startButtonChase(btn);
+
+            // Start true ending timer
+            setTimeout(() => {
+                showTrueEnding();
+            }, 30000);
+            return;
+        }
+
+        btn.textContent = desperateTexts[textIndex];
+        playSound('glitch');
+        textIndex++;
+    }, 3000);
+}
+
+function startButtonChase(btn) {
+    let chaseActive = true;
+
+    document.addEventListener('mousemove', function chase(e) {
+        if (!chaseActive) {
+            document.removeEventListener('mousemove', chase);
+            return;
+        }
+
+        const rect = btn.getBoundingClientRect();
+        const btnCenterX = rect.left + rect.width / 2;
+        const btnCenterY = rect.top + rect.height / 2;
+        const dist = Math.hypot(e.clientX - btnCenterX, e.clientY - btnCenterY);
+
+        if (dist < 150) {
+            // Move button away from cursor
+            const angle = Math.atan2(btnCenterY - e.clientY, btnCenterX - e.clientX);
+            const moveX = Math.cos(angle) * 50;
+            const moveY = Math.sin(angle) * 50;
+
+            const currentLeft = parseFloat(btn.style.marginLeft || 0);
+            const currentTop = parseFloat(btn.style.marginTop || 0);
+
+            btn.style.marginLeft = (currentLeft + moveX) + 'px';
+            btn.style.marginTop = (currentTop + moveY) + 'px';
+        }
+    });
+
+    // Stop chase after a while
+    setTimeout(() => {
+        chaseActive = false;
+        btn.style.marginLeft = '0';
+        btn.style.marginTop = '0';
+    }, 20000);
+}
+
+function showTrueEnding() {
+    // Only show if player waited
+    if (gameState.postEndingPhase < 3) return;
+
+    const trueEnding = document.createElement('div');
+    trueEnding.className = 'true-ending';
+    trueEnding.innerHTML = `
+        <div class="true-ending-text">
+            <p>You waited.</p>
+            <p>&nbsp;</p>
+            <p>Most people dont wait.</p>
+            <p>&nbsp;</p>
+            <p>The fog clears. Not the fog of Silent Hill.</p>
+            <p>The fog in your mind.</p>
+            <p>&nbsp;</p>
+            <p>Buddy was never real.</p>
+            <p>The quiz was never real.</p>
+            <p>But you played anyway.</p>
+            <p>&nbsp;</p>
+            <p>In my restless dreams, I see that town.</p>
+            <p>Silent Hill.</p>
+            <p>&nbsp;</p>
+            <p>Thank you for playing Todds Super Fun Quiz.</p>
+            <p>The fog will remember you.</p>
+            <p>&nbsp;</p>
+            <p style="color: #ff0000; margin-top: 30px;">TRUE ENDING: PATIENCE</p>
+            <p>&nbsp;</p>
+            <p style="font-size: 10px; color: #444;">
+                Created by DarkAlessa1999 (Todd)<br>
+                November 2003<br>
+                <br>
+                "The fear of blood tends to create fear for the flesh."
+            </p>
+            <p>&nbsp;</p>
+            <button class="btn-old" onclick="location.reload()" style="margin-top: 20px;">
+                Return to the Beginning
+            </button>
+        </div>
+    `;
+
+    document.body.appendChild(trueEnding);
+    playSound('peaceful');
 }
 
 // ========================================
@@ -1026,6 +1839,8 @@ document.addEventListener('mousemove', (e) => {
     const pupilRight = document.getElementById('pupilRight');
 
     const mascot = document.getElementById('mascot');
+    if (!mascot) return;
+
     const rect = mascot.getBoundingClientRect();
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
@@ -1036,8 +1851,8 @@ document.addEventListener('mousemove', (e) => {
     const offsetX = Math.cos(angle) * distance;
     const offsetY = Math.sin(angle) * distance;
 
-    pupilLeft.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
-    pupilRight.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+    if (pupilLeft) pupilLeft.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+    if (pupilRight) pupilRight.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
 });
 
 // ========================================
@@ -1046,6 +1861,7 @@ document.addEventListener('mousemove', (e) => {
 window.addEventListener('load', () => {
     console.log('%cQuiz loaded. Buddy is ready.', 'color: #ff66cc;');
     console.log('%c...the fog awaits...', 'color: #660000; font-size: 8px;');
+    console.log('%cHint: patience is rewarded at the end...', 'color: #333; font-size: 6px;');
 });
 
 // Warn before leaving
@@ -1053,5 +1869,13 @@ window.addEventListener('beforeunload', (e) => {
     if (gameState.isPlaying && !gameState.hasEnded && gameState.horrorLevel >= 4) {
         e.preventDefault();
         e.returnValue = 'Buddy doesnt want you to leave...';
+    }
+});
+
+// Prevent right-click at high horror
+document.addEventListener('contextmenu', (e) => {
+    if (gameState.horrorLevel >= 8) {
+        e.preventDefault();
+        alert('Right click has been disabled by Buddy\n\n(theres nothing to see here anyway)');
     }
 });
