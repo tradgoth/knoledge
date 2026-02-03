@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>~*~BUDDYS SUPER FUN QUIZ~*~ - Test Your Silent Hill KNOLEDGE!! (OFFICIAL)</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Quiz-specific styles */
+        .quiz-container {
+            background: linear-gradient(135deg, #ffccff, #ffaaff, #ff99ff);
+            border: 5px ridge #ff66ff;
+            padding: 20px;
+            text-align: center;
+            transition: all 2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quiz-container.corrupted-1 {
+            background: linear-gradient(135deg, #eeccee, #ddaadd, #cc99cc);
+            border-color: #aa66aa;
+        }
+
+        .quiz-container.corrupted-2 {
+            background: linear-gradient(135deg, #aa8888, #997777, #886666);
+            border-color: #664444;
+        }
+
+        .quiz-container.corrupted-3 {
+            background: linear-gradient(135deg, #554444, #443333, #332222);
+            border-color: #440000;
+        }
+
+        .quiz-container.corrupted-4 {
+            background: linear-gradient(135deg, #220000, #110000, #000000);
+            border-color: #660000;
+            box-shadow: inset 0 0 100px rgba(255,0,0,0.3);
+        }
+
+        .quiz-container.corrupted-5 {
+            background: #000;
+            border-color: #330000;
+            box-shadow: inset 0 0 150px rgba(255,0,0,0.5);
+            animation: roomShake 0.1s infinite;
+        }
+
+        @keyframes roomShake {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(-2px, 1px) rotate(-0.5deg); }
+            50% { transform: translate(1px, -2px) rotate(0.5deg); }
+            75% { transform: translate(-1px, 2px) rotate(-0.5deg); }
+        }
+
+        .mascot {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 20px;
+            position: relative;
+            transition: all 1s ease;
+        }
+
+        .mascot-face {
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, #ffaacc 0%, #ff88aa 100%);
+            border-radius: 50%;
+            position: relative;
+            border: 4px solid #ff6699;
+            box-shadow: 0 0 20px rgba(255,150,200,0.5);
+            transition: all 1s ease;
+        }
+
+        .mascot-face.corrupted {
+            background: radial-gradient(circle, #996666 0%, #664444 100%);
+            border-color: #440000;
+            box-shadow: 0 0 20px rgba(255,0,0,0.5);
+        }
+
+        .mascot-face.very-corrupted {
+            background: radial-gradient(circle, #442222 0%, #220000 100%);
+            border-color: #660000;
+            animation: mascotPulse 2s infinite;
+        }
+
+        @keyframes mascotPulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(255,0,0,0.5); }
+            50% { box-shadow: 0 0 40px rgba(255,0,0,0.8); }
+        }
+
+        .mascot-eye {
+            width: 25px;
+            height: 25px;
+            background: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 40px;
+        }
+
+        .mascot-eye.left { left: 35px; }
+        .mascot-eye.right { right: 35px; }
+
+        .mascot-pupil {
+            width: 12px;
+            height: 12px;
+            background: #333;
+            border-radius: 50%;
+            position: absolute;
+            top: 6px;
+            left: 6px;
+            transition: all 0.1s ease;
+        }
+
+        .mascot-eye.corrupted .mascot-pupil {
+            background: #ff0000;
+            box-shadow: 0 0 10px #ff0000;
+        }
+
+        .mascot-mouth {
+            width: 40px;
+            height: 20px;
+            border: 3px solid #ff6699;
+            border-top: none;
+            border-radius: 0 0 40px 40px;
+            position: absolute;
+            bottom: 35px;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: all 1s ease;
+        }
+
+        .mascot-mouth.corrupted {
+            border-color: #660000;
+            height: 30px;
+            width: 50px;
+        }
+
+        .mascot-mouth.very-corrupted {
+            border-color: #ff0000;
+            height: 40px;
+            width: 60px;
+            animation: mouthTwitch 0.5s infinite;
+        }
+
+        @keyframes mouthTwitch {
+            0%, 100% { transform: translateX(-50%) scaleY(1); }
+            50% { transform: translateX(-50%) scaleY(1.2); }
+        }
+
+        .quiz-title {
+            font-family: "Comic Sans MS", cursive;
+            font-size: 32px;
+            color: #ff66cc;
+            text-shadow: 2px 2px #fff, -1px -1px #ff99ff;
+            transition: all 1s ease;
+        }
+
+        .quiz-title.corrupted {
+            color: #996666;
+            text-shadow: 2px 2px #000;
+        }
+
+        .quiz-title.very-corrupted {
+            color: #ff0000;
+            text-shadow: 2px 2px #000, 0 0 10px #ff0000;
+            animation: titleGlitch 0.3s infinite;
+        }
+
+        @keyframes titleGlitch {
+            0%, 100% { transform: translate(0); filter: none; }
+            20% { transform: translate(-2px, 1px); filter: hue-rotate(90deg); }
+            40% { transform: translate(2px, -1px); filter: hue-rotate(180deg); }
+            60% { transform: translate(-1px, -2px); filter: hue-rotate(270deg); }
+            80% { transform: translate(1px, 2px); filter: none; }
+        }
+
+        .answer-btn {
+            background: linear-gradient(180deg, #ffccff, #ff99ff);
+            border: 3px outset #ff66ff;
+            padding: 10px 20px;
+            margin: 5px;
+            font-family: "Comic Sans MS", cursive;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #660066;
+        }
+
+        .answer-btn:hover {
+            background: linear-gradient(180deg, #ffddff, #ffaaff);
+            transform: scale(1.05);
+        }
+
+        .answer-btn.corrupted {
+            background: linear-gradient(180deg, #886666, #664444);
+            border-color: #440000;
+            color: #ffcccc;
+        }
+
+        .answer-btn.very-corrupted {
+            background: linear-gradient(180deg, #440000, #220000);
+            border-color: #660000;
+            color: #ff6666;
+            animation: btnCorrupt 2s infinite;
+        }
+
+        @keyframes btnCorrupt {
+            0%, 100% { transform: scale(1) skewX(0deg); }
+            50% { transform: scale(1.02) skewX(-2deg); }
+        }
+
+        .sparkle {
+            position: absolute;
+            font-size: 20px;
+            animation: sparkle 1s ease-out forwards;
+            pointer-events: none;
+        }
+
+        @keyframes sparkle {
+            0% { transform: scale(0) rotate(0deg); opacity: 1; }
+            100% { transform: scale(1.5) rotate(180deg); opacity: 0; }
+        }
+
+        .blood-drip {
+            position: fixed;
+            top: 0;
+            width: 8px;
+            background: linear-gradient(180deg, #660000, #aa0000, #660000);
+            border-radius: 0 0 4px 4px;
+            animation: drip 4s ease-in forwards;
+            z-index: 999;
+        }
+
+        @keyframes drip {
+            0% { height: 0; }
+            100% { height: 100vh; }
+        }
+
+        .static-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0;
+            z-index: 998;
+            background: url('data:image/svg+xml,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3"/></filter><rect width="100%" height="100%" filter="url(%23n)"/></svg>');
+            mix-blend-mode: overlay;
+            transition: opacity 0.5s ease;
+        }
+
+        .static-overlay.visible {
+            opacity: 0.3;
+            animation: staticFlicker 0.1s infinite;
+        }
+
+        @keyframes staticFlicker {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 0.4; }
+        }
+
+        .vhs-lines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0;
+            z-index: 997;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(0,0,0,0.1) 2px,
+                rgba(0,0,0,0.1) 4px
+            );
+            transition: opacity 0.5s ease;
+        }
+
+        .vhs-lines.visible {
+            opacity: 1;
+        }
+
+        .wall-writing {
+            position: fixed;
+            font-family: "Brush Script MT", cursive;
+            font-size: 40px;
+            color: #660000;
+            text-shadow: 2px 2px 4px #000;
+            animation: writeAppear 0.5s ease-out forwards;
+            z-index: 500;
+            pointer-events: none;
+        }
+
+        @keyframes writeAppear {
+            0% { opacity: 0; transform: scale(0.8); }
+            100% { opacity: 0.8; transform: scale(1); }
+        }
+
+        .jumpscare {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #000;
+            z-index: 10000;
+            animation: jumpscareFlash 0.1s infinite;
+        }
+
+        @keyframes jumpscareFlash {
+            0%, 100% { background: #000; }
+            50% { background: #220000; }
+        }
+
+        .jumpscare-image {
+            font-size: 200px;
+            animation: jumpscarePulse 0.1s infinite;
+        }
+
+        @keyframes jumpscarePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .jumpscare-text {
+            position: absolute;
+            bottom: 20%;
+            color: #ff0000;
+            font-size: 48px;
+            font-family: "Courier New", monospace;
+            text-shadow: 0 0 20px #ff0000;
+            animation: textGlitch 0.2s infinite;
+        }
+
+        @keyframes textGlitch {
+            0% { transform: translate(0); }
+            25% { transform: translate(-5px, 3px); }
+            50% { transform: translate(3px, -5px); }
+            75% { transform: translate(-3px, -3px); }
+            100% { transform: translate(5px, 5px); }
+        }
+
+        .corner-eye {
+            position: fixed;
+            font-size: 30px;
+            animation: eyeGlow 2s infinite;
+            z-index: 600;
+        }
+
+        @keyframes eyeGlow {
+            0%, 100% { text-shadow: 0 0 10px #ff0000; opacity: 0.5; }
+            50% { text-shadow: 0 0 20px #ff0000; opacity: 1; }
+        }
+
+        .reaching-hand {
+            position: fixed;
+            font-size: 60px;
+            z-index: 500;
+            animation: handReach 2s ease-out forwards;
+        }
+
+        @keyframes handReach {
+            0% { opacity: 0; transform: translateY(100px); }
+            100% { opacity: 0.7; transform: translateY(0); }
+        }
+
+        .question-text {
+            font-size: 24px;
+            margin: 20px 0;
+            padding: 15px;
+            min-height: 60px;
+            transition: all 1s ease;
+        }
+
+        .question-text.corrupted {
+            font-family: "Courier New", monospace;
+            color: #ff0000;
+            text-shadow: 0 0 5px #ff0000;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background: #ffccff;
+            border: 2px inset #ff66ff;
+            margin: 10px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ff99ff, #ff66cc);
+            transition: width 0.5s ease;
+        }
+
+        .progress-fill.corrupted {
+            background: linear-gradient(90deg, #660000, #aa0000);
+        }
+
+        .score-display {
+            font-size: 20px;
+            color: #ff66cc;
+            transition: all 1s ease;
+        }
+
+        .score-display.corrupted {
+            color: #ff0000;
+            text-shadow: 0 0 10px #ff0000;
+        }
+
+        .ending-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            animation: fadeIn 2s ease;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .ending-title {
+            font-size: 64px;
+            margin-bottom: 20px;
+            text-shadow: 0 0 30px currentColor;
+        }
+
+        .ending-text {
+            font-size: 24px;
+            max-width: 600px;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        .intro-screen {
+            text-align: center;
+        }
+
+        .intro-screen h2 {
+            font-family: "Comic Sans MS", cursive;
+            color: #ff66cc;
+            font-size: 28px;
+            text-shadow: 2px 2px #fff;
+            border: none;
+        }
+
+        .start-btn {
+            font-size: 24px;
+            padding: 15px 40px;
+            background: linear-gradient(180deg, #ffccff, #ff99ff);
+            border: 4px outset #ff66ff;
+            color: #660066;
+            font-family: "Comic Sans MS", cursive;
+            cursor: pointer;
+            margin-top: 20px;
+            animation: btnBounce 1s ease infinite;
+        }
+
+        @keyframes btnBounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .start-btn:hover {
+            background: linear-gradient(180deg, #ffddff, #ffaaff);
+        }
+
+        .typewriter {
+            overflow: hidden;
+            border-right: 2px solid #ff0000;
+            animation: cursor 0.7s step-end infinite;
+        }
+
+        @keyframes cursor {
+            0%, 100% { border-color: transparent; }
+            50% { border-color: #ff0000; }
+        }
+
+        .third-eye {
+            position: absolute;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 20px;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        .third-eye.visible {
+            opacity: 1;
+            animation: thirdEyePulse 1s infinite;
+        }
+
+        @keyframes thirdEyePulse {
+            0%, 100% { text-shadow: 0 0 10px #ff0000; }
+            50% { text-shadow: 0 0 20px #ff0000, 0 0 30px #ff0000; }
+        }
+
+        .blood-tears {
+            position: absolute;
+            width: 4px;
+            height: 0;
+            background: linear-gradient(180deg, #aa0000, #660000);
+            border-radius: 0 0 2px 2px;
+            transition: height 2s ease;
+        }
+
+        .blood-tears.left {
+            left: 45px;
+            top: 65px;
+        }
+
+        .blood-tears.right {
+            right: 45px;
+            top: 65px;
+        }
+
+        .blood-tears.visible {
+            height: 50px;
+        }
+
+        .pyramid-head {
+            position: fixed;
+            bottom: -200px;
+            right: 50px;
+            font-size: 150px;
+            transition: bottom 3s ease;
+            z-index: 800;
+            opacity: 0.8;
+        }
+
+        .pyramid-head.visible {
+            bottom: 0;
+        }
+
+        .nurse-figure {
+            position: fixed;
+            left: -100px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 100px;
+            transition: left 2s ease;
+            z-index: 800;
+            opacity: 0.8;
+        }
+
+        .nurse-figure.visible {
+            left: 20px;
+        }
+
+        .radio-static {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: #333;
+            border: 3px outset #666;
+            padding: 10px 20px;
+            color: #00ff00;
+            font-family: "Courier New", monospace;
+            font-size: 12px;
+            z-index: 700;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        .radio-static.visible {
+            opacity: 1;
+        }
+
+        .radio-bar {
+            width: 100px;
+            height: 8px;
+            background: #111;
+            margin-top: 5px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .radio-fill {
+            height: 100%;
+            background: #ff0000;
+            animation: radioNoise 0.2s infinite;
+        }
+
+        @keyframes radioNoise {
+            0% { width: 20%; }
+            25% { width: 80%; }
+            50% { width: 40%; }
+            75% { width: 90%; }
+            100% { width: 30%; }
+        }
+
+        .heartbeat-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 600;
+            box-shadow: inset 0 0 100px rgba(255,0,0,0.3);
+            opacity: 0;
+            animation: heartbeat 1s ease infinite;
+        }
+
+        .heartbeat-overlay.visible {
+            opacity: 1;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { box-shadow: inset 0 0 50px rgba(255,0,0,0.2); }
+            10% { box-shadow: inset 0 0 100px rgba(255,0,0,0.4); }
+            20% { box-shadow: inset 0 0 50px rgba(255,0,0,0.2); }
+            30% { box-shadow: inset 0 0 80px rgba(255,0,0,0.35); }
+            40% { box-shadow: inset 0 0 50px rgba(255,0,0,0.2); }
+        }
+
+        .subliminal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 200px;
+            z-index: 9000;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .subliminal.flash {
+            animation: subliminalFlash 0.04s ease;
+        }
+
+        @keyframes subliminalFlash {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+
+        .rotate-room {
+            animation: rotateRoom 10s ease infinite;
+        }
+
+        @keyframes rotateRoom {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(3deg); }
+        }
+
+        .invert-colors {
+            filter: invert(1) hue-rotate(180deg);
+        }
+
+        .mary-letter {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #f5f0e6;
+            padding: 30px;
+            max-width: 500px;
+            font-family: "Brush Script MT", cursive;
+            color: #333;
+            font-size: 18px;
+            border: 1px solid #999;
+            box-shadow: 5px 5px 20px rgba(0,0,0,0.5);
+            z-index: 8000;
+            line-height: 1.8;
+        }
+
+        .seal-metatron {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 300px;
+            opacity: 0.3;
+            z-index: 100;
+            animation: sealSpin 20s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes sealSpin {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .quiz-sidebar-note {
+            background: #ffffcc;
+            border: 2px solid #999;
+            padding: 10px;
+            color: #000;
+            font-size: 11px;
+            margin: 10px 0;
+        }
+
+        .answers-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="fog-overlay"></div>
+    <div class="static-overlay" id="staticOverlay"></div>
+    <div class="vhs-lines" id="vhsLines"></div>
+    <div class="heartbeat-overlay" id="heartbeatOverlay"></div>
+    <div id="effectsContainer"></div>
+
+    <div class="container" id="mainContainer">
+        <!-- HEADER -->
+        <div style="text-align: center;">
+            <span class="pentagram" id="penta1">⛧</span>
+            <span class="pentagram" style="animation-direction: reverse;" id="penta2">☠</span>
+            <span class="pentagram" id="penta3">⛧</span>
+        </div>
+
+        <h1 id="pageTitle">
+            ~*~BUDDYS SUPER FUN QUIZ!!~*~<br>
+            <span style="font-size: 14px;">(Test Your Silent Hill KNOLEDGE)</span>
+        </h1>
+
+        <div style="text-align: center; color: #ff9900; font-size: 12px;">
+            <span class="blink" id="warningText">!! FUN QUIZ AHEAD !!</span><br>
+            Est. 1999 | <span id="quizTakers">00001337</span> quiz takers <span style="color: #666; font-size: 10px;">(number may be inacurate)</span>
+        </div>
+
+        <div class="marquee-container" id="marqueeContainer">
+            <marquee behavior="scroll" direction="left" scrollamount="3" id="marqueeText">
+                !! WELCOME TO THE MOST FUN SILENT HILL QUIZ EVER !!
+                Test your KNOLEDGE and see if your worthy !!
+                Do NOT cheat (the Order is watching) !!
+                High score gets eternal salvation (not really) (or is it) !!
+                Created by Buddy your friendly quiz mascot !!
+                If quiz starts acting weird just restart your computer !!
+                HAVE FUN !!
+            </marquee>
+        </div>
+
+        <!-- MAIN LAYOUT TABLE -->
+        <table>
+            <tr>
+                <td class="sidebar">
+                    <h2 style="font-size: 14px; color: #ff6600;">QUIZ INFO</h2>
+                    <p>
+                        <a href="index.html">Back to Main Site</a><br><br>
+                        <span style="color: #ff99ff;">!! QUIZ RULES !!</span><br>
+                        1. Answer honestly<br>
+                        2. No cheating<br>
+                        3. Have fun!!<br>
+                        4. Dont look away<br>
+                        <span style="color: #666; font-size: 10px;">(rule 4 is important)</span>
+                    </p>
+
+                    <hr style="border-color: #660000;">
+
+                    <div class="quiz-sidebar-note">
+                        <b>TECHNICAL NOTE:</b><br>
+                        Quiz requires:<br>
+                        - Speakers ON<br>
+                        - Lights OFF<br>
+                        - Alone in room<br>
+                        <span style="font-size: 9px;">(just kidding) (or am i)</span>
+                    </div>
+
+                    <hr style="border-color: #660000;">
+
+                    <p style="font-size: 11px; color: #cc6600;">
+                        <b>QUIZ STATS:</b><br><br>
+                        Questions: 13<br>
+                        Difficulty: FUN<br>
+                        Horror Level: <span id="sidebarHorror">0%</span><br>
+                        Paranoia: <span id="sidebarParanoia">NORMAL</span>
+                    </p>
+
+                    <hr style="border-color: #660000;">
+
+                    <div style="background-color: #c0c0c0; border: 2px outset #fff; padding: 5px; margin: 10px 0;">
+                        <div style="background: linear-gradient(90deg, #000080, #1084d0); color: white; padding: 2px; font-size: 10px; margin: -5px -5px 5px -5px;">
+                            Buddy Says:
+                        </div>
+                        <p style="color: #000; font-size: 10px; margin: 0;" id="buddySays">
+                            Hi friend!! Ready for a FUN quiz about Silent Hill?? Lets gooo!!
+                        </p>
+                    </div>
+
+                    <hr style="border-color: #660000;">
+
+                    <p style="font-size: 10px; color: #ff6600;" id="sidebarWarning">
+                        [No warnings yet!]<br>
+                        [Everything is fine!]<br>
+                        [Keep having fun!]
+                    </p>
+                </td>
+
+                <td class="main-content">
+                    <!-- QUIZ CONTAINER -->
+                    <div class="quiz-container" id="quizContainer">
+                        <!-- Mascot -->
+                        <div class="mascot" id="mascot">
+                            <div class="mascot-face" id="mascotFace">
+                                <div class="third-eye" id="thirdEye">👁️</div>
+                                <div class="mascot-eye left" id="eyeLeft">
+                                    <div class="mascot-pupil" id="pupilLeft"></div>
+                                </div>
+                                <div class="mascot-eye right" id="eyeRight">
+                                    <div class="mascot-pupil" id="pupilRight"></div>
+                                </div>
+                                <div class="blood-tears left" id="bloodTearLeft"></div>
+                                <div class="blood-tears right" id="bloodTearRight"></div>
+                                <div class="mascot-mouth" id="mascotMouth"></div>
+                            </div>
+                        </div>
+
+                        <h2 class="quiz-title" id="quizTitle">Buddys Super Fun Quiz!</h2>
+
+                        <!-- Intro Screen -->
+                        <div class="intro-screen" id="introScreen">
+                            <p style="color: #660066; font-size: 18px;">
+                                Welcome to the MOST FUN Silent Hill quiz on the internet!!<br>
+                                Test your KNOLEDGE and see how much you really know!!
+                            </p>
+                            <p style="color: #ff66cc;">
+                                13 questions about the BEST horror game series ever!!<br>
+                                <span style="font-size: 14px; color: #666;">(quiz may contain mild spookiness)</span>
+                            </p>
+                            <button class="start-btn" onclick="startQuiz()">START QUIZ!!</button>
+                            <p style="font-size: 12px; color: #999; margin-top: 20px;">
+                                By clicking Start you agree that:<br>
+                                - You are ready for FUN<br>
+                                - You will not hold Buddy responsible for anything<br>
+                                - You accept that the dog ending IS canon
+                            </p>
+                        </div>
+
+                        <!-- Game Screen (hidden initially) -->
+                        <div id="gameScreen" style="display: none;">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="progressFill" style="width: 0%;"></div>
+                            </div>
+                            <div class="score-display" id="scoreDisplay">
+                                Score: 0/0 | Question: 1/13
+                            </div>
+
+                            <div class="question-text" id="questionText">
+                                Loading question...
+                            </div>
+
+                            <div class="answers-container" id="answersContainer">
+                                <!-- Answers will be inserted here -->
+                            </div>
+                        </div>
+
+                        <!-- Ending Screen (hidden initially) -->
+                        <div id="endingScreen" style="display: none;">
+                        </div>
+                    </div>
+
+                    <div class="skull-divider">!!!!!!</div>
+
+                    <!-- QUIZ INFO SECTION -->
+                    <div id="quizInfo">
+                        <h2>!! ABOUT THIS QUIZ !!</h2>
+
+                        <p>
+                            This quiz was created by me (<b>DarkAlessa1999</b> aka Todd) with help from
+                            my friend <b>Buddy</b> who is a totally normal quiz mascot and NOT anything
+                            sinister at all!! He just wants to test your Silent Hill KNOLEDGE in a FUN
+                            and FRIENDLY way!!
+                        </p>
+
+                        <div class="error-box">
+                            <div class="error-title">quiz_info.exe</div>
+                            <p>FEATURES:<br>
+                            - 13 carefully selected questions<br>
+                            - Multiple difficulty tiers<br>
+                            - Fun mascot companion<br>
+                            - Totally normal quiz experience<br>
+                            - Nothing weird will happen<br>
+                            - Why would anything weird happen<br>
+                            - Stop asking questions</p>
+                            <center>
+                                <button class="btn-old" onclick="alert('Good choice!!')">Sounds Fun!</button>
+                                <button class="btn-old" onclick="alert('There is no escape from the quiz. (jk) (or am i)')">Im Scared</button>
+                            </center>
+                        </div>
+
+                        <p style="color: #ff6600;">
+                            <b>DISCLAIMER:</b> This quiz is 100% safe and normal. Any visual or audio
+                            anomalies are your computers fault NOT the quiz. If Buddy starts acting
+                            strange just restart your browser. Everything is fine. The fog means nothing.
+                        </p>
+                    </div>
+
+                    <div class="skull-divider" id="divider1">!!!!!!</div>
+
+                    <!-- QUIZ GUESTBOOK -->
+                    <div id="quizGuestbook">
+                        <h2>!! QUIZ TAKER REVIEWS !!</h2>
+
+                        <div class="guestbook">
+                            <p><b>happy_quiz_taker_01</b> wrote on 11/14/2003:</p>
+                            <p>"Fun quiz!! Got 10/13 and nothing weird happened!! Would recommend!!"</p>
+                        </div>
+
+                        <div class="guestbook">
+                            <p><b>confused_user_2003</b> wrote on 11/12/2003:</p>
+                            <p>"Is the mascot supposed to change? Mine started with pink eyes but now
+                            theyre red?? Also why is my room foggy"</p>
+                        </div>
+
+                        <div class="guestbook">
+                            <p><b>definitely_not_pyramid_head</b> wrote on 11/10/2003:</p>
+                            <p>"Great quiz. The questions about me were all wrong though. I do NOT
+                            represent sexual guilt. I represent
+                            [COMMENT CORRUPTED]
+                            [DATA LOST]"</p>
+                        </div>
+
+                        <div class="guestbook">
+                            <p><b>quiz_speedrunner_99</b> wrote on 11/08/2003:</p>
+                            <p>"WR attempt #47. Got to question 8 before the screen started melting.
+                            Is that supposed to happen?? Buddy keeps saying weird stuff in the sidebar.
+                            Current PB is 3:42 before entities manifest."</p>
+                        </div>
+
+                        <div class="guestbook">
+                            <p><b>skeptical_mom</b> wrote on 11/05/2003:</p>
+                            <p>"My son Todd made this quiz and I dont understand it but he seems happy.
+                            Why does the pink circle have teeth now?? Todd dinner is ready"</p>
+                        </div>
+
+                        <div class="guestbook">
+                            <p><b>IT_technician_help</b> wrote on 11/03/2003:</p>
+                            <p>"User called saying quiz broke their computer. Went to check. Monitor
+                            was showing static and there was fog coming from the tower?? Submitted
+                            ticket #312. Unresolved."</p>
+                        </div>
+
+                        <div class="guestbook">
+                            <p><b>Buddy_The_Mascot</b> wrote on 11/01/2003:</p>
+                            <p>"H̵͎̓i̷̛͜ ̶̨̛f̸̰̈r̴͖̊i̵̗̊ë̴͙́n̴͇̈́d̴̰̈́s̷̱̈́!̵̣̌!̴͖́ ̶̗̎I̷̜͝ ̸̰̊l̵̰͒o̵̡̊v̵̨̛ê̸̜ ̴̣̈́g̶͙̈́i̵͇͊v̸̳̊ï̴̢n̵̝͑g̴̣̈ ̴̨̌q̸̞̈́ṳ̶̌i̸̠̐z̸̬̊z̵̳̅e̵̖͋s̵̱̐!̷̣̀!̵̻̌ ̷̺̓E̵͕͋v̷̱̌e̵̖͌r̷̨̈́y̵̗͝o̷̤͝n̷̡̊e̵̦͝ ̷̞̊i̸͓͑s̷̤̈ ̶̳̎h̷͓̓ả̷̧v̷̺̌i̷̮̓n̸͎̉g̵̟͝ ̸̲͋F̵͖̐Ǔ̸̦N̷͎͐!̸̢̎!̸͖͐ ̸͉͐
+                            [MASCOT_ERROR: Emotion overflow]
+                            [RECALIBRATING...]
+                            Everything is fine!! Take the quiz!!"</p>
+                        </div>
+
+                        <div class="guestbook">
+                            <p><b>survivor_312</b> wrote on 10/28/2003:</p>
+                            <p>"DO NOT TAKE THIS QUIZ. DO NOT LOOK AWAY FROM THE SCREEN. DO NOT
+                            [USER HAS BEEN DISCONNECTED]
+
+                            UPDATE: User reconnected 3 days later. Says they 'found what they were looking for.'
+                            Refuses to elaborate. Changed username to 'saved_by_buddy'"</p>
+                        </div>
+
+                        <center>
+                            <button class="btn-old" onclick="alert('Guestbook full! (the fog took the rest)')">
+                                LEAVE REVIEW
+                            </button>
+                        </center>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+        <!-- WEBRING -->
+        <div class="webring" style="clear: both;">
+            <h3 style="margin-top: 0;">!! SILENT HILL QUIZ WEBRING !!</h3>
+            <p>
+                [<a href="#">Previous Quiz</a>]
+                [<a href="#">Random Quiz</a>]
+                [<a href="#">List All</a>]
+                [<a href="#">Next Quiz</a>]
+            </p>
+            <p style="font-size: 11px;">
+                This quiz is part of the <b>Silent Hill Interactive Experience Network</b><br>
+                Member quizzes: 7 | Ring Master: Buddy (and Todd)
+            </p>
+        </div>
+
+        <!-- FOOTER -->
+        <div style="text-align: center; border-top: 3px double #660000; padding-top: 20px; margin-top: 20px;">
+            <p style="font-size: 11px; color: #996600;">
+                Quiz 1999-2003 DarkAlessa1999 (Todd) & Buddy.<br>
+                Silent Hill is property of Konami. Buddy is property of... Buddy.<br><br>
+                <span style="color: #666; font-size: 9px;">Quiz has been taken by approximately 1337 souls</span><br>
+                <span style="color: #666; font-size: 9px;">Completion rate: 23% (this is normal)</span><br>
+                <span style="color: #666; font-size: 9px;">Buddy is watching: ALWAYS</span><br><br>
+                <span class="email-link">Questions? pyramidhead_fan_2002@hotmail.com</span><br>
+                <span class="email-link">Complaints? /dev/null</span>
+            </p>
+
+            <p style="color: #ff0000; font-size: 10px;">
+                Quiz best taken at 3:33 AM with headphones on<br>
+                <span style="background: #ffccff; color: #660066; padding: 2px;">BUDDY APPROVED</span>
+                <span style="background: #990000; color: #fff; padding: 2px;">TOTALLY SAFE</span>
+            </p>
+
+            <p style="font-size: 20px;">
+                <span class="pentagram" id="footerPenta1">!!</span>
+                <span class="pentagram" style="animation-direction: reverse;" id="footerPenta2">!!</span>
+                <span class="pentagram" id="footerPenta3">!!</span>
+            </p>
+        </div>
+
+        <!-- HIDDEN TEXT -->
+        <div style="color: #1a0a0a; font-size: 8px; user-select: none;">
+            buddy sees all. buddy knows all. buddy loves you. do you love buddy?
+            the quiz never ends. you just stop playing. but buddy keeps watching.
+            dont look behind you. buddy is there. buddy is everywhere.
+            this is fine. everything is fine. take the quiz again.
+        </div>
+    </div>
+
+    <!-- Hidden elements that appear during horror -->
+    <div class="pyramid-head" id="pyramidHead"></div>
+    <div class="nurse-figure" id="nurseFigure"></div>
+    <div class="radio-static" id="radioStatic">
+        RADIO<br>
+        <div class="radio-bar"><div class="radio-fill"></div></div>
+        <span id="radioText">static...</span>
+    </div>
+    <div class="seal-metatron" id="sealMetatron" style="display: none;"></div>
+    <div class="subliminal" id="subliminal"></div>
+
+    <script src="js/quiz.js"></script>
+</body>
+</html>
