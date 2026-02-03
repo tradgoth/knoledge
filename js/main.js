@@ -22,7 +22,11 @@ document.addEventListener('mousemove', function(e) {
     }
 });
 
-// Console easter egg
+// Console easter eggs
 console.log('%c⛧ THE ORDER SEES ALL ⛧', 'color: red; font-size: 20px; font-weight: bold;');
 console.log('%cYou found the developer console! +10 Forbidden Lore Points', 'color: orange;');
+console.log('%cAh, a fellow seeker of forbidden knowledge... or just a web developer', 'color: #ffcc00;');
 console.log('%cBut seriously dont try to summon any demons', 'color: gray; font-style: italic;');
+console.log('%cIf you see this message in 2010 or later: the Otherworld has leaked into your timeline', 'color: #ff6600;');
+console.log('%cprotip: the real treasure was the occult knowledge we learned along the way', 'color: #00ff00;');
+console.log('%c- DarkAlessa1999 (Todd)', 'color: #cc0000; font-style: italic;');
