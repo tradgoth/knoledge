@@ -52,8 +52,8 @@ const questions = [
     {
         tier: 1,
         question: "What hotel does James visit in SH2?",
-        corruptedQuestion: "Where did he smother her with a pillow?",
-        answers: ["Lakeview Hotel", "Overlook Hotel", "Grand Hotel", "Bates Motel"],
+        corruptedQuestion: "Where did he kill her?",
+        answers: ["Lakeview Hotel", "Overlook Hotel", "Salish Lodge", "Bates Motel"],
         correct: 0
     },
     {
@@ -73,8 +73,8 @@ const questions = [
     {
         tier: 1,
         question: "What does the radio do when monsters are near?",
-        corruptedQuestion: "What warns you before they strike?",
-        answers: ["Emits static", "Plays music", "Glows red", "Speaks warnings"],
+        corruptedQuestion: "What does the radio do before you die?",
+        answers: ["emits static", "Plays music", "Glows red", "Speaks warnings"],
         correct: 0
     },
     {
@@ -89,28 +89,28 @@ const questions = [
         tier: 2,
         question: "What did James really do to Mary?",
         corruptedQuestion: "WHAT DID JAMES DO? CONFESS.",
-        answers: ["Killed her with a pillow", "Let her die naturally", "Took her to Silent Hill", "Nothing wrong"],
+        answers: ["Killed her", "Let her die naturally", "Took her to Silent Hill", "Nothing wrong"],
         correct: 0
     },
     {
         tier: 2,
         question: "What bracelet does Maria wear?",
         corruptedQuestion: "What marks the shadow bride?",
-        answers: ["Black Moon Lilith sigil", "Cross necklace", "Wedding ring", "Hospital bracelet"],
+        answers: ["Lilith sigil", "Cross bracelet", "a trashy one", "Hospital bracelet"],
         correct: 0
     },
     {
         tier: 2,
         question: "Why can Laura see no monsters in SH2?",
         corruptedQuestion: "Why is the innocent spared?",
-        answers: ["She has no guilt or trauma", "Shes a ghost", "Monsters like her", "Shes blind"],
+        answers: ["shes pure", "Shes a ghost", "Monsters like her", "Shes blind"],
         correct: 0
     },
     {
         tier: 2,
         question: "What is Maria REALLY?",
         corruptedQuestion: "Who created the shadow bride?",
-        answers: ["James manifested Anima/tulpa", "Marys twin sister", "A nurse from Brookhaven", "A real person"],
+        answers: ["a bitch", "Marys twin sister", "A nurse from Brookhaven", "A real person"],
         correct: 0
     },
     {
@@ -123,14 +123,14 @@ const questions = [
     {
         tier: 2,
         question: "What demon king appears in the SH2 Remake puzzles?",
-        corruptedQuestion: "What King of Hell reveals eternal secrets?",
+        corruptedQuestion: "Wait how did I know that it's 2003!",
         answers: ["Paimon", "Asmodeus", "Baal", "Satan"],
         correct: 0
     },
     {
         tier: 2,
-        question: "Who is Lilith in Jewish mysticism?",
-        corruptedQuestion: "Who was Adams FIRST wife?",
+        question: "Who was Adams first wife?",
+        corruptedQuestion: "Who was Adams FIRST whore?",
         answers: ["Lilith", "Eves sister", "An angel", "Lillian"],
         correct: 0
     },
@@ -153,7 +153,7 @@ const questions = [
         tier: 3,
         question: "Why does the town manifest monsters?",
         corruptedQuestion: "WHY DO YOUR SINS HAVE FORM?",
-        answers: ["Reflects visitors unconscious guilt", "Random spawning", "Government experiments", "Alien invasion"],
+        answers: ["Unconscious guilt", "Random spawning", "Government experiments", "Alien invasion"],
         correct: 0
     },
     {
@@ -172,14 +172,14 @@ const questions = [
     },
     {
         tier: 3,
-        question: "What happens during James Shadow Integration?",
+        question: "What happens during James?",
         corruptedQuestion: "When did you accept your guilt?",
         answers: ["He admits needing punishment", "He defeats Pyramid Head", "He forgets everything", "He dies"],
         correct: 0
     },
     {
         tier: 3,
-        question: "In SH: Homecoming, what Cain/Abel parallel exists?",
+        question: "In SH: Homecoming, what duo gave Cain and Abel vibes?",
         corruptedQuestion: "Where is your brother? What did you do?",
         answers: ["Alex and Joshua Shepherd", "James and his father", "Harry and his wife", "Walter and Henry"],
         correct: 0
@@ -194,8 +194,8 @@ const questions = [
     {
         tier: 3,
         question: "What corrupted relationship mirrors Samael and Lilith?",
-        corruptedQuestion: "What dark marriage rules Silent Hill?",
-        answers: ["The towns demiurge and feminine", "Harry and his wife", "James and Maria", "Dahlia and her god"],
+        corruptedQuestion: "What dark force rules Silent Hill?",
+        answers: ["You", "Baphomet", "James and Maria", "The Order"],
         correct: 0
     },
     // =========== TIER 4 - Incomprehensible ===========
