@@ -7,7 +7,7 @@
 // ========================================
 
 // Console messages for snoopy developers
-console.log('%c!! BUDDY WELCOMES YOU !!', 'color: #ff66cc; font-size: 24px; font-family: Comic Sans MS;');
+console.log('%c!! BUDDY WELCOMES YOU !!', 'color: #ff66cc; font-size: 24px; font-family: "Comic Sans MS", "Comic Neue", "Chalkboard SE", sans-serif;');
 console.log('%cYou found the quiz code! Buddy sees everything.', 'color: #ff99ff;');
 console.log('%cDont worry, the horror effects are totally normal quiz features', 'color: #cc66cc;');
 console.log('%cIf you see this after 2010, the quiz has leaked into your timeline', 'color: #ff6600;');
@@ -39,7 +39,7 @@ if (typeof questions === 'undefined' || !Array.isArray(questions) || questions.l
         if (introScreen) {
             introScreen.innerHTML = `
                 <div style="text-align: center; padding: 40px; color: #ff0000;">
-                    <h2 style="font-family: Comic Sans MS;">⚠️ ERROR ⚠️</h2>
+                    <h2 style="font-family: 'Comic Sans MS', 'Comic Neue', 'Chalkboard SE', sans-serif;">⚠️ ERROR ⚠️</h2>
                     <p>Failed to load quiz questions!</p>
                     <p style="font-size: 12px; color: #666;">
                         (questions.js file is missing or empty)
@@ -1955,7 +1955,7 @@ function showFakeLoading(callback) {
     introScreen.innerHTML = `
         <div style="text-align: center; padding: 40px;">
             <div style="font-size: 60px; margin-bottom: 20px; animation: spin 2s linear infinite;">🌀</div>
-            <h2 style="color: #ff66cc; font-family: Comic Sans MS;">Loading Quiz...</h2>
+            <h2 style="color: #ff66cc; font-family: 'Comic Sans MS', 'Comic Neue', 'Chalkboard SE', sans-serif;">Loading Quiz...</h2>
             <div style="background: #ffccff; border: 3px inset #ff66ff; width: 300px; height: 25px; margin: 20px auto; position: relative; overflow: hidden;">
                 <div id="fakeLoadingBar" style="background: linear-gradient(90deg, #ff99ff, #ff66cc); height: 100%; width: 0%; transition: width 0.1s;"></div>
             </div>

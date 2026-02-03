@@ -172,7 +172,7 @@
         }
 
         .quiz-title {
-            font-family: "Comic Sans MS", cursive;
+            font-family: "Comic Sans MS", "Comic Neue", "Chalkboard SE", sans-serif;
             font-size: 26px;
             color: #ff66cc;
             text-shadow: 2px 2px #fff, -1px -1px #ff99ff;
@@ -224,7 +224,7 @@
             border: 3px outset #ff66ff;
             padding: 8px 15px;
             margin: 3px;
-            font-family: "Comic Sans MS", cursive;
+            font-family: "Comic Sans MS", "Comic Neue", "Chalkboard SE", sans-serif;
             font-size: 15px;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -491,7 +491,7 @@
         }
 
         .question-text {
-            font-family: "Comic Sans MS", sans-serif;
+            font-family: "Comic Sans MS", "Comic Neue", "Chalkboard SE", sans-serif;
             font-size: 20px;
             margin: 12px 0;
             padding: 10px;
@@ -578,7 +578,7 @@
         }
 
         .ending-text {
-            font-family: "Comic Sans MS", sans-serif;
+            font-family: "Comic Sans MS", "Comic Neue", "Chalkboard SE", sans-serif;
             font-size: 16px;
             max-width: 600px;
             text-align: center;
@@ -590,7 +590,7 @@
         }
 
         .intro-screen h2 {
-            font-family: "Comic Sans MS", cursive;
+            font-family: "Comic Sans MS", "Comic Neue", "Chalkboard SE", sans-serif;
             color: #ff66cc;
             font-size: 28px;
             text-shadow: 2px 2px #fff;
@@ -603,7 +603,7 @@
             background: linear-gradient(180deg, #ffccff, #ff99ff);
             border: 4px outset #ff66ff;
             color: #660066;
-            font-family: "Comic Sans MS", cursive;
+            font-family: "Comic Sans MS", "Comic Neue", "Chalkboard SE", sans-serif;
             cursor: pointer;
             margin-top: 20px;
             animation: btnBounce 1s ease infinite;
@@ -2001,7 +2001,7 @@
             text-align: left;
             color: #000;
             font-size: 12px;
-            font-family: "Comic Sans MS", cursive;
+            font-family: "Comic Sans MS", "Comic Neue", "Chalkboard SE", sans-serif;
         }
 
         .todd-note-header {
@@ -2046,7 +2046,7 @@
             max-width: 250px;
             font-size: 12px;
             color: #000;
-            font-family: "Comic Sans MS", cursive;
+            font-family: "Comic Sans MS", "Comic Neue", "Chalkboard SE", sans-serif;
             z-index: 9000;
             animation: helperBounce 2s ease infinite;
         }
