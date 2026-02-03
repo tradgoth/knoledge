@@ -30,8 +30,33 @@ console.log('%c• Metatron is watching your score', 'color: #ff0000;');
 // See js/questions.js for the full question bank
 
 // Verify questions loaded (helpful for debugging)
-if (typeof questions === 'undefined') {
-    console.error('Questions not loaded! Make sure questions.js is included before quiz.js');
+if (typeof questions === 'undefined' || !Array.isArray(questions) || questions.length === 0) {
+    console.error('❌ CRITICAL ERROR: Questions not loaded! Make sure questions.js is included before quiz.js');
+
+    // Show user-friendly error
+    window.addEventListener('load', () => {
+        const introScreen = document.getElementById('introScreen');
+        if (introScreen) {
+            introScreen.innerHTML = `
+                <div style="text-align: center; padding: 40px; color: #ff0000;">
+                    <h2 style="font-family: Comic Sans MS;">⚠️ ERROR ⚠️</h2>
+                    <p>Failed to load quiz questions!</p>
+                    <p style="font-size: 12px; color: #666;">
+                        (questions.js file is missing or empty)
+                    </p>
+                    <p style="font-size: 10px; margin-top: 20px;">
+                        Todd says: "This is NOT a feature. Something went wrong."
+                    </p>
+                    <button class="btn-old" onclick="location.reload()" style="margin-top: 20px;">
+                        Try Reloading?
+                    </button>
+                </div>
+            `;
+        }
+    });
+
+    // Prevent quiz from starting
+    throw new Error('Questions data not available - cannot initialize quiz');
 }
 // Fisher-Yates shuffle - proper randomization algorithm
 function shuffleArray(array) {
@@ -105,7 +130,11 @@ let gameState = {
     endingShown: null,
     popupsShown: 0,
     crtEffectsActive: false,
-    buttonChaseActive: false
+    buttonChaseActive: false,
+    buttonChaseHandler: null,
+    eventInterval: null,
+    postEndingInterval: null,
+    desperateInterval: null
 };
 
 // ========================================
@@ -1086,7 +1115,8 @@ function updateHorrorEffects() {
 }
 
 function enableButtonChase() {
-    document.addEventListener('mousemove', (e) => {
+    // Store handler reference for cleanup
+    const buttonChaseHandler = (e) => {
         if (!gameState.buttonChaseActive || !gameState.isPlaying) return;
 
         const buttons = document.querySelectorAll('.answer-btn');
@@ -1105,7 +1135,11 @@ function enableButtonChase() {
                 btn.style.transform = '';
             }
         });
-    });
+    };
+
+    // Store handler for later cleanup
+    gameState.buttonChaseHandler = buttonChaseHandler;
+    document.addEventListener('mousemove', buttonChaseHandler);
 }
 
 function updateBuddySays() {
@@ -1177,10 +1211,13 @@ function updateButtonStyles() {
 // ========================================
 // RANDOM EVENTS
 // ========================================
-let eventInterval;
-
 function startRandomEvents() {
-    eventInterval = setInterval(() => {
+    // Clear any existing interval
+    if (gameState.eventInterval) {
+        clearInterval(gameState.eventInterval);
+    }
+
+    gameState.eventInterval = setInterval(() => {
         if (!gameState.isPlaying || gameState.hasEnded) return;
         if (gameState.horrorLevel < 3) return;
 
@@ -1326,6 +1363,32 @@ function typeWriter(element, text, speed = 50, callback) {
 // GAME FUNCTIONS
 // ========================================
 function startQuiz() {
+    // Clear any existing timers to prevent leaks
+    if (gameState.trueEndingTimer) {
+        clearTimeout(gameState.trueEndingTimer);
+        gameState.trueEndingTimer = null;
+    }
+
+    // Clean up button chase event listener if it exists
+    if (gameState.buttonChaseHandler) {
+        document.removeEventListener('mousemove', gameState.buttonChaseHandler);
+        gameState.buttonChaseHandler = null;
+    }
+
+    // Clean up all intervals if they exist
+    if (gameState.eventInterval) {
+        clearInterval(gameState.eventInterval);
+        gameState.eventInterval = null;
+    }
+    if (gameState.postEndingInterval) {
+        clearInterval(gameState.postEndingInterval);
+        gameState.postEndingInterval = null;
+    }
+    if (gameState.desperateInterval) {
+        clearInterval(gameState.desperateInterval);
+        gameState.desperateInterval = null;
+    }
+
     // Show fake loading screen first (classic 2003 vibes)
     showFakeLoading(() => {
         gameState = {
@@ -1341,7 +1404,12 @@ function startQuiz() {
             cracksOnScreen: 0,
             postEndingPhase: 0,
             popupsShown: 0,
-            buttonChaseActive: false
+            buttonChaseActive: false,
+            buttonChaseHandler: null,
+            trueEndingTimer: null,
+            eventInterval: null,
+            postEndingInterval: null,
+            desperateInterval: null
         };
 
         // Clear any existing cracks
@@ -1431,7 +1499,8 @@ function showQuestion() {
         scoreDisplay.classList.add('corrupted');
     }
 
-    scoreDisplay.textContent = `Score: ${gameState.score}/${gameState.currentQuestion} | Question: ${gameState.currentQuestion + 1}/13`;
+    // Show score as correct/total and current question number
+    scoreDisplay.textContent = `Score: ${gameState.score}/13 | Question: ${gameState.currentQuestion + 1}/13`;
 
     // Choose question text based on horror level
     const useCorrupted = gameState.horrorLevel >= 4;
@@ -1551,7 +1620,10 @@ function otherworldTransition() {
 function endGame() {
     gameState.hasEnded = true;
     gameState.isPlaying = false;
-    clearInterval(eventInterval);
+    if (gameState.eventInterval) {
+        clearInterval(gameState.eventInterval);
+        gameState.eventInterval = null;
+    }
 
     const percentage = (gameState.score / 13) * 100;
 
@@ -1873,208 +1945,7 @@ function runEndingEffects(ending) {
     }
 }
 
-// Legacy builder functions (kept for reference but no longer used)
-function buildLeaveEnding(ending) {
-    const endingScreen = document.getElementById('endingScreen');
-    endingScreen.innerHTML = `
-        <div class="ending-screen ending-leave">
-            <div class="ending-title" style="color: ${ending.color};">${ending.title}</div>
-            <div style="font-size: 80px; margin: 20px 0;" class="buddy-wave">👋</div>
-            <div class="ending-text" style="color: ${ending.color};">
-                ${ending.text}<br><br>
-                <i>${ending.subtext}</i><br><br>
-                ${ending.finalText}
-            </div>
-            ${buildToddNote(ending)}
-            ${buildEndingStats()}
-            ${buildEndingButtons(ending)}
-        </div>
-    `;
-}
-
-function buildMariaEnding(ending) {
-    const endingScreen = document.getElementById('endingScreen');
-    endingScreen.innerHTML = `
-        <div class="ending-screen ending-maria">
-            <div class="ending-title" style="color: ${ending.color};">${ending.title}</div>
-            <div class="maria-silhouette">👩</div>
-            <div class="ending-text" style="color: ${ending.color};">
-                ${ending.text}<br><br>
-                <i>${ending.subtext}</i><br><br>
-                <span class="maria-cough">${ending.finalText}</span>
-            </div>
-            ${buildToddNote(ending)}
-            ${buildEndingStats()}
-            ${buildEndingButtons(ending)}
-        </div>
-    `;
-
-    // Trigger cough animation
-    setTimeout(() => {
-        const cough = document.querySelector('.maria-cough');
-        if (cough) {
-            cough.classList.add('maria-cough');
-            playSound('cough');
-        }
-    }, 3000);
-}
-
-function buildWaterEnding(ending) {
-    const endingScreen = document.getElementById('endingScreen');
-    endingScreen.innerHTML = `
-        <div class="ending-screen ending-water">
-            <div class="water-rising"></div>
-            <div class="ending-title sinking-text" style="color: ${ending.color};">${ending.title}</div>
-            <div style="font-size: 80px; margin: 20px 0; opacity: 0.7;">🌊</div>
-            <div class="ending-text sinking-text" style="color: ${ending.color};">
-                ${ending.text}<br><br>
-                <i>${ending.subtext}</i><br><br>
-                ${ending.finalText}
-            </div>
-            ${buildToddNote(ending)}
-            ${buildEndingStats()}
-            ${buildEndingButtons(ending)}
-            <div id="bubbleContainer"></div>
-        </div>
-    `;
-
-    // Add bubbles
-    const bubbleContainer = document.getElementById('bubbleContainer');
-    for (let i = 0; i < 20; i++) {
-        setTimeout(() => {
-            const bubble = document.createElement('div');
-            bubble.className = 'bubble';
-            bubble.style.left = Math.random() * 100 + '%';
-            bubble.style.animationDelay = Math.random() * 2 + 's';
-            bubbleContainer.appendChild(bubble);
-        }, i * 500);
-    }
-}
-
-function buildRebirthEnding(ending) {
-    const endingScreen = document.getElementById('endingScreen');
-    endingScreen.innerHTML = `
-        <div class="ending-screen ending-rebirth">
-            <div class="lightning-flash"></div>
-            <div class="ritual-circle">⛧</div>
-            <div class="ending-title" style="color: ${ending.color}; position: relative; z-index: 10;">${ending.title}</div>
-            <div class="ending-text" style="color: ${ending.color}; position: relative; z-index: 10;">
-                ${ending.text}<br><br>
-                <i>${ending.subtext}</i><br><br>
-                ${ending.finalText}
-            </div>
-            ${buildToddNote(ending)}
-            ${buildEndingStats()}
-            ${buildEndingButtons(ending)}
-        </div>
-    `;
-}
-
-function buildDogEnding(ending) {
-    const endingScreen = document.getElementById('endingScreen');
-    endingScreen.innerHTML = `
-        <div class="ending-screen ending-dog">
-            <div class="ending-title" style="color: ${ending.color};">${ending.title}</div>
-            <div class="dog-dance">🐕</div>
-            <div class="ending-text" style="color: #333;">
-                ${ending.text}<br><br>
-                <i>${ending.subtext}</i><br><br>
-                ${ending.finalText}
-            </div>
-            ${buildToddNote(ending)}
-            <div class="credits-roll" id="dogCredits">
-                <p><b>🎬 CREDITS 🎬</b></p>
-                <p>Quiz Master: Buddy (actually a dog)</p>
-                <p>Horror Effects: The Otherworld</p>
-                <p>Lore Consultant: The Lesser Key of Solomon</p>
-                <p>Music: Silent Hill (in our hearts)</p>
-                <p>Web Design: DarkAlessa1999 (Todd)</p>
-                <p>Fog Technician: Toluca Lake Dept.</p>
-                <p>Special Thanks: Konami, Team Silent</p>
-                <p>The Dog: bark bark bark</p>
-                <p>&nbsp;</p>
-                <p><i>No mascots were harmed in the making of this quiz</i></p>
-                <p><i>The dog was in control the whole time</i></p>
-                <p><i>All 72 demons returned safely to their vessel</i></p>
-                <p>&nbsp;</p>
-                <p>🐕 Thank you for playing!! 🐕</p>
-            </div>
-            ${buildEndingStats()}
-            <button class="btn-old" onclick="location.reload()" style="margin-top: 20px; font-size: 20px; background: #ffcc00;">
-                🐕 pet the dog 🐕
-            </button>
-            <p style="margin-top: 20px; font-size: 12px; color: #666;">
-                <a href="index.html" style="color: #996600;">Return to main site</a>
-            </p>
-            <div id="confettiContainer"></div>
-        </div>
-    `;
-
-    // Add confetti
-    const confettiColors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
-    for (let i = 0; i < 50; i++) {
-        setTimeout(() => {
-            const confetti = document.createElement('div');
-            confetti.className = 'confetti';
-            confetti.style.left = Math.random() * 100 + '%';
-            confetti.style.background = confettiColors[Math.floor(Math.random() * confettiColors.length)];
-            confetti.style.animationDelay = Math.random() * 2 + 's';
-            document.getElementById('confettiContainer').appendChild(confetti);
-        }, i * 100);
-    }
-
-    // Happy sounds
-    for (let i = 0; i < 10; i++) {
-        setTimeout(() => playSound('correct'), i * 300);
-    }
-}
-
-function buildUFOEnding(ending) {
-    const endingScreen = document.getElementById('endingScreen');
-    endingScreen.innerHTML = `
-        <div class="ending-screen ending-ufo" style="background: linear-gradient(180deg, #000033 0%, #000011 50%, #001100 100%);">
-            <div class="ufo-beam" style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 200px; height: 100%; background: linear-gradient(180deg, rgba(0,255,0,0.3), transparent); animation: beamPulse 2s ease infinite;"></div>
-            <div style="font-size: 100px; animation: ufoFloat 2s ease infinite;">🛸</div>
-            <div class="ending-title" style="color: ${ending.color};">${ending.title}</div>
-            <div class="ending-text" style="color: ${ending.color};">
-                ${ending.text}<br><br>
-                <i>${ending.subtext}</i><br><br>
-                ${ending.finalText}
-            </div>
-            ${buildToddNote(ending)}
-            ${buildEndingStats()}
-            <button class="btn-old" onclick="location.reload()" style="margin-top: 20px; font-size: 20px; background: #003300; color: #00ff00; border-color: #00ff00;">
-                🛸 BEAM ME UP AGAIN 🛸
-            </button>
-            <p style="margin-top: 20px; font-size: 12px; color: #006600;">
-                <a href="index.html" style="color: #00cc00;">Return to Earth (main site)</a>
-            </p>
-            <div id="ufoStarsContainer"></div>
-        </div>
-    `;
-
-    // Add twinkling stars
-    const starsContainer = document.getElementById('ufoStarsContainer');
-    for (let i = 0; i < 50; i++) {
-        const star = document.createElement('div');
-        star.style.cssText = `
-            position: fixed;
-            width: 3px;
-            height: 3px;
-            background: #fff;
-            border-radius: 50%;
-            top: ${Math.random() * 100}%;
-            left: ${Math.random() * 100}%;
-            animation: twinkle ${1 + Math.random() * 2}s ease infinite;
-            opacity: ${0.3 + Math.random() * 0.7};
-        `;
-        starsContainer.appendChild(star);
-    }
-
-    // Alien sounds
-    playSound('dialup');
-    setTimeout(() => playSound('success'), 1000);
-}
+// Legacy builder functions removed - now using unified buildEnding() function
 
 function buildToddNote(ending) {
     if (!ending.toddNote) return '';
@@ -2225,9 +2096,10 @@ function continuePostEndingHorror() {
 
     // Random glitches
     let glitchCount = 0;
-    const glitchInterval = setInterval(() => {
+    gameState.postEndingInterval = setInterval(() => {
         if (glitchCount >= 5) {
-            clearInterval(glitchInterval);
+            clearInterval(gameState.postEndingInterval);
+            gameState.postEndingInterval = null;
             gameState.postEndingPhase = 3;
             desperatePhase();
             return;
@@ -2255,11 +2127,12 @@ function desperatePhase() {
     ];
 
     let textIndex = 0;
-    const textInterval = setInterval(() => {
+    gameState.desperateInterval = setInterval(() => {
         if (textIndex >= desperateTexts.length - 1) {
             btn.textContent = desperateTexts[desperateTexts.length - 1];
             btn.classList.add('desperate-button');
-            clearInterval(textInterval);
+            clearInterval(gameState.desperateInterval);
+            gameState.desperateInterval = null;
 
             // Start button chase
             startButtonChase(btn);
@@ -2280,7 +2153,7 @@ function desperatePhase() {
 function startButtonChase(btn) {
     let chaseActive = true;
 
-    document.addEventListener('mousemove', function chase(e) {
+    const chaseHandler = function chase(e) {
         if (!chaseActive) {
             document.removeEventListener('mousemove', chase);
             return;
@@ -2303,13 +2176,16 @@ function startButtonChase(btn) {
             btn.style.marginLeft = (currentLeft + moveX) + 'px';
             btn.style.marginTop = (currentTop + moveY) + 'px';
         }
-    });
+    };
 
-    // Stop chase after a while
+    document.addEventListener('mousemove', chaseHandler);
+
+    // Stop chase after a while and cleanup listener
     setTimeout(() => {
         chaseActive = false;
         btn.style.marginLeft = '0';
         btn.style.marginTop = '0';
+        document.removeEventListener('mousemove', chaseHandler);
     }, 20000);
 }
 

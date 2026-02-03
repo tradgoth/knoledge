@@ -131,7 +131,7 @@ const questions = [
         tier: 2,
         question: "Who is Lilith in Jewish mysticism?",
         corruptedQuestion: "Who was Adams FIRST wife?",
-        answers: ["Lilith", "Eves sister", "An angel", "lilian"],
+        answers: ["Lilith", "Eves sister", "An angel", "Lillian"],
         correct: 0
     },
     // =========== TIER 3 - Extreme ===========
