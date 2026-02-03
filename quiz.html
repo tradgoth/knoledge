@@ -1251,6 +1251,129 @@
             gap: 10px;
             align-items: center;
         }
+
+        /* ========== UFO ENDING ========== */
+        .ending-ufo {
+            background: linear-gradient(180deg, #000033 0%, #000011 50%, #001100 100%) !important;
+        }
+
+        @keyframes beamPulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+
+        @keyframes ufoFloat {
+            0%, 100% { transform: translateY(0) rotate(-5deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
+        }
+
+        /* ========== SPIN ANIMATION FOR LOADING ========== */
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* ========== EXTRA FUN EFFECTS ========== */
+        .rainbow-text {
+            animation: rainbowCycle 2s linear infinite;
+        }
+
+        @keyframes rainbowCycle {
+            0% { color: #ff0000; }
+            17% { color: #ff8800; }
+            33% { color: #ffff00; }
+            50% { color: #00ff00; }
+            67% { color: #0088ff; }
+            83% { color: #8800ff; }
+            100% { color: #ff0000; }
+        }
+
+        .shake-text {
+            animation: textShake 0.1s linear infinite;
+        }
+
+        @keyframes textShake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-3px); }
+            75% { transform: translateX(3px); }
+        }
+
+        /* ========== TODD'S NOTE BOX ========== */
+        .todd-note {
+            background: #ffffcc;
+            border: 2px solid #999;
+            padding: 15px;
+            margin: 20px auto;
+            max-width: 500px;
+            text-align: left;
+            color: #000;
+            font-size: 12px;
+            font-family: "Comic Sans MS", cursive;
+        }
+
+        .todd-note-header {
+            background: linear-gradient(90deg, #000080, #1084d0);
+            color: white;
+            padding: 3px 8px;
+            margin: -15px -15px 10px -15px;
+            font-size: 11px;
+        }
+
+        /* ========== CURSOR TRAIL EFFECT ========== */
+        .cursor-skull {
+            position: fixed;
+            pointer-events: none;
+            font-size: 12px;
+            opacity: 0.5;
+            z-index: 9999;
+            animation: skullFade 1s forwards;
+        }
+
+        @keyframes skullFade {
+            0% { opacity: 0.5; transform: scale(1) rotate(0deg); }
+            100% { opacity: 0; transform: scale(0.5) rotate(180deg); }
+        }
+
+        /* ========== CLIPPY-STYLE HELPER ========== */
+        .buddy-helper {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #ffffcc;
+            border: 2px solid #333;
+            border-radius: 10px;
+            padding: 15px;
+            max-width: 250px;
+            font-size: 12px;
+            color: #000;
+            font-family: "Comic Sans MS", cursive;
+            z-index: 9000;
+            animation: helperBounce 2s ease infinite;
+        }
+
+        .buddy-helper-face {
+            font-size: 40px;
+            text-align: center;
+        }
+
+        @keyframes helperBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .buddy-helper-close {
+            position: absolute;
+            top: 5px;
+            right: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            color: #666;
+        }
     </style>
 </head>
 <body>
@@ -1302,7 +1425,9 @@
                         2. No cheating<br>
                         3. Have fun!!<br>
                         4. Dont look away<br>
-                        <span style="color: #666; font-size: 10px;">(rule 4 is important)</span>
+                        5. Trust Buddy<br>
+                        6. Accept your ending<br>
+                        <span style="color: #666; font-size: 10px;">(rules 4-6 are VERY important)</span>
                     </p>
 
                     <hr style="border-color: #660000;">
@@ -1375,14 +1500,26 @@
                             </p>
                             <p style="color: #ff66cc;">
                                 13 questions about the BEST horror game series ever!!<br>
-                                <span style="font-size: 14px; color: #666;">(quiz may contain mild spookiness)</span>
+                                Covering REAL occult lore: Kabbalah, Jung, demons, and MORE!!<br>
+                                <span style="font-size: 14px; color: #666;">(quiz may contain mild spookiness)</span><br>
+                                <span style="font-size: 12px; color: #996666;">(and moderate existential dread)</span>
+                            </p>
+                            <p style="color: #ff9900; font-size: 14px;">
+                                🏆 <b>6 POSSIBLE ENDINGS</b> 🏆<br>
+                                <span style="font-size: 11px; color: #cc6600;">Can you find them all?? (please try)</span>
                             </p>
                             <button class="start-btn" onclick="startQuiz()">START QUIZ!!</button>
                             <p style="font-size: 12px; color: #999; margin-top: 20px;">
                                 By clicking Start you agree that:<br>
                                 - You are ready for FUN<br>
                                 - You will not hold Buddy responsible for anything<br>
-                                - You accept that the dog ending IS canon
+                                - You accept that the dog ending IS canon<br>
+                                - You understand Metatron is watching<br>
+                                - You wont blame Todd if you learn too much
+                            </p>
+                            <p style="font-size: 10px; color: #666; margin-top: 10px;">
+                                <i>"In my restless dreams, I see that quiz. Silent Hill."</i><br>
+                                - Mary (probably)
                             </p>
                         </div>
 
@@ -1422,26 +1559,53 @@
                             and FRIENDLY way!!
                         </p>
 
+                        <p>
+                            I spent like THREE MONTHS researching Silent Hill lore for this quiz. I read
+                            the Lesser Key of Solomon, studied Jungian psychology, learned about Kabbalah
+                            and the Seal of Metatron, AND I played all the games twice. So the questions
+                            are 100% ACURATE (trust me my dad works at Konami) (he doesnt but it sounds cool).
+                        </p>
+
                         <div class="error-box">
                             <div class="error-title">quiz_info.exe</div>
                             <p>FEATURES:<br>
-                            - 13 carefully selected questions<br>
-                            - Multiple difficulty tiers<br>
-                            - Fun mascot companion<br>
-                            - Totally normal quiz experience<br>
-                            - Nothing weird will happen<br>
-                            - Why would anything weird happen<br>
-                            - Stop asking questions</p>
+                            ✓ 13 carefully selected questions<br>
+                            ✓ Questions about REAL occult lore<br>
+                            ✓ Multiple difficulty tiers<br>
+                            ✓ Fun mascot companion named Buddy<br>
+                            ✓ 6 different endings (collect them all!!)<br>
+                            ✓ Totally normal quiz experience<br>
+                            ✓ Nothing weird will happen<br>
+                            ✓ Why would anything weird happen<br>
+                            ✓ Stop asking questions<br>
+                            ✓ The fog is normal</p>
                             <center>
-                                <button class="btn-old" onclick="alert('Good choice!!')">Sounds Fun!</button>
-                                <button class="btn-old" onclick="alert('There is no escape from the quiz. (jk) (or am i)')">Im Scared</button>
+                                <button class="btn-old" onclick="alert('Good choice!! Buddy is pleased.')">Sounds Fun!</button>
+                                <button class="btn-old" onclick="alert('There is no escape from the quiz. (jk) (or am i) (Buddy says hi)')">Im Scared</button>
                             </center>
+                        </div>
+
+                        <div style="background: #220000; border: 2px dashed #660000; padding: 10px; margin: 15px 0;">
+                            <p style="color: #ff6600; font-size: 12px; margin: 0;">
+                                <b>⚠️ LORE ACCURACY NOTICE ⚠️</b><br><br>
+                                This quiz contains REAL references to:<br>
+                                • The Lesser Key of Solomon (72 demons)<br>
+                                • Jungian psychology (Shadow, Anima)<br>
+                                • Kabbalah and the Seal of Metatron<br>
+                                • Old Testament stuff (Molech, Tophet)<br>
+                                • Lilith mythology (Adams first wife)<br>
+                                • The Book of Enoch (fallen Watchers)<br><br>
+                                All of this is REAL LORE that Team Silent put in the games!!
+                                I didnt make any of this up!! (except Buddy hes mine)
+                            </p>
                         </div>
 
                         <p style="color: #ff6600;">
                             <b>DISCLAIMER:</b> This quiz is 100% safe and normal. Any visual or audio
                             anomalies are your computers fault NOT the quiz. If Buddy starts acting
                             strange just restart your browser. Everything is fine. The fog means nothing.
+                            Side effects may include: existential dread, sudden interest in Jungian psychology,
+                            fear of lakes, and an inability to look at triangles the same way again.
                         </p>
                     </div>
 
@@ -1491,11 +1655,39 @@
                         </div>
 
                         <div class="guestbook">
+                            <p><b>jung_enthusiast_1999</b> wrote on 11/02/2003:</p>
+                            <p>"Finally a quiz that understands the Shadow archetype!! But why did
+                            my computer ask me to confess after question 7?? Is that a Jung reference
+                            too?? Also my AIM keeps getting messages from 'Buddy' but I never added him"</p>
+                        </div>
+
+                        <div class="guestbook">
+                            <p><b>kabbalah_student</b> wrote on 11/01/2003:</p>
+                            <p>"The Metatron questions were actually pretty accurate ngl. But the quiz
+                            said I got the Mark of Samael wrong when I KNOW thats what Dahlia called it.
+                            Wait... did I just play myself?? Is that the point??"</p>
+                        </div>
+
+                        <div class="guestbook">
                             <p><b>Buddy_The_Mascot</b> wrote on 11/01/2003:</p>
                             <p>"H̵͎̓i̷̛͜ ̶̨̛f̸̰̈r̴͖̊i̵̗̊ë̴͙́n̴͇̈́d̴̰̈́s̷̱̈́!̵̣̌!̴͖́ ̶̗̎I̷̜͝ ̸̰̊l̵̰͒o̵̡̊v̵̨̛ê̸̜ ̴̣̈́g̶͙̈́i̵͇͊v̸̳̊ï̴̢n̵̝͑g̴̣̈ ̴̨̌q̸̞̈́ṳ̶̌i̸̠̐z̸̬̊z̵̳̅e̵̖͋s̵̱̐!̷̣̀!̵̻̌ ̷̺̓E̵͕͋v̷̱̌e̵̖͌r̷̨̈́y̵̗͝o̷̤͝n̷̡̊e̵̦͝ ̷̞̊i̸͓͑s̷̤̈ ̶̳̎h̷͓̓ả̷̧v̷̺̌i̷̮̓n̸͎̉g̵̟͝ ̸̲͋F̵͖̐Ǔ̸̦N̷͎͐!̸̢̎!̸͖͐ ̸͉͐
                             [MASCOT_ERROR: Emotion overflow]
                             [RECALIBRATING...]
                             Everything is fine!! Take the quiz!!"</p>
+                        </div>
+
+                        <div class="guestbook">
+                            <p><b>dog_ending_truther</b> wrote on 10/30/2003:</p>
+                            <p>"GOT THE DOG ENDING LETS GOOOOO 🐕 This is proof the dog ending is canon
+                            and I will die on this hill. The quiz knows. Buddy knows. The dog knows.
+                            BARK BARK BARK"</p>
+                        </div>
+
+                        <div class="guestbook">
+                            <p><b>ufo_hunter_x</b> wrote on 10/29/2003:</p>
+                            <p>"wait theres a UFO ending?? I got perfect score but all I got was abducted
+                            by aliens. Is this like the joke endings in the games?? Todd you absolute
+                            madman. Anyway Im posting this from the mothership. They have wifi."</p>
                         </div>
 
                         <div class="guestbook">
@@ -1507,8 +1699,13 @@
                             Refuses to elaborate. Changed username to 'saved_by_buddy'"</p>
                         </div>
 
+                        <div class="guestbook">
+                            <p><b>first</b> wrote on 10/01/2003:</p>
+                            <p>"first"</p>
+                        </div>
+
                         <center>
-                            <button class="btn-old" onclick="alert('Guestbook full! (the fog took the rest)')">
+                            <button class="btn-old" onclick="alert('Guestbook full! (the fog took the rest)\n\nBuddy says: maybe next time friend!!')">
                                 LEAVE REVIEW
                             </button>
                         </center>
@@ -1535,25 +1732,45 @@
         <!-- FOOTER -->
         <div style="text-align: center; border-top: 3px double #660000; padding-top: 20px; margin-top: 20px;">
             <p style="font-size: 11px; color: #996600;">
-                Quiz 1999-2003 DarkAlessa1999 (Todd) & Buddy.<br>
-                Silent Hill is property of Konami. Buddy is property of... Buddy.<br><br>
+                Quiz © 1999-2003 DarkAlessa1999 (Todd) & Buddy.<br>
+                Silent Hill is property of Konami. Buddy is property of... Buddy.<br>
+                Lesser Key of Solomon is property of King Solomon (RIP).<br><br>
                 <span style="color: #666; font-size: 9px;">Quiz has been taken by approximately 1337 souls</span><br>
                 <span style="color: #666; font-size: 9px;">Completion rate: 23% (this is normal)</span><br>
-                <span style="color: #666; font-size: 9px;">Buddy is watching: ALWAYS</span><br><br>
+                <span style="color: #666; font-size: 9px;">Buddy is watching: ALWAYS</span><br>
+                <span style="color: #666; font-size: 9px;">72 demons consulted: YES</span><br>
+                <span style="color: #666; font-size: 9px;">Metatron approval rating: PENDING</span><br><br>
                 <span class="email-link">Questions? pyramidhead_fan_2002@hotmail.com</span><br>
-                <span class="email-link">Complaints? /dev/null</span>
+                <span class="email-link">Complaints? /dev/null</span><br>
+                <span class="email-link">Occult emergencies? samael@otherworld.fog</span>
             </p>
+
+            <div style="background: #ffffcc; border: 2px solid #999; padding: 10px; margin: 15px auto; max-width: 400px; color: #000; font-size: 10px;">
+                <b>📝 A NOTE FROM TODD:</b><br><br>
+                Thanks for playing my quiz!! I worked really hard on it. If you learned
+                something about Silent Hill lore thats awesome!! If the quiz scared you
+                a little bit thats also awesome!! If Buddy is now living in your computer
+                rent-free thats... probably fine. He means well.<br><br>
+                Stay spooky!! 🖤<br>
+                - Todd (DarkAlessa1999)
+            </div>
 
             <p style="color: #ff0000; font-size: 10px;">
                 Quiz best taken at 3:33 AM with headphones on<br>
                 <span style="background: #ffccff; color: #660066; padding: 2px;">BUDDY APPROVED</span>
                 <span style="background: #990000; color: #fff; padding: 2px;">TOTALLY SAFE</span>
+                <span style="background: #006600; color: #fff; padding: 2px;">LORE ACCURATE</span>
             </p>
 
             <p style="font-size: 20px;">
-                <span class="pentagram" id="footerPenta1">!!</span>
-                <span class="pentagram" style="animation-direction: reverse;" id="footerPenta2">!!</span>
-                <span class="pentagram" id="footerPenta3">!!</span>
+                <span class="pentagram" id="footerPenta1">⛧</span>
+                <span class="pentagram" style="animation-direction: reverse;" id="footerPenta2">☠</span>
+                <span class="pentagram" id="footerPenta3">⛧</span>
+            </p>
+
+            <p style="font-size: 9px; color: #333;">
+                "The fear of blood tends to create fear for the flesh."<br>
+                - Silent Hill 3
             </p>
         </div>
 

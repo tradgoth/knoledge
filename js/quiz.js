@@ -13,12 +13,22 @@ console.log('%cDont worry, the horror effects are totally normal quiz features',
 console.log('%cIf you see this after 2010, the quiz has leaked into your timeline', 'color: #ff6600;');
 console.log('%c...buddy is always watching...', 'color: #660000; font-size: 8px;');
 console.log('%cprotip: wait on the ending screen. trust me.', 'color: #333; font-size: 6px;');
+console.log('%c', 'padding: 50px; background: url("data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100\' height=\'100\'><text y=\'50\' font-size=\'60\'>👁️</text></svg>") no-repeat;');
+console.log('%cFUN FACTS:', 'color: #ff9900; font-weight: bold;');
+console.log('%c• There are 6 possible endings', 'color: #ffcc00;');
+console.log('%c• Perfect score unlocks a secret', 'color: #ffcc00;');
+console.log('%c• The dog ending IS canon', 'color: #ffcc00;');
+console.log('%c• Tab away at your own risk', 'color: #ffcc00;');
+console.log('%c• 72 demons were bound for this quiz', 'color: #ffcc00;');
+console.log('%c• Todd worked really hard on this', 'color: #ffcc00;');
+console.log('%c• Metatron is watching your score', 'color: #ff0000;');
 
 // ========================================
 // QUESTION BANK - TOTALLY FUN QUESTIONS
+// (now with 100% MORE forbidden lore!!)
 // ========================================
 const questions = [
-    // Tier 0 - Easy & Cute
+    // =========== TIER 0 - Easy & Cute ===========
     {
         tier: 0,
         question: "What's the name of our cute little town? :3",
@@ -30,7 +40,7 @@ const questions = [
         tier: 0,
         question: "Who is the main character of Silent Hill 2? (hes so cool!!)",
         corruptedQuestion: "Who killed his wife and forgot?",
-        answers: ["James Sunderland", "Harry Mason", "Heather Mason", "Jade Hardway"],
+        answers: ["James Sunderland", "Harry Mason", "Heather Mason", "Henry Townshend"],
         correct: 0
     },
     {
@@ -40,17 +50,38 @@ const questions = [
         answers: ["Toluca Lake", "Lake Michigan", "Crystal Lake", "Lake Placid"],
         correct: 0
     },
-    // Tier 1 - Medium
+    {
+        tier: 0,
+        question: "What is Jamess wifes name? (she seems nice!!)",
+        corruptedQuestion: "Who did you smother with a pillow?",
+        answers: ["Mary", "Maria", "Laura", "Angela"],
+        correct: 0
+    },
+    {
+        tier: 0,
+        question: "What creature follows James around? (he looks friendly!!)",
+        corruptedQuestion: "What executioner waits in the dark?",
+        answers: ["Pyramid Head", "Nemesis", "Scissorman", "Robbie the Rabbit"],
+        correct: 0
+    },
+    {
+        tier: 0,
+        question: "What weather is Silent Hill famous for?",
+        corruptedQuestion: "What hides the monsters from sight?",
+        answers: ["Fog", "Rain", "Snow", "Sunshine"],
+        correct: 0
+    },
+    // =========== TIER 1 - Medium ===========
     {
         tier: 1,
         question: "What hotel does James visit in SH2?",
         corruptedQuestion: "Where did he smother her with a pillow?",
-        answers: ["Lakeview Hotel", "Overlook Hotel", "Grand Hotel", "Woodside Apartments"],
+        answers: ["Lakeview Hotel", "Overlook Hotel", "Grand Hotel", "Bates Motel"],
         correct: 0
     },
     {
         tier: 1,
-        question: "Whats the name of the scary hospital?",
+        question: "Whats the name of the scary hospital in SH2?",
         corruptedQuestion: "Where do the nurses wait?",
         answers: ["Brookhaven Hospital", "Arkham Asylum", "St. Johns", "Alchemilla Hospital"],
         correct: 0
@@ -62,7 +93,42 @@ const questions = [
         answers: ["Flauros", "Aglaophotis", "Metatron Seal", "Halo of the Sun"],
         correct: 0
     },
-    // Tier 2 - Hard & Dark
+    {
+        tier: 1,
+        question: "What did Dahlia call the Seal of Metatron? (she lied btw)",
+        corruptedQuestion: "What deception led Harry astray?",
+        answers: ["Mark of Samael", "Halo of the Sun", "Seal of Solomon", "Sign of God"],
+        correct: 0
+    },
+    {
+        tier: 1,
+        question: "Who is Heathers real identity in SH3?",
+        corruptedQuestion: "Who was reborn from flames?",
+        answers: ["Alessa/Cheryl reincarnated", "Marys daughter", "Dahlias sister", "A random girl"],
+        correct: 0
+    },
+    {
+        tier: 1,
+        question: "What does the radio do when monsters are near?",
+        corruptedQuestion: "What warns you before they strike?",
+        answers: ["Emits static", "Plays music", "Glows red", "Speaks warnings"],
+        correct: 0
+    },
+    {
+        tier: 1,
+        question: "What Native American belief relates to Silent Hill?",
+        corruptedQuestion: "What ancient power flows through the land?",
+        answers: ["Manitou - spiritual energy", "Wendigo curse", "Spirit animals", "Rain dance"],
+        correct: 0
+    },
+    {
+        tier: 1,
+        question: "What grimoire does the Order reference?",
+        corruptedQuestion: "What book binds the 72 demons?",
+        answers: ["Lesser Key of Solomon", "Necronomicon", "Book of Shadows", "Bible"],
+        correct: 0
+    },
+    // =========== TIER 2 - Hard & Dark ===========
     {
         tier: 2,
         question: "What did James really do to Mary?",
@@ -79,12 +145,61 @@ const questions = [
     },
     {
         tier: 2,
-        question: "According to the Kabbalah, who is Metatron?",
-        corruptedQuestion: "Who watches from the highest sphere?",
-        answers: ["The highest angel/celestial scribe", "A demon lord", "God himself", "The first human"],
+        question: "In Kabbalah, who is Metatron?",
+        corruptedQuestion: "Who scribes all human deeds?",
+        answers: ["Highest angel/celestial scribe", "A demon lord", "The first human", "Gods shadow"],
         correct: 0
     },
-    // Tier 3 - Extreme
+    {
+        tier: 2,
+        question: "What does the Flauros pyramid represent?",
+        corruptedQuestion: "What trapped Alessa's protection?",
+        answers: ["Truth, binding, sacred geometry", "Death, rebirth, chaos", "Love, hate, fear", "Nothing special"],
+        correct: 0
+    },
+    {
+        tier: 2,
+        question: "Why can Laura see no monsters in SH2?",
+        corruptedQuestion: "Why is the innocent spared?",
+        answers: ["She has no guilt or trauma", "Shes a ghost", "Monsters like her", "Shes blind"],
+        correct: 0
+    },
+    {
+        tier: 2,
+        question: "What is Maria REALLY?",
+        corruptedQuestion: "Who created the shadow bride?",
+        answers: ["James manifested Anima/tulpa", "Marys twin sister", "A nurse from Brookhaven", "A real person"],
+        correct: 0
+    },
+    {
+        tier: 2,
+        question: "What Old Testament practice does Alessas burning mirror?",
+        corruptedQuestion: "What ancient evil burned children?",
+        answers: ["Molech child sacrifice", "Animal sacrifice", "Burnt offerings", "Passover lamb"],
+        correct: 0
+    },
+    {
+        tier: 2,
+        question: "What demon king appears in the SH2 Remake puzzles?",
+        corruptedQuestion: "What King of Hell reveals eternal secrets?",
+        answers: ["Paimon", "Asmodeus", "Baal", "Satan"],
+        correct: 0
+    },
+    {
+        tier: 2,
+        question: "Who is Lilith in Jewish mysticism?",
+        corruptedQuestion: "Who was Adams FIRST wife?",
+        answers: ["Adams first wife/demon", "Eves sister", "An angel", "A goddess"],
+        correct: 0
+    },
+    {
+        tier: 2,
+        question: "What place was Tophet in the Old Testament?",
+        corruptedQuestion: "Where did children burn for Molech?",
+        answers: ["A burning ground for sacrifice", "A holy temple", "A garden", "A marketplace"],
+        correct: 0
+    },
+    // =========== TIER 3 - Extreme ===========
     {
         tier: 3,
         question: "What psychological concept does Pyramid Head represent?",
@@ -106,20 +221,91 @@ const questions = [
         answers: ["Reflects visitors unconscious guilt", "Random spawning", "Government experiments", "Alien invasion"],
         correct: 0
     },
-    // Tier 4 - Incomprehensible
+    {
+        tier: 3,
+        question: "What book describes Azazel as leader of the Watchers?",
+        corruptedQuestion: "Who taught humanity forbidden secrets?",
+        answers: ["Book of Enoch", "Book of Revelation", "Genesis", "Deuteronomy"],
+        correct: 0
+    },
+    {
+        tier: 3,
+        question: "What are the Watchers in fallen angel lore?",
+        corruptedQuestion: "Who abandoned heaven for human flesh?",
+        answers: ["200 angels who fell to Earth", "Guardian spirits", "Demon hunters", "Archangels"],
+        correct: 0
+    },
+    {
+        tier: 3,
+        question: "What happens during James Shadow Integration?",
+        corruptedQuestion: "When did you accept your guilt?",
+        answers: ["He admits needing punishment", "He defeats Pyramid Head", "He forgets everything", "He dies"],
+        correct: 0
+    },
+    {
+        tier: 3,
+        question: "In SH: Homecoming, what Cain/Abel parallel exists?",
+        corruptedQuestion: "Where is your brother? What did you do?",
+        answers: ["Alex and Joshua Shepherd", "James and his father", "Harry and his wife", "Walter and Henry"],
+        correct: 0
+    },
+    {
+        tier: 3,
+        question: "What does Jacobs Ladder represent in SH lore?",
+        corruptedQuestion: "What ladder connects worlds?",
+        answers: ["Town as liminal purgatory space", "Stairs to heaven", "A hospital", "Alessas escape route"],
+        correct: 0
+    },
+    {
+        tier: 3,
+        question: "What corrupted relationship mirrors Samael and Lilith?",
+        corruptedQuestion: "What dark marriage rules Silent Hill?",
+        answers: ["The towns demiurge and feminine", "Harry and his wife", "James and Maria", "Dahlia and her god"],
+        correct: 0
+    },
+    // =========== TIER 4 - Incomprehensible ===========
     {
         tier: 4,
         question: "D̶O̶ ̶Y̶O̶U̶ ̶R̶E̶M̶E̶M̶B̶E̶R̶?",
         corruptedQuestion: "D̸̨̛O̷̧̊ ̶̣̈Y̷̰̓Ö̵͙U̵̢̔ ̷̣͠R̶̥̈́E̴͙͒M̵̗̈́E̶̟̔M̶̰̌B̶͙̐E̷̱͘R̵̤̈ ̴̣̏W̸̻̃H̵̰̾Ä̷͙T̶̠̒ ̶̰̌Y̵̻͝O̵̤͆U̷̥̐ ̵͖͘D̵̰͝I̵̗͝D̵̪̈?",
         answers: ["yes", "no", "i dont understand", "MAKE IT STOP"],
         correct: 0
+    },
+    {
+        tier: 4,
+        question: "W̷̡̛H̸̢̛Y̵͙̓ ̶̣̈Ḍ̷̈́I̸̢̓D̶̈ ̶̣̈Y̷̰̓O̵͙̊U̵̢̔ ̷̣͠C̶̥̈́O̴͙͒M̵̗̈́E̶̟̔?",
+        corruptedQuestion: "T̸H̵E̷ ̶F̵O̷G̸ ̵C̷A̸L̵L̷E̵D̵ ̷Y̵O̷U̵ ̵H̸E̷R̴E̸",
+        answers: ["to find what I lost", "to remember", "to forget", "to die"],
+        correct: 0
+    },
+    {
+        tier: 4,
+        question: "B̸̨̛Ů̷̧Ḍ̶̈D̷̰̓Y̵͙ ̵̢̔Ḷ̷͠Ö̶̥́V̴͙͒Ë̵̗́S̶̟̔ ̶̰̌Ÿ̵̪O̵̻͝Ṳ̵͆.̷̥̐ ̵͖͘D̵̰͝O̵̗͝ ̵̪̈Y̵̻͝O̵̤͆U̷̥̐ ̵͖͘L̵̰͝O̵̗͝V̵̪̈E̵̻͝ ̵̤͆B̷̥̐U̵͖͘D̵̰͝D̵̗͝Ÿ̵̪?",
+        corruptedQuestion: "T̷̨̛H̸̢̛E̵͙̓Ṛ̶̈Ẹ̷̈́ ̸̢̓Ï̶Ṣ̶̈ ̷̰̓N̵͙̊O̵̢̔ ̷̣͠Ë̶̥́S̴͙͒C̵̗̈́A̶̟̔P̶̰̌Ë̵̪",
+        answers: ["yes buddy i love you", "no", "who is buddy", "please let me go"],
+        correct: 0
     }
 ];
 
-// Shuffle and select 13 questions
+// Shuffle and select 13 questions with balanced tiers
 function getQuizQuestions() {
-    const shuffled = [...questions].sort(() => Math.random() - 0.5);
-    return shuffled.slice(0, 13);
+    const tier0 = questions.filter(q => q.tier === 0).sort(() => Math.random() - 0.5);
+    const tier1 = questions.filter(q => q.tier === 1).sort(() => Math.random() - 0.5);
+    const tier2 = questions.filter(q => q.tier === 2).sort(() => Math.random() - 0.5);
+    const tier3 = questions.filter(q => q.tier === 3).sort(() => Math.random() - 0.5);
+    const tier4 = questions.filter(q => q.tier === 4).sort(() => Math.random() - 0.5);
+
+    // Select balanced mix: 3 easy, 3 medium, 3 hard, 3 extreme, 1 incomprehensible
+    const selected = [
+        ...tier0.slice(0, 3),
+        ...tier1.slice(0, 3),
+        ...tier2.slice(0, 3),
+        ...tier3.slice(0, 3),
+        ...tier4.slice(0, 1)
+    ];
+
+    // Sort by tier for progressive difficulty
+    return selected.sort((a, b) => a.tier - b.tier);
 }
 
 // ========================================
@@ -471,6 +657,93 @@ function playSound(type, options = {}) {
                 degOsc.start(now);
                 degOsc.stop(now + 0.5);
                 break;
+
+            case 'aim_door':
+                // AIM door open sound (classic 2003)
+                const aimOsc = ctx.createOscillator();
+                const aimOsc2 = ctx.createOscillator();
+                const aimGain = ctx.createGain();
+                aimOsc.type = 'sine';
+                aimOsc2.type = 'sine';
+                aimOsc.frequency.setValueAtTime(880, now);
+                aimOsc.frequency.setValueAtTime(1046, now + 0.1);
+                aimOsc.frequency.setValueAtTime(1318, now + 0.2);
+                aimOsc2.frequency.setValueAtTime(440, now);
+                aimOsc2.frequency.setValueAtTime(523, now + 0.1);
+                aimOsc2.frequency.setValueAtTime(659, now + 0.2);
+                aimGain.gain.setValueAtTime(0.15, now);
+                aimGain.gain.exponentialDecayTo(0.01, now + 0.35);
+                aimOsc.connect(aimGain).connect(ctx.destination);
+                aimOsc2.connect(aimGain);
+                aimOsc.start(now);
+                aimOsc2.start(now);
+                aimOsc.stop(now + 0.35);
+                aimOsc2.stop(now + 0.35);
+                break;
+
+            case 'dialup':
+                // Dial-up modem sound (nostalgic horror)
+                const dialNoise = ctx.createBufferSource();
+                const dialGain = ctx.createGain();
+                const dialFilter = ctx.createBiquadFilter();
+                const dialBuffer = ctx.createBuffer(1, ctx.sampleRate * 1.5, ctx.sampleRate);
+                const dialData = dialBuffer.getChannelData(0);
+                for (let i = 0; i < dialBuffer.length; i++) {
+                    const t = i / ctx.sampleRate;
+                    // Mix of tones that sound like modem handshake
+                    dialData[i] = Math.sin(t * 2000 * Math.PI * 2) * 0.3 * Math.sin(t * 20) +
+                                  Math.sin(t * 1400 * Math.PI * 2) * 0.2 * Math.cos(t * 15) +
+                                  (Math.random() - 0.5) * 0.2 * Math.sin(t * 10);
+                }
+                dialNoise.buffer = dialBuffer;
+                dialFilter.type = 'bandpass';
+                dialFilter.frequency.setValueAtTime(1200, now);
+                dialGain.gain.setValueAtTime(0.15, now);
+                dialGain.gain.exponentialDecayTo(0.01, now + 1.5);
+                dialNoise.connect(dialFilter).connect(dialGain).connect(ctx.destination);
+                dialNoise.start(now);
+                break;
+
+            case 'screech':
+                // Metal screech (Pyramid Head dragging)
+                const screechOsc = ctx.createOscillator();
+                const screechOsc2 = ctx.createOscillator();
+                const screechGain = ctx.createGain();
+                const screechFilter = ctx.createBiquadFilter();
+                screechOsc.type = 'sawtooth';
+                screechOsc2.type = 'square';
+                screechOsc.frequency.setValueAtTime(200, now);
+                screechOsc.frequency.linearRampToValueAtTime(400, now + 0.5);
+                screechOsc2.frequency.setValueAtTime(203, now);
+                screechOsc2.frequency.linearRampToValueAtTime(397, now + 0.5);
+                screechFilter.type = 'bandpass';
+                screechFilter.frequency.setValueAtTime(800, now);
+                screechFilter.Q.setValueAtTime(5, now);
+                screechGain.gain.setValueAtTime(0.1, now);
+                screechGain.gain.exponentialDecayTo(0.01, now + 0.6);
+                screechOsc.connect(screechFilter).connect(screechGain).connect(ctx.destination);
+                screechOsc2.connect(screechFilter);
+                screechOsc.start(now);
+                screechOsc2.start(now);
+                screechOsc.stop(now + 0.6);
+                screechOsc2.stop(now + 0.6);
+                break;
+
+            case 'success':
+                // Happy success jingle (fake hope)
+                const successFreqs = [523, 659, 784, 1046];
+                successFreqs.forEach((freq, i) => {
+                    const sOsc = ctx.createOscillator();
+                    const sGain = ctx.createGain();
+                    sOsc.type = 'sine';
+                    sOsc.frequency.setValueAtTime(freq, now + i * 0.1);
+                    sGain.gain.setValueAtTime(0.15, now + i * 0.1);
+                    sGain.gain.exponentialDecayTo(0.01, now + i * 0.1 + 0.2);
+                    sOsc.connect(sGain).connect(ctx.destination);
+                    sOsc.start(now + i * 0.1);
+                    sOsc.stop(now + i * 0.1 + 0.25);
+                });
+                break;
         }
     } catch(e) {
         console.log('Audio error (this is fine):', e);
@@ -541,8 +814,33 @@ function addCornerEye() {
 
 function addWallWriting() {
     const writings = [
+        // Classic SH references
         "THERE WAS A HOLE HERE",
         "ITS GONE NOW",
+        "IN MY RESTLESS DREAMS",
+        "I SEE THAT TOWN",
+        "SILENT HILL",
+        "ROOM 312",
+        "MARY...",
+        "THE DOG DID IT",
+        // Lore from articles
+        "THE SEAL PROTECTS NOTHING",
+        "METATRON WATCHES",
+        "SAMAEL DECEIVES",
+        "LILITH WAS FIRST",
+        "TOPHET BURNS ETERNAL",
+        "MOLECH DEMANDS",
+        "THE WATCHERS FELL",
+        "AZAZEL TAUGHT US",
+        "FLAUROS TRAPS TRUTH",
+        "72 DEMONS BOUND",
+        "PAIMON KNOWS SECRETS",
+        "THE SHADOW FOLLOWS",
+        "ANIMA MANIFESTS",
+        "JACOB SAW THE LADDER",
+        "THE COLLECTIVE BLEEDS",
+        "ALESSA BURNS STILL",
+        // Buddy/Quiz specific
         "DONT LOOK AWAY",
         "BUDDY SEES YOU",
         "WHY DID YOU DO IT",
@@ -553,10 +851,11 @@ function addWallWriting() {
         "KEEP PLAYING",
         "DONT STOP",
         "BUDDY LOVES YOU",
-        "ROOM 312",
-        "IN MY RESTLESS DREAMS",
-        "MARY...",
-        "THE DOG DID IT"
+        "THE QUIZ NEVER ENDS",
+        "TODD WAS RIGHT",
+        "CHECK YOUR SCORE",
+        "LOOK BEHIND YOU",
+        "THE FOG REMEMBERS"
     ];
 
     const writing = document.createElement('div');
@@ -636,14 +935,41 @@ function triggerScreenMelt() {
 // FAKE ERROR POPUPS
 // ========================================
 const fakeErrors = [
-    { title: "buddy.exe", icon: "", message: "Buddy.exe has performed an illegal operation and will be shut down.\n\nIf the problem persists, contact your system administrator (Buddy)." },
-    { title: "Mary.dll - Error", icon: "", message: "Cannot find Mary.dll\n\nThe specified module could not be found.\n\nShe was here. Now shes gone." },
-    { title: "Silent Hill", icon: "", message: "A fatal exception 0E has occurred at 0028:C0011312 in VXD PYRAMID_HEAD.\n\nThe current application will be terminated." },
-    { title: "Warning", icon: "", message: "ERROR: sin_count overflow\n\nYour sins exceed the maximum integer value.\n\nPlease repent and try again." },
-    { title: "System Error", icon: "", message: "Not enough memory to display horror.\n\nClose some applications and try again.\n\n(You cannot close this application)" },
-    { title: "VIRUS ALERT", icon: "", message: "VIRUS DETECTED: pyramid_head.worm\n\nYour soul has been infected.\n\nQuarantine is not possible." },
-    { title: "quiz.exe", icon: "", message: "Quiz has stopped responding.\n\nBuddy is thinking...\n\nPlease wait. Do not look away." },
-    { title: "Otherworld.sys", icon: "", message: "The Otherworld transition is imminent.\n\nPlease save all work.\n\n(There is nothing to save)" }
+    { title: "buddy.exe", icon: "⚠️", message: "Buddy.exe has performed an illegal operation and will be shut down.\n\nIf the problem persists, contact your system administrator (Buddy)." },
+    { title: "Mary.dll - Error", icon: "❌", message: "Cannot find Mary.dll\n\nThe specified module could not be found.\n\nShe was here. Now shes gone." },
+    { title: "Silent Hill", icon: "💀", message: "A fatal exception 0E has occurred at 0028:C0011312 in VXD PYRAMID_HEAD.\n\nThe current application will be terminated." },
+    { title: "Warning", icon: "⚠️", message: "ERROR: sin_count overflow\n\nYour sins exceed the maximum integer value.\n\nPlease repent and try again." },
+    { title: "System Error", icon: "🖥️", message: "Not enough memory to display horror.\n\nClose some applications and try again.\n\n(You cannot close this application)" },
+    { title: "VIRUS ALERT", icon: "🦠", message: "VIRUS DETECTED: pyramid_head.worm\n\nYour soul has been infected.\n\nQuarantine is not possible." },
+    { title: "quiz.exe", icon: "❓", message: "Quiz has stopped responding.\n\nBuddy is thinking...\n\nPlease wait. Do not look away." },
+    { title: "Otherworld.sys", icon: "🌫️", message: "The Otherworld transition is imminent.\n\nPlease save all work.\n\n(There is nothing to save)" },
+    { title: "metatron.exe", icon: "✡️", message: "The Seal has been broken.\n\nAlessa's protection is failing.\n\nDahlia was right all along." },
+    { title: "Internet Explorer", icon: "🌐", message: "This page contains both secure and nonsecure items.\n\nDo you want to display the nonsecure items?\n\n(The fog counts as nonsecure)" },
+    { title: "AOL Instant Messenger", icon: "💬", message: "BuddyTheMascot wants to send you a file:\n\ntruth.exe (666 KB)\n\nAccept?" },
+    { title: "McAfee VirusScan", icon: "🛡️", message: "Threat Detected!\n\nFile: your_guilt.dll\nLocation: C:\\Documents and Settings\\James\\Memories\n\nAction taken: Suppressed (but not forgotten)" },
+    { title: "Download Complete", icon: "📥", message: "Download Complete!\n\nFile: forbidden_knowledge.zip\nSize: 72 demons\n\nOpen folder?" },
+    { title: "Bonzi Buddy", icon: "🦍", message: "Hi! Its me, your friend Bonzi!\n\nI noticed you havent taken the quiz yet.\n\nWould you like me to help you find Mary?" },
+    { title: "RealPlayer", icon: "▶️", message: "Buffering... 66.6%\n\nYour connection to the Otherworld is slow.\n\nPlease wait while we load more fog." },
+    { title: "Netscape Navigator", icon: "🧭", message: "Document Done (but your soul isnt)\n\n404: Salvation Not Found\n\nThe requested happiness could not be located." }
+];
+
+// Fun loading messages for extra gags
+const loadingMessages = [
+    "Loading forbidden knowledge...",
+    "Summoning quiz questions...",
+    "Calibrating horror levels...",
+    "Connecting to Otherworld server...",
+    "Downloading guilt.dll...",
+    "Initializing Buddy AI...",
+    "Checking soul integrity...",
+    "Loading fog textures...",
+    "Binding 72 demons...",
+    "Establishing connection to Silent Hill...",
+    "Parsing your sins...",
+    "Compiling trauma.exe...",
+    "Defragmenting memories...",
+    "Installing pyramid_head_service...",
+    "Verifying seal of metatron..."
 ];
 
 function showFakeError() {
@@ -1117,8 +1443,47 @@ function startRandomEvents() {
             playSound('drone');
         } else if (rand < 0.87 && level >= 13) {
             showJumpscare(Math.floor(Math.random() * 12));
+        } else if (rand < 0.92 && level >= 2) {
+            // Random Buddy helper
+            showBuddyHelper();
+        } else if (rand < 0.96 && level >= 5) {
+            // Random title bar change
+            changePageTitle();
         }
     }, 3000 - (gameState.horrorLevel * 150));
+}
+
+// Fun page title changes
+const pageTitles = [
+    "~*~BUDDYS SUPER FUN QUIZ~*~",
+    "Quiz - Question " + (gameState.currentQuestion + 1),
+    "Buddy sees you...",
+    "DONT LOOK AWAY",
+    "You have 1 new message",
+    "R̶o̷o̴m̵ ̶3̷1̴2̸",
+    "(1) Silent Hill",
+    "Are you still there?",
+    "The fog is coming",
+    "pyramidhead_fan_2002 says hi",
+    "Your score: ???",
+    "Downloading guilt.dll...",
+    "METATRON WATCHES",
+    "buddy.exe",
+    "localhost:666",
+    "In my restless dreams...",
+];
+
+function changePageTitle() {
+    const originalTitle = document.title;
+    const newTitle = pageTitles[Math.floor(Math.random() * pageTitles.length)];
+    document.title = newTitle;
+
+    // Revert after a while (sometimes)
+    if (Math.random() < 0.7) {
+        setTimeout(() => {
+            document.title = originalTitle;
+        }, 5000 + Math.random() * 10000);
+    }
 }
 
 // ========================================
@@ -1189,33 +1554,93 @@ function typeWriter(element, text, speed = 50, callback) {
 // GAME FUNCTIONS
 // ========================================
 function startQuiz() {
-    gameState = {
-        ...gameState,
-        currentQuestion: 0,
-        score: 0,
-        horrorLevel: 0,
-        paranoia: 0,
-        questions: getQuizQuestions(),
-        isPlaying: true,
-        hasEnded: false,
-        wrongAnswers: 0,
-        cracksOnScreen: 0,
-        postEndingPhase: 0,
-        popupsShown: 0,
-        buttonChaseActive: false
-    };
+    // Show fake loading screen first (classic 2003 vibes)
+    showFakeLoading(() => {
+        gameState = {
+            ...gameState,
+            currentQuestion: 0,
+            score: 0,
+            horrorLevel: 0,
+            paranoia: 0,
+            questions: getQuizQuestions(),
+            isPlaying: true,
+            hasEnded: false,
+            wrongAnswers: 0,
+            cracksOnScreen: 0,
+            postEndingPhase: 0,
+            popupsShown: 0,
+            buttonChaseActive: false
+        };
 
-    // Clear any existing cracks
-    document.getElementById('cracksContainer').innerHTML = '';
+        // Clear any existing cracks
+        document.getElementById('cracksContainer').innerHTML = '';
 
-    document.getElementById('introScreen').style.display = 'none';
-    document.getElementById('gameScreen').style.display = 'block';
+        document.getElementById('introScreen').style.display = 'none';
+        document.getElementById('gameScreen').style.display = 'block';
 
-    // Initial happy sounds
-    playSound('correct');
+        // Initial happy sounds
+        playSound('correct');
+        playSound('aim_door');
 
-    startRandomEvents();
-    showQuestion();
+        startRandomEvents();
+        showQuestion();
+    });
+}
+
+function showFakeLoading(callback) {
+    const introScreen = document.getElementById('introScreen');
+
+    // Replace button with loading bar
+    const originalHTML = introScreen.innerHTML;
+    introScreen.innerHTML = `
+        <div style="text-align: center; padding: 40px;">
+            <div style="font-size: 60px; margin-bottom: 20px; animation: spin 2s linear infinite;">🌀</div>
+            <h2 style="color: #ff66cc; font-family: Comic Sans MS;">Loading Quiz...</h2>
+            <div style="background: #ffccff; border: 3px inset #ff66ff; width: 300px; height: 25px; margin: 20px auto; position: relative; overflow: hidden;">
+                <div id="fakeLoadingBar" style="background: linear-gradient(90deg, #ff99ff, #ff66cc); height: 100%; width: 0%; transition: width 0.1s;"></div>
+            </div>
+            <p id="fakeLoadingText" style="color: #660066; font-size: 14px;">Initializing...</p>
+            <p style="color: #999; font-size: 10px; margin-top: 20px;">(This is totally a real loading screen)</p>
+        </div>
+    `;
+
+    const loadingBar = document.getElementById('fakeLoadingBar');
+    const loadingText = document.getElementById('fakeLoadingText');
+
+    let progress = 0;
+
+    const loadingInterval = setInterval(() => {
+        progress += Math.random() * 15 + 5;
+
+        if (progress >= 100) {
+            progress = 100;
+            loadingBar.style.width = '100%';
+            loadingText.textContent = 'READY!! :D';
+            clearInterval(loadingInterval);
+
+            setTimeout(() => {
+                introScreen.innerHTML = originalHTML;
+                callback();
+            }, 500);
+            return;
+        }
+
+        loadingBar.style.width = progress + '%';
+
+        // Change message occasionally
+        if (Math.random() < 0.4) {
+            loadingText.textContent = loadingMessages[Math.floor(Math.random() * loadingMessages.length)];
+        }
+
+        // Random glitch at 66%
+        if (progress > 60 && progress < 70 && Math.random() < 0.3) {
+            loadingText.textContent = "W̷a̶i̵t̴.̷.̶.̵";
+            loadingBar.style.background = '#660000';
+            setTimeout(() => {
+                loadingBar.style.background = 'linear-gradient(90deg, #ff99ff, #ff66cc)';
+            }, 200);
+        }
+    }, 150);
 }
 
 function showQuestion() {
@@ -1360,8 +1785,12 @@ function endGame() {
 
     let ending;
 
-    // Dog ending if paranoia is high
-    if (gameState.paranoia > 4) {
+    // Special endings first
+    if (percentage === 100) {
+        // Perfect score = UFO ending
+        ending = getUFOEnding();
+    } else if (gameState.paranoia > 4) {
+        // Dog ending if paranoia is high
         ending = getDogEnding();
     } else if (percentage >= 85) {
         ending = getLeaveEnding();
@@ -1384,6 +1813,7 @@ function getLeaveEnding() {
         text: "You found the truth. You proved your KNOLEDGE.",
         subtext: "The fog parts... Buddy waves goodbye...",
         finalText: "You wake up. It was just a quiz... wasnt it?",
+        toddNote: "WOW you actually got the good ending!! I didnt think anyone would tbh. You clearly know your Silent Hill lore. Maybe TOO well... (jk thats not a thing) (or is it)",
         color: "#999999",
         sound: 'peaceful'
     };
@@ -1396,6 +1826,7 @@ function getMariaEnding() {
         text: "You couldnt let go. You found someone new.",
         subtext: "Buddy transforms into something familiar...",
         finalText: "She looks like Mary... but different... *cough*",
+        toddNote: "Ah the Maria ending. You know what this means right?? James couldnt accept Marys death so he created a replacement. Just like you created a replacement for ACTUALLY STUDYING THE LORE. but its ok Buddy still loves you",
         color: "#ff6699",
         sound: 'cough'
     };
@@ -1408,6 +1839,7 @@ function getInWaterEnding() {
         text: "The weight was too much to bear.",
         subtext: "Buddy sinks into the lake...",
         finalText: "In your restless dreams, you see that quiz...",
+        toddNote: "This is the SAD ending (but also kind of the canon one according to SH2 creators??). Like James, you couldnt escape your guilt (of not knowing enough Silent Hill lore). Toluca Lake claims another soul...",
         color: "#6699ff",
         sound: 'bubbles'
     };
@@ -1420,6 +1852,7 @@ function getRebirthEnding() {
         text: "The ritual demands everything.",
         subtext: "Your wrong answers have meaning...",
         finalText: "Buddy transcends. Press F5 to try again. And again. And again.",
+        toddNote: "You got the CULT ending!! This means you answered so many questions wrong that Buddy decided to use your failures as ritual offerings. The 72 demons of the Lesser Key thank you for your sacrifice. You are now part of the Orders rebirth cycle. Congrats??",
         color: "#ff3300",
         sound: 'chant'
     };
@@ -1432,8 +1865,24 @@ function getDogEnding() {
         text: "You looked away too many times.",
         subtext: "Buddy reveals his true form...",
         finalText: "Its a Shiba Inu at a computer. bark bark bark. Thank you for playing!",
+        toddNote: "LMAOOO YOU GOT THE DOG ENDING!! This is the BEST ending (100% canon fight me). Just like in SH2 where you find out a Shiba Inu was controlling everything from a secret room, you have discovered that Buddy was actually a DOG THE WHOLE TIME. I cant believe you looked away from the screen so many times that you triggered this. Absolutely based. 10/10.",
         color: "#ffcc00",
         sound: 'bark',
+        special: true
+    };
+}
+
+// New 6th ending for PERFECT score
+function getUFOEnding() {
+    return {
+        type: 'ufo',
+        title: "UFO",
+        text: "The aliens have noticed your knowledge.",
+        subtext: "A beam of light descends...",
+        finalText: "You are abducted. The truth was out there all along.",
+        toddNote: "WHAT THE HECK YOU GOT PERFECT SCORE?!?! This unlocks the SECRET UFO ENDING!! Just like the joke ending in SH games where aliens show up, you have proven yourself to be NOT OF THIS WORLD. Either youre a time traveler, you cheated, or youre literally Team Silent. Either way the aliens want to study you now. Congratulations I guess??",
+        color: "#00ff00",
+        sound: 'success',
         special: true
     };
 }
@@ -1479,6 +1928,9 @@ function playEndingSequence(ending) {
         case 'dog':
             buildDogEnding(ending);
             break;
+        case 'ufo':
+            buildUFOEnding(ending);
+            break;
     }
 
     // Start post-ending horror timer (except for dog ending)
@@ -1494,12 +1946,13 @@ function buildLeaveEnding(ending) {
     endingScreen.innerHTML = `
         <div class="ending-screen ending-leave">
             <div class="ending-title" style="color: ${ending.color};">${ending.title}</div>
-            <div style="font-size: 80px; margin: 20px 0;" class="buddy-wave"></div>
+            <div style="font-size: 80px; margin: 20px 0;" class="buddy-wave">👋</div>
             <div class="ending-text" style="color: ${ending.color};">
                 ${ending.text}<br><br>
                 <i>${ending.subtext}</i><br><br>
                 ${ending.finalText}
             </div>
+            ${buildToddNote(ending)}
             ${buildEndingStats()}
             ${buildEndingButtons(ending)}
         </div>
@@ -1511,12 +1964,13 @@ function buildMariaEnding(ending) {
     endingScreen.innerHTML = `
         <div class="ending-screen ending-maria">
             <div class="ending-title" style="color: ${ending.color};">${ending.title}</div>
-            <div class="maria-silhouette"></div>
+            <div class="maria-silhouette">👩</div>
             <div class="ending-text" style="color: ${ending.color};">
                 ${ending.text}<br><br>
                 <i>${ending.subtext}</i><br><br>
                 <span class="maria-cough">${ending.finalText}</span>
             </div>
+            ${buildToddNote(ending)}
             ${buildEndingStats()}
             ${buildEndingButtons(ending)}
         </div>
@@ -1538,11 +1992,13 @@ function buildWaterEnding(ending) {
         <div class="ending-screen ending-water">
             <div class="water-rising"></div>
             <div class="ending-title sinking-text" style="color: ${ending.color};">${ending.title}</div>
+            <div style="font-size: 80px; margin: 20px 0; opacity: 0.7;">🌊</div>
             <div class="ending-text sinking-text" style="color: ${ending.color};">
                 ${ending.text}<br><br>
                 <i>${ending.subtext}</i><br><br>
                 ${ending.finalText}
             </div>
+            ${buildToddNote(ending)}
             ${buildEndingStats()}
             ${buildEndingButtons(ending)}
             <div id="bubbleContainer"></div>
@@ -1567,13 +2023,14 @@ function buildRebirthEnding(ending) {
     endingScreen.innerHTML = `
         <div class="ending-screen ending-rebirth">
             <div class="lightning-flash"></div>
-            <div class="ritual-circle"></div>
+            <div class="ritual-circle">⛧</div>
             <div class="ending-title" style="color: ${ending.color}; position: relative; z-index: 10;">${ending.title}</div>
             <div class="ending-text" style="color: ${ending.color}; position: relative; z-index: 10;">
                 ${ending.text}<br><br>
                 <i>${ending.subtext}</i><br><br>
                 ${ending.finalText}
             </div>
+            ${buildToddNote(ending)}
             ${buildEndingStats()}
             ${buildEndingButtons(ending)}
         </div>
@@ -1585,29 +2042,33 @@ function buildDogEnding(ending) {
     endingScreen.innerHTML = `
         <div class="ending-screen ending-dog">
             <div class="ending-title" style="color: ${ending.color};">${ending.title}</div>
-            <div class="dog-dance"></div>
+            <div class="dog-dance">🐕</div>
             <div class="ending-text" style="color: #333;">
                 ${ending.text}<br><br>
                 <i>${ending.subtext}</i><br><br>
                 ${ending.finalText}
             </div>
+            ${buildToddNote(ending)}
             <div class="credits-roll" id="dogCredits">
-                <p><b>CREDITS</b></p>
+                <p><b>🎬 CREDITS 🎬</b></p>
                 <p>Quiz Master: Buddy (actually a dog)</p>
                 <p>Horror Effects: The Otherworld</p>
+                <p>Lore Consultant: The Lesser Key of Solomon</p>
                 <p>Music: Silent Hill (in our hearts)</p>
                 <p>Web Design: DarkAlessa1999 (Todd)</p>
-                <p>Special Thanks: Konami</p>
+                <p>Fog Technician: Toluca Lake Dept.</p>
+                <p>Special Thanks: Konami, Team Silent</p>
                 <p>The Dog: bark bark bark</p>
                 <p>&nbsp;</p>
                 <p><i>No mascots were harmed in the making of this quiz</i></p>
                 <p><i>The dog was in control the whole time</i></p>
+                <p><i>All 72 demons returned safely to their vessel</i></p>
                 <p>&nbsp;</p>
-                <p>Thank you for playing!!</p>
+                <p>🐕 Thank you for playing!! 🐕</p>
             </div>
             ${buildEndingStats()}
-            <button class="btn-old" onclick="location.reload()" style="margin-top: 20px; font-size: 20px;">
-                pet the dog
+            <button class="btn-old" onclick="location.reload()" style="margin-top: 20px; font-size: 20px; background: #ffcc00;">
+                🐕 pet the dog 🐕
             </button>
             <p style="margin-top: 20px; font-size: 12px; color: #666;">
                 <a href="index.html" style="color: #996600;">Return to main site</a>
@@ -1635,13 +2096,74 @@ function buildDogEnding(ending) {
     }
 }
 
+function buildUFOEnding(ending) {
+    const endingScreen = document.getElementById('endingScreen');
+    endingScreen.innerHTML = `
+        <div class="ending-screen ending-ufo" style="background: linear-gradient(180deg, #000033 0%, #000011 50%, #001100 100%);">
+            <div class="ufo-beam" style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 200px; height: 100%; background: linear-gradient(180deg, rgba(0,255,0,0.3), transparent); animation: beamPulse 2s ease infinite;"></div>
+            <div style="font-size: 100px; animation: ufoFloat 2s ease infinite;">🛸</div>
+            <div class="ending-title" style="color: ${ending.color};">${ending.title}</div>
+            <div class="ending-text" style="color: ${ending.color};">
+                ${ending.text}<br><br>
+                <i>${ending.subtext}</i><br><br>
+                ${ending.finalText}
+            </div>
+            ${buildToddNote(ending)}
+            ${buildEndingStats()}
+            <button class="btn-old" onclick="location.reload()" style="margin-top: 20px; font-size: 20px; background: #003300; color: #00ff00; border-color: #00ff00;">
+                🛸 BEAM ME UP AGAIN 🛸
+            </button>
+            <p style="margin-top: 20px; font-size: 12px; color: #006600;">
+                <a href="index.html" style="color: #00cc00;">Return to Earth (main site)</a>
+            </p>
+            <div id="ufoStarsContainer"></div>
+        </div>
+    `;
+
+    // Add twinkling stars
+    const starsContainer = document.getElementById('ufoStarsContainer');
+    for (let i = 0; i < 50; i++) {
+        const star = document.createElement('div');
+        star.style.cssText = `
+            position: fixed;
+            width: 3px;
+            height: 3px;
+            background: #fff;
+            border-radius: 50%;
+            top: ${Math.random() * 100}%;
+            left: ${Math.random() * 100}%;
+            animation: twinkle ${1 + Math.random() * 2}s ease infinite;
+            opacity: ${0.3 + Math.random() * 0.7};
+        `;
+        starsContainer.appendChild(star);
+    }
+
+    // Alien sounds
+    playSound('dialup');
+    setTimeout(() => playSound('success'), 1000);
+}
+
+function buildToddNote(ending) {
+    if (!ending.toddNote) return '';
+    return `
+        <div style="background: #ffffcc; border: 2px solid #999; padding: 15px; margin: 20px auto; max-width: 500px; text-align: left; color: #000; font-size: 12px;">
+            <div style="background: linear-gradient(90deg, #000080, #1084d0); color: white; padding: 3px 8px; margin: -15px -15px 10px -15px; font-size: 11px;">
+                📝 DarkAlessa1999 (Todd) says:
+            </div>
+            ${ending.toddNote}
+            <p style="text-align: right; margin-top: 10px; color: #666; font-size: 10px;">- Todd</p>
+        </div>
+    `;
+}
+
 function buildEndingStats() {
     return `
         <p style="margin-top: 40px; color: #666; font-size: 14px;">
             Final Score: ${gameState.score}/13 (${Math.round((gameState.score/13)*100)}%)<br>
             Paranoia Level: ${gameState.paranoia}<br>
             Horror Level: ${Math.round(gameState.horrorLevel)}<br>
-            Screen Cracks: ${gameState.cracksOnScreen}
+            Screen Cracks: ${gameState.cracksOnScreen}<br>
+            <span style="font-size: 10px;">Ending: ${gameState.endingShown.toUpperCase()}</span>
         </p>
     `;
 }
@@ -1856,12 +2378,86 @@ document.addEventListener('mousemove', (e) => {
 });
 
 // ========================================
+// BUDDY HELPER TIPS (like Clippy but worse)
+// ========================================
+const buddyTips = [
+    // Early game tips (helpful?)
+    { minHorror: 0, maxHorror: 3, text: "Hi!! Click an answer to continue! You got this!!", face: "😊" },
+    { minHorror: 0, maxHorror: 3, text: "Remember: there are no wrong answers!! (jk there definitely are)", face: "😄" },
+    { minHorror: 0, maxHorror: 3, text: "Fun fact: Silent Hill was inspired by the movie Jacob's Ladder!", face: "🎬" },
+    { minHorror: 0, maxHorror: 3, text: "Tip: The fog is your friend! (its not)", face: "🌫️" },
+    // Mid game tips (concerning)
+    { minHorror: 4, maxHorror: 7, text: "You seem... nervous. Is something wrong?", face: "🤔" },
+    { minHorror: 4, maxHorror: 7, text: "The Seal of Metatron protects you! (it doesnt)", face: "✡️" },
+    { minHorror: 4, maxHorror: 7, text: "Did you know Maria isnt real? Just like this quiz!", face: "😶" },
+    { minHorror: 4, maxHorror: 7, text: "Your paranoia level is... interesting.", face: "👀" },
+    // Late game tips (threatening)
+    { minHorror: 8, maxHorror: 11, text: "Dont look behind you.", face: "😐" },
+    { minHorror: 8, maxHorror: 11, text: "The 72 demons appreciate your participation.", face: "⛧" },
+    { minHorror: 8, maxHorror: 11, text: "Have you checked your closet recently?", face: "🚪" },
+    { minHorror: 8, maxHorror: 11, text: "Your wrong answers have been... noted.", face: "📝" },
+    // Endgame tips (help)
+    { minHorror: 12, maxHorror: 99, text: "B̷U̵D̶D̵Y̷ ̸L̷O̵V̶E̸S̷ ̷Y̵O̶U̵", face: "😈" },
+    { minHorror: 12, maxHorror: 99, text: "T̵h̶e̷r̸e̵ ̶i̶s̵ ̷n̶o̵ ̶e̷s̸c̴a̵p̸e̷", face: "🕳️" },
+    { minHorror: 12, maxHorror: 99, text: "R̴e̶m̷e̸m̴b̵e̶r̵ ̸w̸h̸a̵t̶ ̵y̶o̶u̵ ̵d̷i̶d̵", face: "💀" },
+];
+
+function showBuddyHelper() {
+    // Don't show if one already exists
+    if (document.querySelector('.buddy-helper')) return;
+
+    const validTips = buddyTips.filter(t =>
+        gameState.horrorLevel >= t.minHorror && gameState.horrorLevel <= t.maxHorror
+    );
+
+    if (validTips.length === 0) return;
+
+    const tip = validTips[Math.floor(Math.random() * validTips.length)];
+
+    const helper = document.createElement('div');
+    helper.className = 'buddy-helper';
+    helper.innerHTML = `
+        <span class="buddy-helper-close" onclick="this.parentElement.remove()">×</span>
+        <div class="buddy-helper-face">${tip.face}</div>
+        <p style="margin: 10px 0 0 0; text-align: center;">${tip.text}</p>
+        <p style="margin: 5px 0 0 0; text-align: right; font-size: 10px; color: #666;">- Buddy</p>
+    `;
+
+    document.body.appendChild(helper);
+
+    // Auto-remove after some time
+    setTimeout(() => {
+        if (helper.parentElement) {
+            helper.style.opacity = '0';
+            helper.style.transition = 'opacity 0.5s';
+            setTimeout(() => helper.remove(), 500);
+        }
+    }, 5000 + Math.random() * 3000);
+
+    // Play sound based on horror level
+    if (gameState.horrorLevel < 4) {
+        playSound('aim_door');
+    } else if (gameState.horrorLevel < 10) {
+        playSound('whisper');
+    } else {
+        playSound('glitch');
+    }
+}
+
+// ========================================
 // INITIALIZATION
 // ========================================
 window.addEventListener('load', () => {
     console.log('%cQuiz loaded. Buddy is ready.', 'color: #ff66cc;');
     console.log('%c...the fog awaits...', 'color: #660000; font-size: 8px;');
     console.log('%cHint: patience is rewarded at the end...', 'color: #333; font-size: 6px;');
+
+    // Random Buddy helper on page load
+    setTimeout(() => {
+        if (Math.random() < 0.5) {
+            showBuddyHelper();
+        }
+    }, 3000);
 });
 
 // Warn before leaving
