@@ -1,0 +1,251 @@
+body {
+    background-color: #1a0a0a;
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><text x="10" y="50" font-size="40" fill="%23220808" opacity="0.3">⛧</text></svg>');
+    color: #ff0000;
+    font-family: "Comic Sans MS", "Papyrus", cursive;
+    cursor: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"><text y="24" font-size="24">🔺</text></svg>'), auto;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+h1 {
+    color: #ff3300;
+    text-shadow: 2px 2px #000, 0 0 10px #ff0000;
+    font-size: 28px;
+    text-align: center;
+}
+
+h2 {
+    color: #cc0000;
+    border-bottom: 3px dashed #660000;
+    text-shadow: 1px 1px #000;
+}
+
+.marquee-container {
+    background: linear-gradient(90deg, #330000, #660000, #330000);
+    padding: 5px;
+    border: 3px ridge #ff0000;
+    margin: 10px 0;
+}
+
+.blink {
+    animation: blink 0.5s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+.rainbow {
+    animation: rainbow 2s infinite;
+}
+
+@keyframes rainbow {
+    0% { color: red; }
+    17% { color: orange; }
+    33% { color: yellow; }
+    50% { color: green; }
+    67% { color: blue; }
+    83% { color: purple; }
+    100% { color: red; }
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    background-color: #1a0505;
+}
+
+td, th {
+    border: 2px ridge #660000;
+    padding: 10px;
+    vertical-align: top;
+}
+
+.sidebar {
+    background: linear-gradient(180deg, #220000, #110000);
+    width: 200px;
+}
+
+.main-content {
+    background-color: #0a0000;
+}
+
+a {
+    color: #ff6600;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: #ffff00;
+    background-color: #330000;
+}
+
+.under-construction {
+    text-align: center;
+    padding: 20px;
+    background: repeating-linear-gradient(
+        45deg,
+        #000,
+        #000 10px,
+        #ffcc00 10px,
+        #ffcc00 20px
+    );
+    color: #000;
+    font-weight: bold;
+}
+
+.guestbook {
+    background-color: #1a0505;
+    border: 3px inset #ff0000;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.counter {
+    background-color: #000;
+    color: #00ff00;
+    font-family: "Courier New", monospace;
+    padding: 5px 10px;
+    border: 2px inset #333;
+    display: inline-block;
+}
+
+.webring {
+    background-color: #220000;
+    border: 3px double #ff0000;
+    padding: 15px;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.fire-text {
+    color: #ff6600;
+    text-shadow: 0 0 5px #ff0000, 0 0 10px #ff3300, 0 0 15px #ff6600;
+}
+
+.testimonial {
+    background-color: #0d0000;
+    border-left: 4px solid #ff0000;
+    padding: 10px;
+    margin: 10px 0;
+    font-style: italic;
+}
+
+.pentagram {
+    font-size: 40px;
+    animation: spin 4s linear infinite;
+    display: inline-block;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.skull-divider {
+    text-align: center;
+    font-size: 24px;
+    letter-spacing: 20px;
+    margin: 20px 0;
+}
+
+.email-link {
+    font-size: 12px;
+    color: #ff9900;
+}
+
+.hierarchies {
+    font-family: "Times New Roman", serif;
+    color: #cc9900;
+}
+
+.error-box {
+    background-color: #c0c0c0;
+    border: 3px outset #fff;
+    padding: 15px;
+    color: #000;
+    font-family: "MS Sans Serif", Arial, sans-serif;
+    max-width: 400px;
+    margin: 20px auto;
+}
+
+.error-title {
+    background: linear-gradient(90deg, #000080, #1084d0);
+    color: white;
+    padding: 3px 5px;
+    font-weight: bold;
+    margin: -15px -15px 10px -15px;
+}
+
+.btn-old {
+    background-color: #c0c0c0;
+    border: 2px outset #fff;
+    padding: 3px 15px;
+    font-family: "MS Sans Serif", Arial, sans-serif;
+    cursor: pointer;
+}
+
+.chat-box {
+    background-color: #ffffcc;
+    border: 2px inset #999;
+    padding: 10px;
+    color: #000;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    max-width: 300px;
+}
+
+.chat-header {
+    background-color: #0066cc;
+    color: white;
+    padding: 5px;
+    font-weight: bold;
+    margin: -10px -10px 10px -10px;
+}
+
+.typing-indicator {
+    color: #666;
+    font-style: italic;
+}
+
+marquee {
+    color: #ffff00;
+    font-weight: bold;
+}
+
+.hierarchies-table td {
+    font-family: "Papyrus", fantasy;
+    color: #ffcc00;
+}
+
+.hierarchies-table {
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50"><rect fill="%230a0000"/><text x="5" y="35" font-size="30" fill="%23220505">☩</text></svg>');
+}
+
+.fog-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: linear-gradient(transparent 0%, rgba(100,100,100,0.1) 50%, transparent 100%);
+    animation: fog 8s ease-in-out infinite;
+    z-index: 1000;
+}
+
+@keyframes fog {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 0.3; }
+}
+
+.hierarchies-table th {
+    background-color: #330000;
+    color: #ffcc00;
+}
